@@ -1,0 +1,30 @@
+.twitter
+{
+	border:1px solid black;
+	border-radius: 5px;
+	padding: 10px 10px;
+	margin-top: 5px;
+}
+.twitter img
+{
+	float: left;
+}
+b
+{
+	font-weight: bold;
+}
+#w
+{
+    float: left;
+}
+#h {
+    float: right;
+}
+.first
+{
+	margin-top:15px;
+}
+.last
+{
+	margin-bottom: 70px;
+}

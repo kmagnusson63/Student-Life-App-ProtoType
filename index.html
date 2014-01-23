@@ -1,0 +1,57 @@
+<!DOCTYPE html><!--HTML5 doctype-->
+<html>
+    <head>
+        <title>Social</title>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="social_proto.css" />
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+    <!--
+        <style type="text/css">
+            /* Prevent copy paste for all elements except text fields */
+            *  { -webkit-user-select:none; -webkit-tap-highlight-color:rgba(255, 255, 255, 0); }
+            input, textarea  { -webkit-user-select:text; }
+            body { background-color:white; color:black }
+        </style>
+    --> 
+        <link rel="stylesheet" style="text/css" href="main.css" />
+        <script src='intelxdk.js'></script>
+        <script type="text/javascript" src="social_proto.js"></script>
+        <script type="text/javascript">
+            /* This code is used to run as soon as Intel activates */
+            var onDeviceReady=function(){
+            //hide splash screen
+            intel.xdk.device.hideSplashScreen();
+            };
+            document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
+        </script>
+    </head>
+    <body>
+        
+            <div id="header">
+                <div id="w">w</div>
+                <div id="h">h</div>
+                <span id="title">All Social Feeds</span>
+            </div>
+            
+            <div id="main">
+                
+               
+                
+
+            </div>
+            
+            <div id="footer">
+                <table id="tab">
+                    <tr>
+                        <td id="social"><a href="#">Social</a></td>
+                        <td id="events"><a href="events.html">Events</a></td>
+                        <td id="jobcentral"><a href="jobcentral.html">Job Central</a></td>
+                        <td id="settings"><a href="settings.html">Settings</a></td>
+                    </tr>
+                </table>
+            </div>
+       
+    </body>
+</html>

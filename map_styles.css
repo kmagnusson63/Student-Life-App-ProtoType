@@ -1,0 +1,35 @@
+html, body {
+	height: 100%;
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+/*    z-index: -1;*/
+}
+.info {
+	  max-width:900px;
+	  max-height:500px;
+}
+.info input
+{
+	float:right;
+	margin-top:5px
+}
+.info label
+{
+	float:left;
+	margin-top:5px;
+}
+#event_submit
+{
+	margin-top:5px;
+}
+
+#john {
+    height: 80%;
+    margin-top: 65px;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 80%;
+    width: 95%;
+    position: static;
+}

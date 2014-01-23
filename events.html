@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Events</title>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700' rel='stylesheet' type='text/css'>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+    <!--
+        <style type="text/css">
+            /* Prevent copy paste for all elements except text fields */
+            *  { -webkit-user-select:none; -webkit-tap-highlight-color:rgba(255, 255, 255, 0); }
+            input, textarea  { -webkit-user-select:text; }
+            body { background-color:white; color:black }
+        </style>
+    --> 
+        <link rel="stylesheet" style="text/css" href="main.css" />
+        <link rel = "stylesheet" type = "text/css" href = "map_styles.css" />
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+        <script src='maps.js'></script>
+        <script src='intelxdk.js'></script>
+        <script type="text/javascript">
+            /* This code is used to run as soon as Intel activates */
+            var onDeviceReady=function(){
+            //hide splash screen
+            intel.xdk.device.hideSplashScreen();
+            };
+            document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
+        </script>
+<!--
+        <link rel = "stylesheet" type = "text/css" href = "map_styles.css" />
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+        <script src='maps.js'></script>
+-->
+    </head>
+    
+    <body>
+            
+        <div id="header">
+            <span id="title">Events</span>
+        </div>
+        
+        <div id="john">
+            
+        </div>
+        
+        <div id="footer">
+            <table id="tab">
+                <tr>
+                    <td id="social"><a href="index.html">Social</a></td>
+                    <td id="events"><a href="events.html">Events</a></td>
+                    <td id="jobcentral"><a href="jobcentral.html">Job Central</a></td>
+                    <td id="settings"><a href="settings.html">Settings</a></td>
+                </tr>
+            </table>
+        </div>
+    </body>
+
+
+</html>
