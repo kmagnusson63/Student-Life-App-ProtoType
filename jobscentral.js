@@ -17,21 +17,22 @@ jobHTTP.onreadystatechange = function(){
       {
 	   var job_tr = document.createElement("tr");
 	 
-	   var job_title_td = document.createElement("td");
-	   job_title_td.textContent = jobList[i].title;
+	   var job_title_button = document.createElement("button");
+	   job_title_button.textContent = jobList[i].title;
+	   job_title_button.setAttribute("onClick", "toggle("+jobList[i].id+")")
 	 
 	   var job_closes_td = document.createElement("td");
 	   job_closes_td.textContent = jobList[i].closeDate;
 	  
-	   job_tr.appendChild(job_title_td);
+	   job_tr.appendChild(job_title_button);
 	   job_tr.appendChild(job_closes_td);
-	   job_tr.setAttribute("id", jobList[i].id)
-	   job_tr.setAttribute("onClick", "show(HH"+jobList[i].id+")")
+	   job_tr.setAttribute("id", "D" + jobList[i].id);
 	   
 	   job_table.appendChild(job_tr);
       
 	   // save job display elements to variable to add to table
 	   var job_display = displayJob(jobList[i]);
+	   //job_tr.addEventListener("click",show(jobList[i].id),false);
       
 	}
     }
@@ -48,7 +49,7 @@ function displayJob(jobs)
     var np0 = document.createElement("p");
     var np1 = document.createElement("p");
     var np2 = document.createElement("p");
-    var text0 = "Employer" + jobs.employer;
+    var text0 = "Employer: " + jobs.employer;
     var text1 = jobs.openDate +" - "+ jobs.closeDate
     var text2 = jobs.jobDesc;
     var tn0=document.createTextNode(jobs.title);
@@ -56,8 +57,6 @@ function displayJob(jobs)
     var tn2=document.createTextNode(text0);
     var tn3=document.createTextNode(text1);
     var tn4=document.createTextNode(text2);
-    var tn5=document.createTextNode("Hide");
-    var nbutton = document.createElement("button");
     
     
     nh1.appendChild(tn0);
@@ -65,28 +64,27 @@ function displayJob(jobs)
     np0.appendChild(tn2);
     np1.appendChild(tn3);
     np2.appendChild(tn4);
-    nbutton.appendChild(tn5);
-    nbutton.setAttribute("onClick", "hide(HH"+jobs.id+")")
     
     ntr.appendChild(nh1);
     ntr.appendChild(nh3);
     ntr.appendChild(np0);
     ntr.appendChild(np1);
     ntr.appendChild(np2);
-    ntr.appendChild(nbutton);
-    ntr.setAttribute("id", "HH"+jobs.id)
+    ntr.setAttribute("id", jobs.id)
     ntr.style.display="none"
     
-    var my_tr = document.getElementById(jobs.id);
+    var my_tr = document.getElementById("D"+jobs.id);
     my_tr.parentNode.insertBefore(ntr, my_tr.nextSibling)
 }
 
-function hide(id){
-	document.getElementById(id).style.display="none"
-}
-
-function show(id){
-	document.getElementById(id).style.display="block"
+function toggle(id){
+	var x = document.getElementById(id);
+       if(x.style.display == 'block'){
+          x.style.display = 'none';
+       }
+       else{
+          x.style.display = 'block';
+       }
 }
 
 function load()
