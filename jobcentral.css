@@ -1,0 +1,22 @@
+#job_central
+{
+    font-size: 20px;
+    color: #000;
+    margin-top: 65px;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 80%;
+    width: 95%;
+    position: static;
+    z-index: -1;
+}
+
+#jobs_wrapper
+{
+    
+}
+
+#jobs_list
+{
+    
+}
