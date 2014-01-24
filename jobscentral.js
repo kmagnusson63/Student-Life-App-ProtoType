@@ -17,14 +17,14 @@ jobHTTP.onreadystatechange = function(){
       {
 	   var job_tr = document.createElement("tr");
 	 
-	   var job_title_button = document.createElement("button");
-	   job_title_button.textContent = jobList[i].title;
-	   job_title_button.setAttribute("onClick", "toggle("+jobList[i].id+")")
+	   var job_title_td = document.createElement("button");
+	   job_title_td.textContent = jobList[i].title;
+	   job_title_td.setAttribute("onClick", "toggle("+jobList[i].id+")")
 	 
 	   var job_closes_td = document.createElement("td");
 	   job_closes_td.textContent = jobList[i].closeDate;
 	  
-	   job_tr.appendChild(job_title_button);
+	   job_tr.appendChild(job_title_td);
 	   job_tr.appendChild(job_closes_td);
 	   job_tr.setAttribute("id", "D" + jobList[i].id);
 	   
@@ -71,6 +71,7 @@ function displayJob(jobs)
     ntr.appendChild(np1);
     ntr.appendChild(np2);
     ntr.setAttribute("id", jobs.id)
+    ntr.setAttribute("colspan", "2")
     ntr.style.display="none"
     
     var my_tr = document.getElementById("D"+jobs.id);
