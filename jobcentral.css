@@ -1,6 +1,6 @@
 #job_central
 {
-    font-size: 20px;
+    font-size: 10px;
     color: #000;
     margin-top: 65px;
     margin-left: 10px;
@@ -19,4 +19,12 @@
 #jobs_list
 {
     
+}
+#jobs_list table
+{
+    width: 100%;
+}
+#jobs_list, #jobs_list tr,#jobs_list tr th,#jobs_list tr td
+{
+    border: 1px solid #000;
 }
