@@ -15,6 +15,8 @@
     --> 
         <link rel="stylesheet" style="text/css" href="main.css" />
         <script src='intelxdk.js'></script>
+        <script src="initialize.js"></script>
+        <script src="settings.js"></script>
         <script type="text/javascript">
             /* This code is used to run as soon as Intel activates */
             var onDeviceReady=function(){
@@ -33,7 +35,16 @@
         </div>
         
         <div id="main">
-            
+            <table>
+                <tr>
+                    <td>Device ID</td>
+                    <td id="device_id"></td>
+                </tr>
+                <tr>
+                    <td>Screen Name</td>
+                    <td id="screen_name"></td>
+                </tr>
+            </table>
         </div>
         
         <div id="footer">
