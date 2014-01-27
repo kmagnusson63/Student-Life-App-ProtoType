@@ -42,7 +42,7 @@ function getSocialFeeds()
 					div.setAttribute("class","twitter");
 				}
 				var image = document.createElement("img");
-				image.setAttribute("src", social_feed[i].user.profile_image_url);
+				image.setAttribute("src", "img/Twitter_logo_blue_48_48.png");
 				div.appendChild(image);
 				var first_line = document.createElement("p");
 				var first_line_span = document.createElement("b");
