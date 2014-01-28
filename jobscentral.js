@@ -1,7 +1,6 @@
 
 var jobList = new Array();
 
-
 function getJobList()
 {
 var jobHTTP = new XMLHttpRequest()
@@ -15,21 +14,22 @@ jobHTTP.onreadystatechange = function(){
       
       for (var i=0; i<jobList.length; i++)
       {
-	   var job_tr = document.createElement("tr");
+	   var ndiv = document.createElement("div");
 	 
-	   //var job_title_td = document.createElement("button");
-     var job_title_td = document.createElement("td");
-	   job_title_td.textContent = jobList[i].title;
+     var npar = document.createElement("p");
+	   npar.textContent = jobList[i].title;
 	   //job_title_td.setAttribute("onClick", "toggle("+jobList[i].id+")")
-	   var job_closes_td = document.createElement("td");
-	   job_closes_td.textContent = jobList[i].closeDate;
+	   var nspan = document.createElement("nspan");
+	   nspan.textContent = jobList[i].closeDate;
 	  
-	   job_tr.appendChild(job_title_td);
-     job_title_td.addEventListener("click",function(e){ toggle(e.target.parentNode.nextSibling);}, false);
-	   job_tr.appendChild(job_closes_td);
-	   job_tr.setAttribute("id", "D" + jobList[i].id);
+	  var id = jobList[i].id;
+	   npar.appendChild(nspan);
+	   ndiv.appendChild(npar);
+	   npar.addEventListener("click",function(e){ toggle();}, false);
+	   ndiv.setAttribute("class", "job");
 	   
-	   job_table.appendChild(job_tr);
+	   var my_div = document.getElementById("job_list");
+           my_div.appendChild(ndiv);
       
 	   // save job display elements to variable to add to table
 	   var job_display = displayJob(jobList[i]);
@@ -44,8 +44,7 @@ jobHTTP.send();
 
 function displayJob(jobs)
 {
-    var ntr = document.createElement("tr");
-    var ntd = document.createElement("td");
+    var ndiv = document.createElement("div");
     var nh1 = document.createElement("h1");
     var nh3 = document.createElement("h3");
     var np0 = document.createElement("p");
@@ -67,23 +66,21 @@ function displayJob(jobs)
     np1.appendChild(tn3);
     np2.appendChild(tn4);
     
-    ntd.appendChild(nh1);
-    ntd.appendChild(nh3);
-    ntd.appendChild(np0);
-    ntd.appendChild(np1);
-    ntd.appendChild(np2);
+    ndiv.appendChild(nh1);
+    ndiv.appendChild(nh3);
+    ndiv.appendChild(np0);
+    ndiv.appendChild(np1);
+    ndiv.appendChild(np2);
     
-    ntd.setAttribute("colspan", "2");
-    ntr.appendChild(ntd);
-    ntr.setAttribute("id", jobs.id);
-    ntr.style.display="none";
+    ndiv.setAttribute("id", jobs.id);
+    ndiv.style.display="none";
     
-    var my_tr = document.getElementById("D"+jobs.id);
-    my_tr.parentNode.insertBefore(ntr, my_tr.nextSibling);
+    var my_div = document.getElementById("job_list");
+    my_div.appendChild(ndiv);
 }
 
 function toggle(id){
-	var x = id;
+	var x = document.getElementById(id);
        if(x.style.display == 'block'){
           x.style.display = 'none';
        }
