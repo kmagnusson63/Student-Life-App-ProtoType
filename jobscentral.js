@@ -1,4 +1,3 @@
-
 var jobList = new Array();
 
 function getJobList()
@@ -15,22 +14,24 @@ jobHTTP.onreadystatechange = function(){
       for (var i=0; i<jobList.length; i++)
       {
 	   var ndiv = document.createElement("div");
-	 
-     var npar = document.createElement("p");
+	   
+           var npar = document.createElement("h3");
 	   npar.textContent = jobList[i].title;
 	   //job_title_td.setAttribute("onClick", "toggle("+jobList[i].id+")")
-	   var nspan = document.createElement("nspan");
+	   var nspan = document.createElement("span");
 	   nspan.textContent = jobList[i].closeDate;
-	  
-	  var id = jobList[i].id;
+	   
+	   var id = jobList[i].id;
+	   nspan.setAttribute("class", "right")
 	   npar.appendChild(nspan);
 	   ndiv.appendChild(npar);
-	   npar.addEventListener("click",function(e){ toggle();}, false);
 	   ndiv.setAttribute("class", "job");
+	   ndiv.setAttribute("key", "jobList[i].id");
+	   //ndiv.addEventListener("click",function(e){ toggle(e.target.parentNode.nextSibling);}, false);
 	   
 	   var my_div = document.getElementById("job_list");
            my_div.appendChild(ndiv);
-      
+           
 	   // save job display elements to variable to add to table
 	   var job_display = displayJob(jobList[i]);
 	   //job_tr.addEventListener("click",toggle(jobList[i].id),false);
@@ -38,6 +39,7 @@ jobHTTP.onreadystatechange = function(){
 	}
     }
 }
+
 jobHTTP.open("GET","job_central.json", true);
 jobHTTP.send();
 }
@@ -73,6 +75,10 @@ function displayJob(jobs)
     ndiv.appendChild(np2);
     
     ndiv.setAttribute("id", jobs.id);
+    //ndiv.setAttribute("class", "panel right");
+    //ndiv.setAttribute("data-role", "panel");
+    //ndiv.setAttribute("data-position", "right");
+    //ndiv.setAttribute("data-display", "overlay");
     ndiv.style.display="none";
     
     var my_div = document.getElementById("job_list");
@@ -80,7 +86,7 @@ function displayJob(jobs)
 }
 
 function toggle(id){
-	var x = document.getElementById(id);
+	var x = id;
        if(x.style.display == 'block'){
           x.style.display = 'none';
        }

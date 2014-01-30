@@ -1,6 +1,6 @@
 #job_central
 {
-    font-size: 10px;
+    font-size: 12px;
     color: #000;
     margin-top: 65px;
     margin-left: 10px;
@@ -11,20 +11,18 @@
     z-index: -1;
 }
 
-#jobs_wrapper
-{
-    
-}
-
 #jobs_list
-{
-    
-}
-#jobs_list table
 {
     width: 100%;
 }
-#jobs_list, #jobs_list tr,#jobs_list tr th,#jobs_list tr td
+
+.job
 {
     border: 1px solid #000;
+}
+
+.right
+{
+    float: right;
+    margin-right: 12px;
 }
