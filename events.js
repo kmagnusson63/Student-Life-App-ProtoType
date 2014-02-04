@@ -24,9 +24,27 @@ function startMap()
 		zoom: 18,
 		//maxZoom: 18,
 		minZoom: 10,
-		center: new google.maps.LatLng(LAT,LNG)
+		center: new google.maps.LatLng(LAT,LNG),
+		streetViewControl: false,
+		zoomControl: false
 	};
 	map = new google.maps.Map(document.getElementById("event_map"),mapOptions);
+
+	// bounds of the desired area
+	var allowedBounds = new google.maps.LatLngBounds(
+		 new google.maps.LatLng(48.99824008113872, -101.35986328125),
+		 new google.maps.LatLng(59.987997631212224, -88.39599609375)
+	);
+	var lastCenter = map.getCenter();
+
+	google.maps.event.addListener(map, 'center_changed', function() {
+		if (allowedBounds.contains(map.getCenter())) {
+			// still within valid bounds, so save the last valid position
+			lastCenter = map.getCenter();
+			return;
+		}
+		map.panTo(lastCenter);
+});
 }
 
 function setDisplay()
@@ -77,9 +95,9 @@ function addMarkerToList(marker)
 function postEventFeeds(post_string)
 {
 	eventsHttp = new XMLHttpRequest();
-	
+
 	eventsHttp.onreadystatechange = function(){
-		
+
 		if(eventsHttp.readyState == 4 && eventsHttp.status == 200)
 		{
 			markerArray = eval(eventsHttp.responseText);
@@ -138,7 +156,7 @@ function setMarker(event)
 	document.getElementById("event_form_content").focus();
 	submit_handler = function(){submitForm(event.latLng);}
 	document.getElementById("event_form_submit").addEventListener("click",submit_handler,false);
-	
+
 
 }
 function addMarkerListener()
@@ -147,7 +165,7 @@ function addMarkerListener()
 	{
 		startMarkerListener = google.maps.event.addListener(map, 'click', function(e){setMarker(e);});
 	}
-	
+
 }
 function removeMarkerListener()
 {
