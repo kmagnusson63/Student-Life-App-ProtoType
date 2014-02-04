@@ -114,7 +114,7 @@ function submitForm(latLng)
 		var temp_marker = new event_marker(latLng,document.getElementById("event_form_content").value,"Me")
 
 		// post to server
-		var post_string = EVENT_ADDRESS + "posts.php?lat="+latLng.d + "&long=" + latLng.e + "&content=" + temp_marker.content + "&screen_name=Me";
+		var post_string = "posts.php?lat="+latLng.d + "&long=" + latLng.e + "&content=" + temp_marker.content + "&screen_name=Me";
 		postEventFeeds(post_string);
 
 		markerArray.push(temp_marker);
