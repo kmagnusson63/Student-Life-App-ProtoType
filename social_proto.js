@@ -25,7 +25,7 @@ function getSocialFeeds()
 			social_feed = eval(postsHttp.responseText);
 			
 			/*		parse json to Social 		*/
-			var main = document.getElementById("main");
+			var main = document.getElementById("official");
 			for(var i=0;i<social_feed.length;i++)
 			{
 				var div = document.createElement("div");
@@ -72,15 +72,3 @@ function setDisplaySize() {
     document.getElementById("w").innerHTML = window.outerWidth;
     document.getElementById("h").innerHTML = window.outerHeight;
 }
-/*
- *
- *		Load function
- *
- */
-function load()
-{
-    setDisplaySize();
-	getSocialFeeds();
-}
-
-document.addEventListener("DOMContentLoaded", load, false);
