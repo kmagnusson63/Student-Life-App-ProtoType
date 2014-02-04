@@ -14,6 +14,7 @@
         </style>
     --> 
         <link rel="stylesheet" style="text/css" href="main.css" />
+        <link rel="stylesheet" style="text/css" href="jobcentral.css" />
         <script src='intelxdk.js'></script>
         <script type="text/javascript">
             /* This code is used to run as soon as Intel activates */
@@ -23,6 +24,7 @@
             };
             document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
         </script>
+        <script src="jobscentral.js"></script>
     </head>
     
     <body>
@@ -33,7 +35,18 @@
         </div>
         
         <div id="job">
-            
+            <div id="job_central">
+        
+                <table id="jobs_list">
+                    <col style="width:70%">
+                    <col style="width:40%">
+                    <tr>
+                        <th>Posting</th>
+                        <th>Closes</th>
+                    </tr>
+                </table>
+                
+            </div>
         </div>
         
         <div id="footer">

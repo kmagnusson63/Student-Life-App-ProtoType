@@ -1,57 +1,257 @@
 <!DOCTYPE html><!--HTML5 doctype-->
 <html>
-    <head>
-        <title>Social</title>
-        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" type="text/css" href="social_proto.css" />
-        
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
-    <!--
-        <style type="text/css">
-            /* Prevent copy paste for all elements except text fields */
-            *  { -webkit-user-select:none; -webkit-tap-highlight-color:rgba(255, 255, 255, 0); }
-            input, textarea  { -webkit-user-select:text; }
-            body { background-color:white; color:black }
-        </style>
-    --> 
-        <link rel="stylesheet" style="text/css" href="main.css" />
-        <script src='intelxdk.js'></script>
-        <script type="text/javascript" src="social_proto.js"></script>
-        <script type="text/javascript">
-            /* This code is used to run as soon as Intel activates */
-            var onDeviceReady=function(){
-            //hide splash screen
-            intel.xdk.device.hideSplashScreen();
-            };
-            document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
-        </script>
-    </head>
-    <body>
-        
-            <div id="header">
-                <div id="w">w</div>
-                <div id="h">h</div>
-                <span id="title">All Social Feeds</span>
-            </div>
-            
-            <div id="main">
-                
-               
-                
+	<head>
+		<title>RRC Student Life App</title>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
 
+	   	
+	   	<!-- Default jQuery CSS -->
+		<link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.0.min.css">
+		<link rel="stylesheet" href="_assets/css/jqm-demos.css">
+		<link rel="shortcut icon" href="favicon.ico">
+
+		<!-- Prototype CSS -->
+		<link rel="stylesheet" href="main.css" />
+		<!-- Social -->
+		<link rel="stylesheet" href="social_proto.css" />
+		<!-- Events -->
+		<link rel = "stylesheet" type ="text/css" href ="events.css" />
+		<link rel = "stylesheet" type ="text/css" href ="jobcentral.css" />
+		
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=true"></script>
+	    <script src='events.js'></script>
+
+		<!-- jQuery javascripts -->
+		<script src="js/jquery.js"></script>
+		<script src="_assets/js/index.js"></script>
+		<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+		<script src="js/jquery.mobile-1.4.0.min.js"></script>
+
+		<!-- Social javascript -->
+		<script src="social_proto.js"></script>
+		<!-- Events javascript -->
+	    <!-- Job Central javascript -->
+	    <script src="jobscentral.js"></script>
+		<!-- Intel XDK javascripts -->
+		<script src='intelxdk.js'></script>
+		<script type="text/javascript">
+	            /* This code is used to run as soon as Intel activates */
+	            var onDeviceReady=function(){
+	            //hide splash screen
+	            intel.xdk.device.hideSplashScreen();
+	            };
+	        
+	            
+	            document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
+	            
+	        </script>
+	    <!-- Initialize javascript -->
+	    <script src="settings.js"></script>
+	    <script src="initialize.js"></script>
+
+
+	</head>
+	<body>
+
+	<!-- Start of first page -->
+	<!-- <div id="open"> -->
+	<div data-role="page" id="index">
+
+		<div class="header" data-role="header"  data-position="fixed" data-tap-toggle="false" data-theme="e">
+			<p><a class="ui-btn ui-icon-carat-r ui-btn-icon-notext ui-corner-all right" href="#unofficial" data-transition="slide"></a></p>
+			<h1>Official Feeds</h1>
+		</div><!-- /header -->
+
+		<div role="main" id="official" class="ui-content">
+			
+		</div><!-- /content -->
+
+		<div data-role="footer" class="footer" data-position="fixed" data-tap-toggle="false">
+			<div data-role="navbar">
+	            <ul>
+	                <li><a data-role="button" href="#index" class="ui-btn-active ui-state-persist">Social</a></li>
+	                <li><a data-role="button" href="#events">Events</a></li>
+	                <li><a data-role="button" href="#jobcentral" style="white-space:normal">Job</a></li>
+	                <li><a data-role="button" href="#settings">Settings</a></li>
+	            </ul>
+	        </div><!-- /navbar -->
+		</div><!-- /footer -->
+	</div><!-- /page -->
+
+	<!-- Start of second page -->
+	<div data-role="page" id="unofficial">
+
+		<div class="header" data-role="header" data-position="fixed" data-tap-toggle="false" data-theme="e">
+			<p><a class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-corner-all left" data-rel="back" ></a></p>
+			<h1>Official-Ish Links</h1>
+		</div><!-- /header -->
+
+		<div role="main" class="ui-content">
+			<h3>Alumni</h3>
+			<p>Facebook.com/rrcalumni<p>
+			<p>Blogs.rrc.ca/goingplaces</p>
+			<h3>Applied Research</h3>
+			<p>@rrcresearch</p>
+			<p>blogs.rrc.ca/ar</p>
+			<h3>Campus Living</h3>
+			<p>Facebook.com/redrivercollegecampusliving</p>
+			<p>@rrccampusliving</p>
+			<h3>Continuing Education</h3>
+			<p>Facebook.com/rrc.cde</p>
+			<h3>eTV</h3>
+			<p>Facebook.com/etv.learning.technologies</p>
+			<p>Blogs.rrc.ca/etv</p>
+			<h3>International Education</h3>
+			<p>Facebook.com/rrcinternational</p>
+			<h3>LGBTT* Initiative</h3>
+			<p>Blogs.rrc.ca/lgbtt</p>
+			<h3>Library</h3>
+			<p>Facebook.com/redriverlibrary</p>
+			<p>@rrclibrary</p>
+			<p>Blogs.rrc.ca/library</p>
+			<h3>Health Sciences Department</h3>
+			<p>Blogs.rrc.ca/healthsciences</p>
+			<h3>Peguis-Fisher River Campus</h3>
+			<p>Facebook.com/rrcpeguis</p>
+			<h3>President Stephanie Forsyth</h3>
+			<p>@rrcprez</p>
+			<p>stephanieforsyth.ca</p>
+			<h3>Rebels</h3>
+			<p>Facebook.com/rrcrebels</p>
+			<p>@rrcrebels</p>
+			<h3>Research and Planning</h3>
+			<p>Blogs.rrc.ca/numbers</p>
+			<h3>School of Hospitality and Culinary Arts</h3>
+			<p>Blogs.rrc.ca/foodanddrink</p>
+			<h3>School of Indigenous Education</h3>
+			<p>Facebook.com/rrcaboriginal</p>
+			<p>Blogs.rrc.ca/aboriginal</p>
+			<h3>Student Recruitment</h3>
+			<p>Blogs.rrc.ca/student</p>
+			<h3>Student Success</h3>
+			<p>Blogs.rrc.ca/redcarpet</p>
+			<h3>Sustainability</h3>
+			<p>Facebook.com/rrcsustainability</p>
+			<p>Blogs.rrc.ca/redgreen</p>
+			<h3>Teacher Education</h3>
+			<p>Blogs.rrc.ca/teachered</p>
+			<h3>Wellness Initiative</h3>
+			<p>Blogs.rrc.ca/wellness</p>
+			
+		</div><!-- /content -->
+
+		<div data-role="footer" class="footer" data-position="fixed" data-tap-toggle="false">
+	<!--		<p><a href="#foo" data-rel="back" >Back to foo</a></p>-->
+	        <div data-role="navbar">
+	            <ul>
+	                <li><a data-role="button" href="#index" class="ui-btn-active ui-state-persist">Social</a></li>
+	                <li><a data-role="button" href="#events">Events</a></li>
+	                <li><a data-role="button" href="#jobcentral" style="white-space:normal">Job</a></li>
+	                <li><a data-role="button" href="#settings">Settings</a></li>
+	            </ul>
+	        </div><!-- /navbar -->
+		</div><!-- /footer -->
+	</div><!-- /page -->
+
+
+	<div data-role="page" id="events">
+        <div class="header" data-role="header" data-theme=e>
+            <h1>Events</h1>
+         </div>
+                
+        <div id="events_wrapper">
+			<div id="event_map"></div>
+			<div id="event_form">
+				<ul>
+					<li>
+						<label for="event_form_content">Content:</label>
+					</li>
+					<li>
+						<input id="event_form_content" name="event_form_content" type="text" />
+					</li>
+					<li>
+						<input id="event_form_submit" type="submit" value="Enter"/>
+					</li>
+				</ul>
+			</div>
+			<div id="event_list">
+				
+			</div>
+		</div>
+               
+        <div data-role="footer" class="footer" data-position="fixed" data-tap-toggle="false">
+		<!--		<p><a href="#foo" data-rel="back" >Back to foo</a></p>-->
+	        <div data-role="navbar">
+	            <ul>
+	                <li><a data-role="button" href="#index">Social</a></li>
+	                <li><a data-role="button" href="#events" class="ui-btn-active ui-state-persist">Events</a></li>
+	                <li><a data-role="button" href="#jobcentral" style="white-space:normal">Job</a></li>
+	                <li><a data-role="button" href="#settings">Settings</a></li>
+	            </ul>
+	        </div><!-- /navbar -->
+		</div><!-- /footer -->
+           
+    </div><!-- /page -->
+	<!-- </div> -->
+
+	<div data-role="page" id="jobcentral">
+        <div class="header" data-role="header" data-theme=e>
+            <h1>Job Central</h1>
+        </div>
+        <div data-role="panel" id="panels" data-position="right" data-display="overlay">
+        	
+        </div>
+        <div role="main" class="ui-content" id="job_central">
+            <div id="job_list">
+                <h2>Posting <span class="right">Closes</span></h3>
+                
+            </div>
+        </div>
+               
+        <div data-role="footer" class="footer" data-position="fixed" data-tap-toggle="false">
+		<!--		<p><a href="#foo" data-rel="back" >Back to foo</a></p>-->
+	        <div data-role="navbar">
+	            <ul>
+	                <li><a data-role="button" href="#index">Social</a></li>
+	                <li><a data-role="button" href="#events">Events</a></li>
+	                <li><a data-role="button" href="#jobcentral" class="ui-btn-active ui-state-persist" style="white-space:normal">Job</a></li>
+	                <li><a data-role="button" href="#settings">Settings</a></li>
+	            </ul>
+	        </div><!-- /navbar -->
+		</div><!-- /footer -->
+           
+    </div><!-- /page -->
+
+    <div data-role="page" id="settings">
+            <div class="header" data-role="header" data-theme=e>
+                <h1>Settings</h1>
             </div>
             
-            <div id="footer">
-                <table id="tab">
+            
+            <div role="main" class="ui-content">
+                <table>
                     <tr>
-                        <td id="social"><a href="#">Social</a></td>
-                        <td id="events"><a href="events.html">Events</a></td>
-                        <td id="jobcentral"><a href="jobcentral.html">Job Central</a></td>
-                        <td id="settings"><a href="settings.html">Settings</a></td>
+                        <td>Device ID</td>
+                        <td id="device_id_td"></td>
+                    </tr>
+                    <tr>
+                        <td>Screen Name</td>
+                        <td id="screen_name_td"></td>
                     </tr>
                 </table>
             </div>
-       
-    </body>
+            
+             <div data-role="footer" class="footer" data-position="fixed" data-tap-toggle="false">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a data-role="button" href="#index">Social</a></li>
+                        <li><a data-role="button" href="#events">Events</a></li>
+                        <li><a data-role="button" href="#jobcentral" style="white-space:normal">Job</a></li>
+                        <li><a data-role="button" href="#settings" class="ui-btn-active ui-state-persist">Settings</a></li>
+                    </ul>
+                </div><!-- /navbar -->
+            </div><!-- /footer -->
+        </div>
+	</body>
 </html>

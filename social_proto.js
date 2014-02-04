@@ -25,7 +25,7 @@ function getSocialFeeds()
 			social_feed = eval(postsHttp.responseText);
 			
 			/*		parse json to Social 		*/
-			var main = document.getElementById("main");
+			var main = document.getElementById("official");
 			for(var i=0;i<social_feed.length;i++)
 			{
 				var div = document.createElement("div");
@@ -42,7 +42,7 @@ function getSocialFeeds()
 					div.setAttribute("class","twitter");
 				}
 				var image = document.createElement("img");
-				image.setAttribute("src", social_feed[i].user.profile_image_url);
+				image.setAttribute("src", "img/Twitter_logo_blue_48_48.png");
 				div.appendChild(image);
 				var first_line = document.createElement("p");
 				var first_line_span = document.createElement("b");
@@ -72,15 +72,3 @@ function setDisplaySize() {
     document.getElementById("w").innerHTML = window.outerWidth;
     document.getElementById("h").innerHTML = window.outerHeight;
 }
-/*
- *
- *		Load function
- *
- */
-function load()
-{
-    setDisplaySize();
-	getSocialFeeds();
-}
-
-document.addEventListener("DOMContentLoaded", load, false);
