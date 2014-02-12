@@ -4,7 +4,18 @@
 		<title>RRC Student Life App</title>
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
-
+        
+        <style>
+            #events_wrapper {
+                height: 50%;
+                padding: 0;
+                position : absolute !important; 
+                top : 40px !important;  
+                right : 0; 
+                bottom : 40px !important;  
+                left : 0 !important;     
+            }
+        </style>
 	   	
 	   	<!-- Default jQuery CSS -->
 		<link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.0.min.css">
@@ -41,14 +52,14 @@
 	            //hide splash screen
 	            intel.xdk.device.hideSplashScreen();
 	            };
-	        
-	            
 	            document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
 	            
+                
 	        </script>
 	    <!-- Initialize javascript -->
 	    <script src="settings.js"></script>
 	    <script src="initialize.js"></script>
+        
 
 
 	</head>
@@ -89,7 +100,7 @@
 
 		<div role="main" class="ui-content">
 			<h3>Alumni</h3>
-			<p>Facebook.com/rrcalumni<p>
+			<a href="http://Facebook.com/rrcalumni" data-ajax="false">Facebook.com/rrcalumni</a>
 			<p>Blogs.rrc.ca/goingplaces</p>
 			<h3>Applied Research</h3>
 			<p>@rrcresearch</p>
@@ -156,12 +167,18 @@
 
 
 	<div data-role="page" id="events">
+        <script> 
+            $("#events").live('pageshow',function() {
+                        google.maps.event.trigger(map, 'resize');                      
+                    });
+	   </script>
         <div class="header" data-role="header" data-theme=e>
             <h1>Events</h1>
          </div>
                 
-        <div id="events_wrapper">
-			<div id="event_map"></div>
+        <div id="events_wrapper" data-role="content">
+			<div id="event_map" style="height: 100%"></div>
+        </div>
 			<div id="event_form">
 				<ul>
 					<li>
@@ -178,7 +195,7 @@
 			<div id="event_list">
 				
 			</div>
-		</div>
+
                
         <div data-role="footer" class="footer" data-position="fixed" data-tap-toggle="false">
 		<!--		<p><a href="#foo" data-rel="back" >Back to foo</a></p>-->

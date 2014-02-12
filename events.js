@@ -27,6 +27,7 @@ function startMap()
 		center: new google.maps.LatLng(LAT,LNG)
 	};
 	map = new google.maps.Map(document.getElementById("event_map"),mapOptions);
+    google.maps.event.trigger(map, "resize");
 }
 
 function setDisplay()
@@ -159,7 +160,7 @@ function events_load()
 
 	startMap();
 	setDisplay();
-	postEventFeeds("retrieve_events.php");
+	postEventFeeds("posts.php?start");
 
 	addMarkerListener();
 	google.maps.event.addListener(map, 'dblclick',addMarkerListener);
