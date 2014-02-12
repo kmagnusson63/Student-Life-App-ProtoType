@@ -24,6 +24,7 @@ function startMap()
 		zoom: 18,
 		//maxZoom: 18,
 		minZoom: 10,
+        disableDefaultUI:true,
 		center: new google.maps.LatLng(LAT,LNG)
 	};
 	map = new google.maps.Map(document.getElementById("event_map"),mapOptions);
