@@ -100,7 +100,10 @@ function postEventFeeds(post_string)
 	eventsHttp.open("GET", EVENT_ADDRESS + post_string, true);
 	eventsHttp.send();
 }
-
+function strip_special(data_string)
+{
+    return escape(data_string);
+}
 function submitForm(latLng)
 {
 
@@ -113,7 +116,7 @@ function submitForm(latLng)
 	{
 		var map_marker = createMarkerOnMap(latLng);
 		// create new event marker and push to array
-		var temp_marker = new event_marker(latLng,document.getElementById("event_form_content").value,"Me")
+		var temp_marker = new event_marker(latLng,strip_special(document.getElementById("event_form_content").value),"Me")
 
 		// post to server
 		var post_string = "posts.php?lat="+latLng.d + "&long=" + latLng.e + "&content=" + temp_marker.content + "&screen_name=Me";
