@@ -24,9 +24,11 @@ function startMap()
 		zoom: 18,
 		//maxZoom: 18,
 		minZoom: 10,
+        disableDefaultUI:true,
 		center: new google.maps.LatLng(LAT,LNG)
 	};
 	map = new google.maps.Map(document.getElementById("event_map"),mapOptions);
+    google.maps.event.trigger(map, "resize");
 }
 
 function setDisplay()
@@ -114,7 +116,7 @@ function submitForm(latLng)
 		var temp_marker = new event_marker(latLng,document.getElementById("event_form_content").value,"Me")
 
 		// post to server
-		var post_string = EVENT_ADDRESS + "posts.php?lat="+latLng.d + "&long=" + latLng.e + "&content=" + temp_marker.content + "&screen_name=Me";
+		var post_string = "posts.php?lat="+latLng.d + "&long=" + latLng.e + "&content=" + temp_marker.content + "&screen_name=Me";
 		postEventFeeds(post_string);
 
 		markerArray.push(temp_marker);
@@ -159,7 +161,7 @@ function events_load()
 
 	startMap();
 	setDisplay();
-	postEventFeeds("retrieve_events.php");
+	postEventFeeds("posts.php?start");
 
 	addMarkerListener();
 	google.maps.event.addListener(map, 'dblclick',addMarkerListener);
