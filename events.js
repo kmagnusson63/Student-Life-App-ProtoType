@@ -125,6 +125,7 @@ function submitForm(latLng)
 
 		document.getElementById("event_form").style.display = "none";
 		document.getElementById("event_list").style.display = "block";
+        document.getElementById("form_footer").style.display = "block";
 		addMarkerListener();
 	}
 	document.getElementById("event_form_submit").removeEventListener("click",submit_handler,false);
@@ -136,6 +137,7 @@ function setMarker(event)
 	// show form
 	document.getElementById("event_list").style.display = "none";
 	document.getElementById("event_form").style.display = "block";
+    document.getElementById("form_footer").style.display = "none";
 	document.getElementById("event_form_content").value = "";
 	document.getElementById("event_form_content").focus();
 	submit_handler = function(){submitForm(event.latLng);}

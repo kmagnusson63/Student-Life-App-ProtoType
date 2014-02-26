@@ -47,11 +47,13 @@
 		<!-- Intel XDK javascripts -->
         
 		<script src='intelxdk.js'></script>
+        <script src='xhr.js'></script>
 		<script type="text/javascript">
 	            /* This code is used to run as soon as Intel activates */
 	            var onDeviceReady=function(){
 	            //hide splash screen
 	            intel.xdk.device.hideSplashScreen();
+                initialize();
 	            };
 	            document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
 	            
@@ -198,7 +200,7 @@
 			</div>
 
                
-        <div data-role="footer" class="footer" data-position="fixed" data-tap-toggle="false">
+        <div data-role="footer" class="footer" data-position="fixed" data-tap-toggle="false" id="form_footer">
 		<!--		<p><a href="#foo" data-rel="back" >Back to foo</a></p>-->
 	        <div data-role="navbar">
 	            <ul>
