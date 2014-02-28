@@ -44,6 +44,7 @@
 }
 .list_marker
 {
+    font-size: .75em;
  	width: 100%;
 	margin: 5px 0 0 0;
 	padding: 0;

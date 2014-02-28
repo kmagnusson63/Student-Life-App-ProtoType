@@ -47,13 +47,13 @@ function getSocialFeeds()
 				var first_line = document.createElement("p");
 				var first_line_span = document.createElement("b");
 				
-				first_line_span.textContent = social_feed[i].user.name;
+				first_line_span.textContent = "Red River College";
 				first_line.appendChild(first_line_span);
-				var first_line_text = document.createTextNode(" @" + social_feed[i].user.screen_name);
+				var first_line_text = document.createTextNode(" @RRC");
 				first_line.appendChild(first_line_text);
 				div.appendChild(first_line);
 				var second_line = document.createElement("p");
-				second_line.textContent = social_feed[i].text;
+				second_line.textContent = social_feed[i].post_content;
 				div.appendChild(second_line);
 				main.appendChild(div);
 				/*
@@ -64,7 +64,7 @@ function getSocialFeeds()
 			
 		}
 	}
-	postsHttp.open("GET", "social_feed.json", true);
+	postsHttp.open("GET", "https://www.gristlebone.com/School/User_2_Server/social.php", true);
 	postsHttp.send();
 }
 
