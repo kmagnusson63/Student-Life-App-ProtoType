@@ -42,15 +42,25 @@ function getSocialFeeds()
 					div.setAttribute("class","twitter");
 				}
 				var image = document.createElement("img");
-				image.setAttribute("src", "img/Twitter_logo_blue_48_48.png");
+                if(social_feed[i].post_type == "Twitter")
+                {
+                    image.setAttribute("src", "img/Twitter_logo_blue_48_48.png");
+                }
+				else if(social_feed[i].post_type == "Facebook")
+                {
+                    image.setAttribute("src", "img/Facebook_logo_blue_48_48.png");
+                }
 				div.appendChild(image);
 				var first_line = document.createElement("p");
 				var first_line_span = document.createElement("b");
 				
 				first_line_span.textContent = "Red River College";
 				first_line.appendChild(first_line_span);
-				var first_line_text = document.createTextNode(" @RRC");
-				first_line.appendChild(first_line_text);
+                if(social_feed[i].post_type == "Twitter")
+                {
+				    var first_line_text = document.createTextNode(" @RRC");
+				    first_line.appendChild(first_line_text);
+                }
 				div.appendChild(first_line);
 				var second_line = document.createElement("p");
 				second_line.textContent = social_feed[i].post_content;
