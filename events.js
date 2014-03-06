@@ -182,6 +182,7 @@ function setMarker(event)
 }
 function addMarkerListener()
 {
+    //alert(startMarkerListener);
 	if(startMarkerListener == null)
 	{
 		startMarkerListener = google.maps.event.addListener(map, 'click', function(e){setMarker(e);});
@@ -202,6 +203,6 @@ function events_load()
 	postEventFeeds("posts.php?start");
 
 	addMarkerListener();
-	google.maps.event.addListener(map, 'dblclick',addMarkerListener);
+	//google.maps.event.addListener(map, 'dblclick',addMarkerListener);
 }
 
