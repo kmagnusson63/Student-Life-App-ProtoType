@@ -1,88 +1,63 @@
-var jobList = new Array();
+function getJobList(data) {
+        
+    var xml = data;
+    var job_table = document.getElementById("job_list");
+    var items= xml.getElementsByTagName("item");
+    
+    for ( var i = 1; i < items.length; i++ ) {
+        
+        var maxLength = 23;
+        var ndiv = document.createElement("div");
+        var npar = document.createElement("h3");
+        var nspan = document.createElement("span");
+        
+        var title = xml.getElementsByTagName("title")[i].textContent;
+        var pubDate = xml.getElementsByTagName("pubDate")[i].textContent;
+        
+        npar.textContent = title.substring(0, maxLength)+"..";
+        nspan.textContent = pubDate.substring(5, pubDate.length-7);
 
-
-function getJobList()
-{
-    var jobHTTP = new XMLHttpRequest()
-
-    jobHTTP.onreadystatechange = function(){
-        if( jobHTTP.readyState == 4 && jobHTTP.status == 200)
-        {
-            jobList = eval(jobHTTP.responseText);
-
-            var job_table = document.getElementById("job_list");
-
-            for (var i=0; i<jobList.length; i++)
-            {
-                var ndiv = document.createElement("div");
-
-                var npar = document.createElement("h3");
-                npar.textContent = jobList[i].title;
-                //job_title_td.setAttribute("onClick", "toggle("+jobList[i].id+")")
-                var nspan = document.createElement("span");
-                nspan.textContent = jobList[i].closeDate;
-
-                var id = jobList[i].id;
-                nspan.setAttribute("class", "right")
-                npar.appendChild(nspan);
-                ndiv.appendChild(npar);
-                ndiv.setAttribute("class", "job");
-                ndiv.setAttribute("key", "jobList[i].id");
-                ndiv.setAttribute("key", jobList[i].id);
-                //ndiv.addEventListener("click",function(e){ toggle(e.target.parentNode.nextSibling);}, false);
-
-                var my_div = document.getElementById("job_list");
-                job_table.appendChild(ndiv);
-
-                // save job display elements to variable to add to table
-                var job_display = displayJob(jobList[i]);
-                //job_tr.addEventListener("click",toggle(jobList[i].id),false);
-
-            }
-        }
+        var id = i;
+        nspan.setAttribute("class", "right");
+        npar.appendChild(nspan);
+        ndiv.appendChild(npar);
+        ndiv.setAttribute("class", "job");
+        ndiv.setAttribute("key", id);
+        
+        job_table.appendChild(ndiv);
+        displayJob(items[i-1], id);
     }
+}                      
 
-    jobHTTP.open("GET","job_central.json", true);
-    jobHTTP.send();
-}
-
-function displayJob(jobs){
+//pass a single hash to this method
+function displayJob(jobs, id){
 	
+    var key = id;
+    
+    //create all of the elements
     var ndiv = document.createElement("div");
-    var nh1 = document.createElement("h1");
+    var nh1 = document.createElement("h2");
     var nh3 = document.createElement("h3");
-    var np0 = document.createElement("p");
-    var np1 = document.createElement("p");
-    var np2 = document.createElement("p");
-    var text0 = "Employer: " + jobs.employer;
-    var text1 = jobs.openDate +" - "+ jobs.closeDate;
-    var text2 = jobs.jobDesc;
-    var tn0=document.createTextNode(jobs.title);
-    var tn1=document.createTextNode("Available positions: " + jobs.avaPos);
-    var tn2=document.createTextNode(text0);
-    var tn3=document.createTextNode(text1);
-    var tn4=document.createTextNode(text2);    
     
-    nh1.appendChild(tn0);
-    nh3.appendChild(tn1);
-    np0.appendChild(tn2);
-    np1.appendChild(tn3);
-    np2.appendChild(tn4);
+    //add the text to the elements
+    nh1.textContent = jobs.getElementsByTagName("title")[0].textContent;
+    nh3.textContent = "Description: " + jobs.getElementsByTagName("description")[0].textContent;
     
+    //place all the elements in the div
     ndiv.appendChild(nh1);
     ndiv.appendChild(nh3);
-    ndiv.appendChild(np0);
-    ndiv.appendChild(np1);
-    ndiv.appendChild(np2);
     
-    ndiv.setAttribute("id", jobs.id);
+    //set the attribute for the div
+    ndiv.setAttribute("id", key);
     ndiv.setAttribute("class", "panel");
     ndiv.style.display="none";
     
+    //place the div in the page
     var my_div = document.getElementById("panels");
     my_div.appendChild(ndiv);
 }
 
+//toggle the passed element id and hide it or show it
 function toggle(id){
 	var x = document.getElementById(id);
        if(x.style.display == 'block'){
@@ -95,18 +70,30 @@ function toggle(id){
 
 function jobcentral_load()
 {
+    //on the event of a swipe open the job desc panel
     $("h3").live("swipe", function(e){
+        //get the panel and id of the job desc
         var key = e.target.parentNode.getAttribute("key");
-        var panelCon = document.getElementsByClassName("panel")
+        var panelCon = document.getElementsByClassName("panel");
 
+        //hide all the job desc
         for(var i=0; i<panelCon.length; i++){
             panelCon[i].style.display="none";
         }
-
+        
+        //show the hiden job desc and panel
         toggle(key);
         $("#panels").panel("open");
-        $(".ui-panel-animate.ui-panel-open.ui-panel-position-right.ui-panel-display-overlay").css("width","100%");
+        
     });
-    getJobList();
+    
+    var xml;
+    $(document).ready(function(){
+        $.ajax({
+            type: "GET",
+            url: "https://jobcentral.rrc.ca/rss.ashx",
+            dataType: "xml",
+            success: getJobList
+        });
+    });
 }
-

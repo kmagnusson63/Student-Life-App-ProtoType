@@ -48,6 +48,9 @@
         
 		<script src='intelxdk.js'></script>
         <script src='xhr.js'></script>
+	    <!-- Initialize javascript -->
+	    <script src="settings.js"></script>
+	    <script src="initialize.js"></script>
 		<script type="text/javascript">
 	            /* This code is used to run as soon as Intel activates */
 	            var onDeviceReady=function(){
@@ -56,12 +59,10 @@
                 initialize();
 	            };
 	            document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
+	            document.addEventListener("DOMContentLoaded",initialize, false);
 	            
                 
 	        </script>
-	    <!-- Initialize javascript -->
-	    <script src="settings.js"></script>
-	    <script src="initialize.js"></script>
         
 
 
@@ -219,18 +220,19 @@
         <div class="header" data-role="header" data-theme=e>
             <h1>Job Central</h1>
         </div>
+        
         <div data-role="panel" id="panels" data-position="right" data-display="overlay">
         	
         </div>
+        
         <div role="main" class="ui-content" id="job_central">
-            <div id="job_list">
-                <h2>Posting <span class="right">Closes</span></h3>
-                
+            <div id="job_list" start="0">
+                <h2>Posting <span class="right">opened</span></h2>
             </div>
         </div>
                
         <div data-role="footer" class="footer" data-position="fixed" data-tap-toggle="false">
-		<!--		<p><a href="#foo" data-rel="back" >Back to foo</a></p>-->
+		<!--<p><a href="#foo" data-rel="back" >Back to foo</a></p>-->
 	        <div data-role="navbar">
 	            <ul>
 	                <li><a data-role="button" href="#index">Social</a></li>
@@ -245,21 +247,23 @@
 
     <div data-role="page" id="settings">
             <div class="header" data-role="header" data-theme=e>
-                <h1>Settings</h1>
+                <h1>Profile</h1>
             </div>
             
             
             <div role="main" class="ui-content">
-                <table>
-                    <tr>
-                        <td>Device ID</td>
-                        <td id="device_id_td"></td>
-                    </tr>
-                    <tr>
-                        <td>Screen Name</td>
-                        <td id="screen_name_td"></td>
-                    </tr>
-                </table>
+                <div id="profile">
+                	<div id="user_id"></div>
+                	<div id="screen_name_div">
+                		<label for="screen_name">Screen Name</label>
+                		<input id="screen_name" name="screen_name" disabled="true"  data-role="none"/>
+                	</div>
+                	<div id="avatar">
+                		<label for="avatar">Avatar</label>
+                		<input id="avatar" type="file" data-role="none" />
+                		<button id="submit" type="submit" data-role="none">Submit</button>
+                	</div> 
+                </div>
             </div>
             
              <div data-role="footer" class="footer" data-position="fixed" data-tap-toggle="false">

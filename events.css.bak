@@ -44,45 +44,31 @@
 }
 .list_marker
 {
- 	width: 97%;
-    height: 23.5%;
-	margin: 0px 0 0 0;
-	padding: 0px;
-    background-color:#FFF;
-    position:relative;
-    border:3px solid #C81F45;
-    padding-bottom: 0px;
+    font-size: .75em;
+ 	width: 100%;
+	margin: 5px 0 0 0;
+	padding: 0;
 }
 
-#content
-{
-    padding-top:10px;
-    font-size: 1.2em;
-    padding-bottom:0px;
-}
-#time
-{
-    font-size: .75em;   
-}
 .list_marker:last-of-type {
-    margin-bottom: 62px;
+    margin-bottom: 75px;
 }
 
-.list_marker div
+.list_marker p
 {
-	/*display: inline-block;
-	margin: 0 5px 0 5px;*/
-/*	padding: 5px 5px 5px 5px;*/
-/*    height:90%;*/
-    width:93%;
-    background-color: #fff;
-    padding: 7px 0px;
+	display: inline-block;
+	margin: 0 5px 0 5px;
+	padding: 5px 5px 5px 5px;
+	background-color: #fff;
 }
-.list_marker img
+.list_marker p:first-of-type
 {
-    float:left;
-    padding:7px 5px;
-    margin 0px;
+	width: 50% !important;
+}
+.list_marker p:last-of-type
+{
+	width: 35% !important;
+	text-align: right;
 }
 
 #event_form ul

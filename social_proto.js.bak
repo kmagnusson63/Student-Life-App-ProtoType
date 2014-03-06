@@ -31,15 +31,15 @@ function getSocialFeeds()
 				var div = document.createElement("div");
 				if(i==0)
 				{
-					div.setAttribute("class","post first");
+					div.setAttribute("class","twitter first");
 				}
 				else if(i==(social_feed.length-1))
 				{
-					div.setAttribute("class","post last");
+					div.setAttribute("class","twitter last");
 				}
 				else
 				{
-					div.setAttribute("class","post");
+					div.setAttribute("class","twitter");
 				}
 				var image = document.createElement("img");
                 if(social_feed[i].post_type == "Twitter")
@@ -58,7 +58,7 @@ function getSocialFeeds()
 				first_line.appendChild(first_line_span);
                 if(social_feed[i].post_type == "Twitter")
                 {
-				    var first_line_text = document.createTextNode("@RRC");
+				    var first_line_text = document.createTextNode(" @RRC");
 				    first_line.appendChild(first_line_text);
                 }
 				div.appendChild(first_line);
@@ -97,7 +97,7 @@ function getSocialFeeds()
 					second_line.appendChild(temp_span_trunc);
 					second_line.appendChild(temp_span);
 					
-//					console.log(temp_span_trunc.getElementsByTagName("span")[0].innerHTML);
+					console.log(temp_span_trunc.getElementsByTagName("span")[0].innerHTML);
 					temp_span_trunc.getElementsByTagName("span")[0].addEventListener("click",function(e){
 						e.target.parentNode.style.display = "none";
 						e.target.parentNode.nextSibling.style.display = "block";
@@ -126,7 +126,7 @@ function getSocialFeeds()
 	postsHttp.send();
 }
 
-//function setDisplaySize() {
-//    document.getElementById("w").innerHTML = window.outerWidth;
-//    document.getElementById("h").innerHTML = window.outerHeight;
-//}
+function setDisplaySize() {
+    document.getElementById("w").innerHTML = window.outerWidth;
+    document.getElementById("h").innerHTML = window.outerHeight;
+}

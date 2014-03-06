@@ -54,3 +54,8 @@ body {
 	width: 100% !important; 
 	height: 80% !important;
 }
+
+#profile input
+{
+	width: 90%;
+}
