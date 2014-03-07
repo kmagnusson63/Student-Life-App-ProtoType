@@ -293,7 +293,7 @@
 	                <li><a data-role="button" href="#index" class="ui-btn-active ui-state-persist">Social</a></li>
 	                <li><a data-role="button" href="#events">Events</a></li>
 	                <li><a data-role="button" href="#jobcentral" style="white-space:normal">Job</a></li>
-	                <li><a data-role="button" href="#settings">Settings</a></li>
+	                <li><a data-role="button" href="#settings">Profile</a></li>
 	            </ul>
 	        </div><!-- /navbar -->
 		</div><!-- /footer -->
@@ -306,7 +306,7 @@
                         google.maps.event.trigger(map, 'resize');                      
                     });
 	   </script>
-        <div class="header" data-role="header" data-theme=e>
+        <div class="header" data-role="header" data-position="fixed" data-tap-toggle="false" data-theme=e>
             <h1>Events</h1>
          </div>
                 
@@ -338,7 +338,7 @@
 	                <li><a data-role="button" href="#index">Social</a></li>
 	                <li><a data-role="button" href="#events" class="ui-btn-active ui-state-persist">Events</a></li>
 	                <li><a data-role="button" href="#jobcentral" style="white-space:normal">Job</a></li>
-	                <li><a data-role="button" href="#settings">Settings</a></li>
+	                <li><a data-role="button" href="#settings">Profile</a></li>
 	            </ul>
 	        </div><!-- /navbar -->
 		</div><!-- /footer -->
@@ -347,17 +347,18 @@
 	<!-- </div> -->
 
 	<div data-role="page" id="jobcentral">
-        <div class="header" data-role="header" data-theme=e>
+        <div class="header" data-role="header" data-position="fixed" data-tap-toggle="false" data-theme=e>
             <h1>Job Central</h1>
         </div>
         
         <div data-role="panel" id="panels" data-position="right" data-display="overlay">
         	
         </div>
-        
+        <div class="fixed"><h2 id="posting">Posting <span id="opened">Opened</span></h2></div>
+        <div id="space"></div>
         <div role="main" class="ui-content" id="job_central">
-            <div id="job_list" start="0">
-                <h2>Posting <span class="right">opened</span></h2>
+            <div id="job_list">
+                
             </div>
         </div>
                
@@ -368,7 +369,7 @@
 	                <li><a data-role="button" href="#index">Social</a></li>
 	                <li><a data-role="button" href="#events">Events</a></li>
 	                <li><a data-role="button" href="#jobcentral" class="ui-btn-active ui-state-persist" style="white-space:normal">Job</a></li>
-	                <li><a data-role="button" href="#settings">Settings</a></li>
+	                <li><a data-role="button" href="#settings">Profile</a></li>
 	            </ul>
 	        </div><!-- /navbar -->
 		</div><!-- /footer -->
@@ -376,7 +377,7 @@
     </div><!-- /page -->
 
     <div data-role="page" id="settings">
-            <div class="header" data-role="header" data-theme=e>
+            <div class="header" data-role="header" data-position="fixed" data-theme=e>
                 <h1>Profile</h1>
             </div>
             
@@ -402,7 +403,7 @@
                         <li><a data-role="button" href="#index">Social</a></li>
                         <li><a data-role="button" href="#events">Events</a></li>
                         <li><a data-role="button" href="#jobcentral" style="white-space:normal">Job</a></li>
-                        <li><a data-role="button" href="#settings" class="ui-btn-active ui-state-persist">Settings</a></li>
+                        <li><a data-role="button" href="#settings" class="ui-btn-active ui-state-persist">Profile</a></li>
                     </ul>
                 </div><!-- /navbar -->
             </div><!-- /footer -->

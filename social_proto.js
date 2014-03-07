@@ -145,7 +145,7 @@ function getSocialFeeds()
                 {
                     addMoreLessTriggers(clone_div);
                 }
-                document.getElementById(social_feed[i].post_type.toLowerCase() + "_page").appendChild(clone_div);
+                document.getElementById(social_feed[i].post_type.toLowerCase() + "_main").appendChild(clone_div);
 				/*
 						name @screen_name time
 						text
