@@ -201,8 +201,7 @@ function events_load()
 	startMap();
 	setDisplay();
 	postEventFeeds("posts.php?start");
-
+    startMarkerListener = null;
 	addMarkerListener();
-	//google.maps.event.addListener(map, 'dblclick',addMarkerListener);
 }
 

@@ -45,7 +45,7 @@
 .list_marker
 {
  	width: 97%;
-    height: 23.5%;
+/*    height: 23.5%;*/
 	margin: 0px 0 0 0;
 	padding: 0px;
     background-color:#FFF;
@@ -56,13 +56,18 @@
 
 #content
 {
-    padding-top:10px;
+/*    padding-top:10px;*/
     font-size: 1.2em;
     padding-bottom:0px;
 }
 #time
 {
     font-size: .75em;   
+}
+.list-marker
+{
+    position: relative;
+    
 }
 .list_marker:last-of-type {
     margin-bottom: 62px;
@@ -76,13 +81,14 @@
 /*    height:90%;*/
     width:93%;
     background-color: #fff;
-    padding: 7px 0px;
+    padding: 0;
 }
 .list_marker img
 {
     float:left;
-    padding:7px 5px;
+    padding:0;
     margin 0px;
+    width: 35px;
 }
 
 #event_form ul
