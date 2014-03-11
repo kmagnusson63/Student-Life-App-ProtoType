@@ -199,18 +199,19 @@
         <div class="header" data-role="header" data-theme=e>
             <h1>Job Central</h1>
         </div>
+        
         <div data-role="panel" id="panels" data-position="right" data-display="overlay">
         	
         </div>
+        
         <div role="main" class="ui-content" id="job_central">
-            <div id="job_list">
-                <h2>Posting <span class="right">Closes</span></h3>
-                
+            <div id="job_list" start="0">
+                <h2>Posting <span class="right">opened</span></h2>
             </div>
         </div>
                
         <div data-role="footer" class="footer" data-position="fixed" data-tap-toggle="false">
-		<!--		<p><a href="#foo" data-rel="back" >Back to foo</a></p>-->
+		<!--<p><a href="#foo" data-rel="back" >Back to foo</a></p>-->
 	        <div data-role="navbar">
 	            <ul>
 	                <li><a data-role="button" href="#index">Social</a></li>
@@ -238,6 +239,14 @@
                     <tr>
                         <td>Screen Name</td>
                         <td id="screen_name_td"></td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td id="Password_td"></td>
+                    </tr>
+                    <tr>
+                        <td>Avatar</td>
+                        <td id="Avatar_td"></td>
                     </tr>
                 </table>
             </div>
