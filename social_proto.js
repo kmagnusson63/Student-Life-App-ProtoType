@@ -47,14 +47,31 @@ function getSocialFeeds()
                 info_div.setAttribute("class","info_line");
                 
 				var image = document.createElement("img");
-                if(social_feed[i].post_type == "Twitter")
+                switch(social_feed[i].post_type)
                 {
-                    image.setAttribute("src", "img/Twitter_logo_blue_48_48.png");
+                    case "Twitter":
+                        image.setAttribute("src", "img/Twitter_logo_blue_48_48.png");
+                        break;
+                    case "Facebook":
+                        image.setAttribute("src", "img/Facebook_logo_blue_48_48.png");
+                        break;
+                    case "Blog":
+                        image.setAttribute("src", "img/blog_icon_48x48.png");
+                        break;
+                    case "Instagram":
+                    case "YouTube":
+                    default:
+                        image.setAttribute("src", "img/user-default.png");
+                        break;
                 }
-				else if(social_feed[i].post_type == "Facebook")
-                {
-                    image.setAttribute("src", "img/Facebook_logo_blue_48_48.png");
-                }
+//                if(social_feed[i].post_type == "Twitter")
+//                {
+//                    image.setAttribute("src", "img/Twitter_logo_blue_48_48.png");
+//                }
+//				else if(social_feed[i].post_type == "Facebook")
+//                {
+//                    image.setAttribute("src", "img/Facebook_logo_blue_48_48.png");
+//                }
 				info_div.appendChild(image);
                 
                 var screen_name_div = document.createElement("div");
@@ -133,7 +150,28 @@ function getSocialFeeds()
                 time_div.setAttribute("class","post_time");
                 
                 // format time from feed and add to div
-                time_div.textContent = social_feed[i].post_created_at;
+                //time_div.textContent = social_feed[i].post_created_at;
+                
+                temp_span = document.createElement("span");
+                
+                temp_link = document.createElement("a");
+                temp_link.setAttribute("href","#");
+                switch(social_feed[i].post_type)
+                {
+                    case "Twitter":
+                        temp_host = "http://twitter.com/rrc/status/";
+                        break;
+                    case "Facebook":
+                        temp_host = "http://facebook.com/";
+                        break;
+                    case "Blog":
+                        temp_host = "http://news.rrc.ca?p=";
+                        break;
+                }
+                temp_link.setAttribute("onclick","intel.xdk.device.launchExternal('" + temp_host + social_feed[i].post_site_id + "')");
+                temp_link.innerHTML = "Link";
+                temp_span.appendChild(temp_link);
+                time_div.appendChild(temp_span);
                 div.appendChild(time_div);
                 
 
