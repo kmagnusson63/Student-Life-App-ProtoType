@@ -10,8 +10,9 @@
 
 function initialize()
 {
-    initialize_refresh();
-    
+	// load Device Settings
+	getSettingsFromStorage();
+
 	// load Social feeds
 	getSocialFeeds();
 
@@ -20,9 +21,6 @@ function initialize()
 
 	// Job Central script load
 	jobcentral_load();
-    
-	// load Device Settings
-	getSettingsFromStorage();
-	addProfileListeners();
-
 }
+
+

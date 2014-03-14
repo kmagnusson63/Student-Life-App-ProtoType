@@ -26,20 +26,12 @@ function getSocialFeeds()
 			
 			/*		parse json to Social 		*/
 			var main = document.getElementById("official");
-            main.innerHTML="";
-            var social_array = ['twitter','facebook','instagram','youtube','blog'];
-            for(var k=0;k<social_array.length;k++)
-            {
-                //alert(social_array[k]+'_main');
-                document.getElementById(social_array[k]+'_main').innerHTML = " ";
-            }
 			for(var i=0;i<social_feed.length;i++)
 			{
 				var div = document.createElement("div");
 				if(i==0)
 				{
 					div.setAttribute("class","post first");
-                    div.setAttribute("id","first_post");
 				}
 				else if(i==(social_feed.length-1))
 				{
