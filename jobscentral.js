@@ -68,11 +68,11 @@ function displayJob(jobs, id){
     
     //set the attribute for the div
     job_div.setAttribute("id", key);
-    job_div.setAttribute("class", "panel");
+    job_div.setAttribute("class", "job_details_div");
     job_div.style.display="none";
     
     //place the div in the page
-    var my_div = document.getElementById("panels");
+    var my_div = document.getElementById("job_details");
     my_div.appendChild(job_div);
 }
 
@@ -91,20 +91,36 @@ function jobcentral_load()
 {
     //on the event of a swipe open the job desc panel
     $(".job").live("swipeleft", function(e){
-        //get the panel and id of the job desc
+    //     //get the panel and id of the job desc
         var key = e.target.parentNode.getAttribute("key");
-        var panelCon = document.getElementsByClassName("panel");
+        var panelCon = document.getElementsByClassName("job_details_div");
 
-        //hide all the job desc
+    //     //hide all the job desc
         for(var i=0; i<panelCon.length; i++){
             panelCon[i].style.display="none";
         }
         
-        //show the hiden job desc and panel
+    //     //show the hiden job desc and panel
         toggle(key);
-        $("#panels").panel("open");
-        
+        // $("#panels").panel("open");
+        var nextpage = $('.jobcentralpage').next('.jobcentralpage');
+        if (nextpage.length > 0) {
+        $.mobile.changePage(nextpage, {transition: "slide", reverse: false}, false, true);
+        }
+            
+        });
+
+
+    
+    $('div.jobcentralpage').live("swiperight", function(){
+        var prevpage = $(this).prev('.jobcentralpage');
+        if (prevpage.length > 0) {
+        $.mobile.changePage(prevpage, {transition: "slide",
+        reverse: true}, true, true);
+        }
     });
+
+
     
     var xml;
     $(document).ready(function(){
@@ -115,4 +131,7 @@ function jobcentral_load()
             success: getJobList
         });
     });
+
+
 }
+

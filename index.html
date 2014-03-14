@@ -372,19 +372,45 @@
     </div><!-- /page -->
 	<!-- </div> -->
 
-	<div data-role="page" id="jobcentral">
+	<div data-role="page" id="jobcentral" class="jobcentralpage">
         <div class="header" data-role="header" data-position="fixed" data-tap-toggle="false" data-theme=e>
             <h1>Job Central</h1>
         </div>
         
-        <div data-role="panel" id="panels" data-position="right" data-display="overlay">
-        	
-        </div>
+      
+        
         <div role="main" class="ui-content" id="job_central">
             <div id="job_list">
                 
             </div>
         </div>
+
+               
+        <div data-role="footer" class="footer" data-position="fixed" data-tap-toggle="false">
+		<!--<p><a href="#foo" data-rel="back" >Back to foo</a></p>-->
+	        <div data-role="navbar">
+	            <ul>
+	                <li><a data-role="button" href="#index">Social</a></li>
+	                <li><a data-role="button" href="#events">Events</a></li>
+	                <li><a data-role="button" href="#jobcentral" class="ui-btn-active ui-state-persist" style="white-space:normal">Job</a></li>
+	                <li><a data-role="button" href="#settings">Profile</a></li>
+	            </ul>
+	        </div><!-- /navbar -->
+		</div><!-- /footer -->
+           
+    </div><!-- /page -->
+
+    <div data-role="page" class="jobcentralpage" id="jobdetailspage">
+        <div class="header" data-role="header" data-position="fixed" data-tap-toggle="false" data-theme=e>
+            <h1>Job Central</h1>
+        </div>
+        
+        
+        <div role="main" class="ui-content" id="job_details">
+           
+
+        </div>
+
                
         <div data-role="footer" class="footer" data-position="fixed" data-tap-toggle="false">
 		<!--<p><a href="#foo" data-rel="back" >Back to foo</a></p>-->
