@@ -44,6 +44,26 @@ body {
 
 }
 
+.menubar {
+	height: 47px !important;
+	/*width: 100% !important;*/
+	position: relative;
+    /*left: 17.5%;*/
+	margin-left: -17.5px;
+}
+
+.menulist li {
+	display: inline;
+}
+
+.social_icons {
+	font-size: 35px;
+	padding: 2px;
+	height: 35px;
+	width: 35px;
+}
+
+
 .ui-block-a {
 	height: 50px !important;
 }

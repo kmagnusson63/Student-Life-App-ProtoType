@@ -48,6 +48,7 @@
 		<!-- Intel XDK javascripts -->
         
 		<script src='intelxdk.js'></script>
+        <script src="cordova.js"></script>
         <script src='xhr.js'></script>
 	    <!-- Initialize javascript -->
 	    <script src="settings.js"></script>
@@ -85,17 +86,34 @@
 
 
 	</head>
-	<body>
+
+<body>
 
 	<!-- Start of first page -->
 	<!-- <div id="open"> -->
 	<div data-role="page" id="index" class="social">
 
 		<div class="header" data-role="header"  data-position="fixed" data-tap-toggle="false" data-theme="e">
-
 			<h1>Official Feeds</h1>
+			<a data-icon="grid" data-iconpos="notext" data-role"button" id="social_button" class="menubutton ui-btn-right"></a>
 		</div><!-- /header -->
-        <div id="refresh" class="refresh"><div class="inner_refresh"><p>Refresh</p><img src="img/ajax-loader.gif" alt="" width="20px"/></div></div>
+
+		<div class="menubar" style="display: none">
+			<ul class="menulist">
+				<li class="all menuitem"><span class="social_icons">A</span></li>
+				<li class="twitter menuitem"><img class="social_icons" src="img/Twitter_logo_blue_48_48.png" /></li>
+				<li class="facebook menuitem"><img class="social_icons" src="img/Facebook_logo_blue_48_48.png" /></li>
+				<li class="instagram menuitem"><img class="social_icons" src="img/instagramIcon.png" /></li>
+				<li class="youtube menuitem"><img class="social_icons" src="img/logo_youtube_48x48.png" /></li>
+				<li class="blog menuitem"><img class="social_icons" src="img/blog_icon_48x48.png" /></li>
+				<li class="unofficial menuitem"><span class="social_icons">U</span></li>
+			</ul>
+		</div>
+
+        <div id="refresh" class="refresh">
+        	<div class="inner_refresh"><p>Refresh</p><img src="img/ajax-loader.gif" alt="" width="20px"/>
+        	</div>
+        </div>
         
 		<div role="main" id="official" class="ui-content">
 			
@@ -117,7 +135,21 @@
         <div class="header" data-role="header"  data-position="fixed" data-tap-toggle="false" data-theme="e">
 
 			<h1>Twitter</h1>
+			<a data-icon="grid" data-iconpos="notext" data-role"button" id="social_button" class="menubutton ui-btn-right"></a>
 		</div><!-- /header -->
+
+		<div class="menubar" style="display: none">
+			<ul class="menulist">
+				<li class="all menuitem"><span class="social_icons">A</span></li>
+				<li  class="twitter menuitem"><img class="social_icons" src="img/Twitter_logo_blue_48_48.png" /></li>
+				<li  class="facebook menuitem"><img class="social_icons" src="img/Facebook_logo_blue_48_48.png" /></li>
+				<li class="instagram menuitem"><img class="social_icons" src="img/instagramIcon.png" /></li>
+				<li class="youtube menuitem"><img class="social_icons" src="img/logo_youtube_48x48.png" /></li>
+				<li class="blog menuitem"><img class="social_icons" src="img/blog_icon_48x48.png" /></li>
+				<li class="unofficial menuitem"><span class="social_icons">U</span></li>
+			</ul>
+		</div>
+
         <div id="refresh" class="refresh"><div class="inner_refresh"><p>Refresh</p><img src="img/ajax-loader.gif" alt="" width="20px"/></div></div>
          
 		<div role="main" id="twitter_main" class="ui-content">
@@ -144,7 +176,21 @@
         <div class="header" data-role="header"  data-position="fixed" data-tap-toggle="false" data-theme="e">
 
 			<h1>Facebook</h1>
+			<a data-icon="grid" data-iconpos="notext" data-role"button" id="social_button" class="menubutton ui-btn-right"></a>
 		</div><!-- /header -->
+
+		<div class="menubar" style="display: none">
+			<ul class="menulist">
+				<li class="all menuitem"><span class="social_icons">A</span></li>
+				<li  class="twitter menuitem"><img class="social_icons" src="img/Twitter_logo_blue_48_48.png" /></li>
+				<li  class="facebook menuitem"><img class="social_icons" src="img/Facebook_logo_blue_48_48.png" /></li>
+				<li class="instagram menuitem"><img class="social_icons" src="img/instagramIcon.png" /></li>
+				<li class="youtube menuitem"><img class="social_icons" src="img/logo_youtube_48x48.png" /></li>
+				<li class="blog menuitem"><img class="social_icons" src="img/blog_icon_48x48.png" /></li>
+				<li class="unofficial menuitem"><span class="social_icons">U</span></li>
+			</ul>
+		</div>
+
         <div id="refresh" class="refresh"><div class="inner_refresh"><p>Refresh</p><img src="img/ajax-loader.gif" alt="" width="20px"/></div></div>
          
 		<div role="main" id="facebook_main" class="ui-content">
@@ -171,7 +217,22 @@
         <div class="header" data-role="header"  data-position="fixed" data-tap-toggle="false" data-theme="e">
 
 			<h1>Instagram</h1>
+			<a data-icon="grid" data-iconpos="notext" data-role"button" id="social_button" class="menubutton ui-btn-right"></a>
+
 		</div><!-- /header -->
+
+		<div class="menubar" style="display: none">
+			<ul class="menulist">
+				<li class="all menuitem"><span class="social_icons">A</span></li>
+				<li  class="twitter menuitem"><img class="social_icons" src="img/Twitter_logo_blue_48_48.png" /></li>
+				<li  class="facebook menuitem"><img class="social_icons" src="img/Facebook_logo_blue_48_48.png" /></li>
+				<li class="instagram menuitem"><img class="social_icons" src="img/instagramIcon.png" /></li>
+				<li class="youtube menuitem"><img class="social_icons" src="img/logo_youtube_48x48.png" /></li>
+				<li class="blog menuitem"><img class="social_icons" src="img/blog_icon_48x48.png" /></li>
+				<li class="unofficial menuitem"><span class="social_icons">U</span></li>
+			</ul>
+		</div>
+
         <div id="refresh" class="refresh"><div class="inner_refresh"><p>Refresh</p><img src="img/ajax-loader.gif" alt="" width="20px"/></div></div>
          
 		<div role="main" id="instagram_main" class="ui-content">
@@ -198,7 +259,22 @@
         <div class="header" data-role="header"  data-position="fixed" data-tap-toggle="false" data-theme="e">
 
 			<h1>Youtube</h1>
+			<a data-icon="grid" data-iconpos="notext" data-role"button" id="social_button" class="menubutton ui-btn-right"></a>
+
 		</div><!-- /header -->
+
+		<div class="menubar" style="display: none">
+			<ul class="menulist">
+				<li class="all menuitem"><span class="social_icons">A</span></li>
+				<li  class="twitter menuitem"><img class="social_icons" src="img/Twitter_logo_blue_48_48.png" /></li>
+				<li  class="facebook menuitem"><img class="social_icons" src="img/Facebook_logo_blue_48_48.png" /></li>
+				<li class="instagram menuitem"><img class="social_icons" src="img/instagramIcon.png" /></li>
+				<li class="youtube menuitem"><img class="social_icons" src="img/logo_youtube_48x48.png" /></li>
+				<li class="blog menuitem"><img class="social_icons" src="img/blog_icon_48x48.png" /></li>
+				<li class="unofficial menuitem"><span class="social_icons">U</span></li>
+			</ul>
+		</div>
+
         <div id="refresh" class="refresh"><div class="inner_refresh"><p>Refresh</p><img src="img/ajax-loader.gif" alt="" width="20px"/></div></div>
          
 		<div role="main" id="youtube_main" class="ui-content">
@@ -225,7 +301,22 @@
         <div class="header" data-role="header"  data-position="fixed" data-tap-toggle="false" data-theme="e">
 
 			<h1>RRC News Blog</h1>
+			<a data-icon="grid" data-iconpos="notext" data-role"button" id="social_button" class="menubutton ui-btn-right"></a>
+
 		</div><!-- /header -->
+
+		<div class="menubar" style="display: none">
+			<ul class="menulist">
+				<li class="all menuitem"><span class="social_icons">A</span></li>
+				<li  class="twitter menuitem"><img class="social_icons" src="img/Twitter_logo_blue_48_48.png" /></li>
+				<li  class="facebook menuitem"><img class="social_icons" src="img/Facebook_logo_blue_48_48.png" /></li>
+				<li class="instagram menuitem"><img class="social_icons" src="img/instagramIcon.png" /></li>
+				<li class="youtube menuitem"><img class="social_icons" src="img/logo_youtube_48x48.png" /></li>
+				<li class="blog menuitem"><img class="social_icons" src="img/blog_icon_48x48.png" /></li>
+				<li class="unofficial menuitem"><span class="social_icons">U</span></li>
+			</ul>
+		</div>
+
         <div id="refresh" class="refresh"><div class="inner_refresh"><p>Refresh</p><img src="img/ajax-loader.gif" alt="" width="20px"/></div></div>
          
 		<div role="main" id="blog_main" class="ui-content">
@@ -249,12 +340,24 @@
     </div>
 
 	
-	<div data-role="page" id="unofficial" class="social">
+	<div data-role="page" id="unofficial_page" class="social">
 
 		<div class="header" data-role="header" data-position="fixed" data-tap-toggle="false" data-theme="e">
-<!--			<p><a class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-corner-all left" data-rel="back" ></a></p>-->
 			<h1>Official-Ish Links</h1>
+			<a data-icon="grid" data-iconpos="notext" data-role"button" id="social_button" class="menubutton ui-btn-right"></a>
 		</div><!-- /header -->
+
+		<div class="menubar" style="display: none">
+			<ul class="menulist">
+				<li class="all menuitem"><span class="social_icons">A</span></li>
+				<li  class="twitter menuitem"><img class="social_icons" src="img/Twitter_logo_blue_48_48.png" /></li>
+				<li  class="facebook menuitem"><img class="social_icons" src="img/Facebook_logo_blue_48_48.png" /></li>
+				<li class="instagram menuitem"><img class="social_icons" src="img/instagramIcon.png" /></li>
+				<li class="youtube menuitem"><img class="social_icons" src="img/logo_youtube_48x48.png" /></li>
+				<li class="blog menuitem"><img class="social_icons" src="img/blog_icon_48x48.png" /></li>
+				<li class="unofficial menuitem"><span class="social_icons">U</span></li>
+			</ul>
+		</div>
 
 		<div role="main" class="ui-content">
 			<h3>Alumni</h3>
