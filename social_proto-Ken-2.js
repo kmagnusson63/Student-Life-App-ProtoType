@@ -26,20 +26,12 @@ function getSocialFeeds()
 			
 			/*		parse json to Social 		*/
 			var main = document.getElementById("official");
-            main.innerHTML="";
-            var social_array = ['twitter','facebook','instagram','youtube','blog'];
-            for(var k=0;k<social_array.length;k++)
-            {
-                //alert(social_array[k]+'_main');
-                document.getElementById(social_array[k]+'_main').innerHTML = " ";
-            }
 			for(var i=0;i<social_feed.length;i++)
 			{
 				var div = document.createElement("div");
 				if(i==0)
 				{
 					div.setAttribute("class","post first");
-                    div.setAttribute("id","first_post");
 				}
 				else if(i==(social_feed.length-1))
 				{
@@ -177,10 +169,6 @@ function getSocialFeeds()
                         break;
                 }
                 temp_link.setAttribute("onclick","intel.xdk.device.launchExternal('" + temp_host + social_feed[i].post_site_id + "')");
-                
-//                temp_link.setAttribute("href",temp_host + social_feed[i].post_site_id);
-//                temp_link.setAttribute("target","_blank")
-//                
                 temp_link.innerHTML = "Link";
                 temp_span.appendChild(temp_link);
                 time_div.appendChild(temp_span);
@@ -204,7 +192,7 @@ function getSocialFeeds()
 			
 		}
 	}
-	postsHttp.open("GET", "http://www.gristlebone.com/School/User_2_Server/social.php", true);
+	postsHttp.open("GET", "https://www.gristlebone.com/School/User_2_Server/social.php", true);
 	postsHttp.send();
 }
 

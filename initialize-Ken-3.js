@@ -20,7 +20,7 @@ function initialize()
 	events_load();
 
 	// Job Central script load
-	jobcentral_load();
+	//jobcentral_load();
     
 	// load Device Settings
 	getSettingsFromStorage();

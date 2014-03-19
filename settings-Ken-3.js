@@ -49,7 +49,8 @@ function updateScreen()
 {
 	document.getElementById("user_id").textContent = intel.xdk.cache.getCookie("user_id");
 	document.getElementById("screen_name").value = intel.xdk.cache.getCookie("screen_name");
-
+//	document.getElementById("avatar").value = file_host + window.avatar;
+//	document.getElementsByTagName("body")[0].style = "height:" + window.innerHeight + " !important";
 }
 function updateUploadProgress(bytesSent,totalBytes)
 {
@@ -82,10 +83,9 @@ function uploadCancelled(evt)
         intel.xdk.file.uploadToServer(localURL, uploadURL, folderName, mimeType, uploadProgressCallback);
 */
 function send_avatar_file(pictureURL,type)
-{
-
-	testing_display("sending: " + pictureURL + ":" + type);
- 
+{blobURLref = window.URL.createObjectURL(file)
+	testing_display("sending: " + blobURLref + ":" + type);
+    intel.xdk.file.uploadToServer(pictureURL, img_upload_host, "", type, "updateUploadProgress");
 
 }
 /*
@@ -107,7 +107,12 @@ function getSettingsFromStorage()
 			{
             	// var data = profileHttp.responseText;
                 window.more_data = eval("("+profileHttp.responseText+")");
-
+// console.log(profileHttp.responseText);
+// console.log(more_data);
+// console.log(more_data['LAST_INSERT_ID()']);
+                // window.new_data = data;
+                // console.log(more_data);
+                // console.log(new_data);
                 user = more_data['LAST_INSERT_ID()'];
 alert("success got new id");
 alert("id:" + user);
@@ -116,7 +121,7 @@ alert("id:" + user);
                 intel.xdk.cache.setCookie("screen_name","Bob",-1);
 				intel.xdk.cache.setCookie("avatar","img/user-default.png",-1);
 	
-
+//alert("user id:" +intel.xdk.cache.getCookie('user_id'));
 				user_id = intel.xdk.cache.getCookie("user_id");
 				screen_name = intel.xdk.cache.getCookie("screen_name");
 
@@ -134,35 +139,33 @@ alert(screen_name + " : " + user_id + " uses <br>" + avatar);
 	}
 	avatarDisplay();
 	removeStorage();
-	
+	addProfileListeners();
 
 }
-function getFile(evt)
+function getFile(event)
 {
-	var files = evt.target.files;
- 
-    var result = '';
-    var file;
-    for (var i = 0; file = files[i]; i++) {
-        // if the file is not an image, continue
-        if (!file.type.match('image.*')) {
-            continue;
-        }
+	var input = event.target;
+	var fReader = new FileReader();
+	fReader.readAsDataURL(input.files[0]);
+	fReader.onloadend = function(event){
+		var img = document.getElementById("avatar_thumbnail");
+		img.src = event.target.result;
+		send_avatar_file(event.target.result, input.files[0].type);
+testing_display("URL: " + event.target.result + "<br>" + "Type: " + input.files[0].type);
+	}
+	var files = event.target.files;
 
-        reader = new FileReader();
-        reader.onload = (function (tFile) {
-            return function (evt) {
-                var div = document.createElement('div');
-                div.innerHTML = '<img style="width: 90px;" src="' + evt.target.result + '" />';
-                document.getElementById('avatar_display').appendChild(div);
-            };
-        }(file));
-        reader.readAsDataURL(file);
-    }
-
+	//console.log(event);
+	//testing_display("TargetValue:" + event.target.value);
+	//var file = this.files[0];
+	//testing_display("FileName: " + files[0].name);
+	//var_dump(files[0],true);
+	// dump(files[0]);
+	//var_dump(event.target.value);
 
 	document.getElementById("avatar_filename").value = files[0].name;
-
+	//document.getElementById("avatar_thumbnail").setAttribute("src",event.target.value);
+//uploadFile(files[0].name);
 
 	intel.xdk.cache.setCookie("avatar",files[0].name);
 }
@@ -172,6 +175,14 @@ function testing_display(string)
 }
 function addProfileListeners()
 {
+	document.getElementById('avatar_thumbnail').addEventListener('click',function(e){
+					$('#avatar_browse').click();
+				},false);
 
+	document.getElementById('avatar').addEventListener('change',getFile,false);
+	
+	document.addEventListener("intel.xdk.file.upload.busy",uploadBusy);
+	document.addEventListener("intel.xdk.file.upload",uploadComplete);
+	document.addEventListener("intel.xdk.file.upload.cancel",uploadCancelled);
 
 }

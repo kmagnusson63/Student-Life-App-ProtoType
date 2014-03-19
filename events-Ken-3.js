@@ -67,7 +67,7 @@ function createMarkerOnMap(marker)
 	map_marker = new google.maps.Marker({
 		position: latlng,
 		map: map,
-        icon: EVENT_ADDRESS + "img/" + marker.event_user_avatar
+        icon: EVENT_ADDRESS + "img/" + marker.user_avatar
 	});
     google.maps.event.addListener(map_marker, 'click', function(e)
                                   {
@@ -98,7 +98,7 @@ function addMarkerToList(index,marker)
     
     //This code is to be changed to be for user avatar
     var temp_p_img = document.createElement("img");
-    temp_p_img.setAttribute("src",EVENT_ADDRESS + "img/" + marker.event_user_avatar);
+    temp_p_img.setAttribute("src",EVENT_ADDRESS + "img/" + marker.user_avatar);
     temp_p_img.setAttribute("alt","standard");
     temp_div.appendChild(temp_p_img);
     

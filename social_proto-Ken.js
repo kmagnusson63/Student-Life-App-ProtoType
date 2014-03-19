@@ -26,20 +26,12 @@ function getSocialFeeds()
 			
 			/*		parse json to Social 		*/
 			var main = document.getElementById("official");
-            main.innerHTML="";
-            var social_array = ['twitter','facebook','instagram','youtube','blog'];
-            for(var k=0;k<social_array.length;k++)
-            {
-                //alert(social_array[k]+'_main');
-                document.getElementById(social_array[k]+'_main').innerHTML = " ";
-            }
 			for(var i=0;i<social_feed.length;i++)
 			{
 				var div = document.createElement("div");
 				if(i==0)
 				{
 					div.setAttribute("class","post first");
-                    div.setAttribute("id","first_post");
 				}
 				else if(i==(social_feed.length-1))
 				{
@@ -55,31 +47,14 @@ function getSocialFeeds()
                 info_div.setAttribute("class","info_line");
                 
 				var image = document.createElement("img");
-                switch(social_feed[i].post_type)
+                if(social_feed[i].post_type == "Twitter")
                 {
-                    case "Twitter":
-                        image.setAttribute("src", "img/Twitter_logo_blue_48_48.png");
-                        break;
-                    case "Facebook":
-                        image.setAttribute("src", "img/Facebook_logo_blue_48_48.png");
-                        break;
-                    case "Blog":
-                        image.setAttribute("src", "img/blog_icon_48x48.png");
-                        break;
-                    case "Instagram":
-                    case "YouTube":
-                    default:
-                        image.setAttribute("src", "img/user-default.png");
-                        break;
+                    image.setAttribute("src", "img/Twitter_logo_blue_48_48.png");
                 }
-//                if(social_feed[i].post_type == "Twitter")
-//                {
-//                    image.setAttribute("src", "img/Twitter_logo_blue_48_48.png");
-//                }
-//				else if(social_feed[i].post_type == "Facebook")
-//                {
-//                    image.setAttribute("src", "img/Facebook_logo_blue_48_48.png");
-//                }
+				else if(social_feed[i].post_type == "Facebook")
+                {
+                    image.setAttribute("src", "img/Facebook_logo_blue_48_48.png");
+                }
 				info_div.appendChild(image);
                 
                 var screen_name_div = document.createElement("div");
@@ -158,32 +133,7 @@ function getSocialFeeds()
                 time_div.setAttribute("class","post_time");
                 
                 // format time from feed and add to div
-                //time_div.textContent = social_feed[i].post_created_at;
-                
-                temp_span = document.createElement("span");
-                
-                temp_link = document.createElement("a");
-                temp_link.setAttribute("href","#");
-                switch(social_feed[i].post_type)
-                {
-                    case "Twitter":
-                        temp_host = "http://twitter.com/rrc/status/";
-                        break;
-                    case "Facebook":
-                        temp_host = "http://facebook.com/";
-                        break;
-                    case "Blog":
-                        temp_host = "http://news.rrc.ca?p=";
-                        break;
-                }
-                temp_link.setAttribute("onclick","intel.xdk.device.launchExternal('" + temp_host + social_feed[i].post_site_id + "')");
-                
-//                temp_link.setAttribute("href",temp_host + social_feed[i].post_site_id);
-//                temp_link.setAttribute("target","_blank")
-//                
-                temp_link.innerHTML = "Link";
-                temp_span.appendChild(temp_link);
-                time_div.appendChild(temp_span);
+                time_div.textContent = social_feed[i].post_created_at;
                 div.appendChild(time_div);
                 
 
@@ -204,7 +154,7 @@ function getSocialFeeds()
 			
 		}
 	}
-	postsHttp.open("GET", "http://www.gristlebone.com/School/User_2_Server/social.php", true);
+	postsHttp.open("GET", "https://www.gristlebone.com/School/User_2_Server/social.php", true);
 	postsHttp.send();
 }
 

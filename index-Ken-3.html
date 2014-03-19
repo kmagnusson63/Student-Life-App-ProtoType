@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!--HTML5 doctype-->
 <html>
 	<head>
 		<title>RRC Student Life App</title>
@@ -19,7 +19,7 @@
 	   	
 	   	<!-- Default jQuery CSS -->
 		<link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.0.min.css">
-<!--		<link rel="stylesheet" href="_assets/css/jqm-demos.css"> -->
+		<link rel="stylesheet" href="_assets/css/jqm-demos.css">
 		<link rel="shortcut icon" href="favicon.ico">
 
 		<!-- Prototype CSS -->
@@ -28,16 +28,14 @@
 		<link rel="stylesheet" href="social_proto.css" />
 		<!-- Events -->
 		<link rel = "stylesheet" type ="text/css" href ="events.css" />
-		<link rel = "stylesheet" type ="text/css" href ="settings.css" />
 		<link rel = "stylesheet" type ="text/css" href ="jobcentral.css" />
-		<script src="console.log.js"></script>
-		<script src="dump.js"></script>
+		
 		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=true"></script>
 	    <script src='events.js'></script>
 
 		<!-- jQuery javascripts -->
 		<script src="js/jquery.js"></script>
-<!--		<script src="_assets/js/index.js"></script> -->
+		<script src="_assets/js/index.js"></script>
 		<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 		<script src="js/jquery.mobile-1.4.0.min.js"></script>
 
@@ -58,27 +56,11 @@
 	            /* This code is used to run as soon as Intel activates */
 	            var onDeviceReady=function(){
 	            //hide splash screen
-		            intel.xdk.device.hideSplashScreen();
-		            intel.xdk.device.setAutoRotate(true);
-	                initialize();
-		            //window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSystemSuccess, fail);
-	   //      		window.resolveLocalFileSystemURI("file:///example.txt", onResolveSuccess, fail);
-	    			
-
-				};
-			 //    function onFileSystemSuccess(fileSystem) {
-			 //        console.log(fileSystem.name);
-			 //    }
-
-			 //    function onResolveSuccess(fileEntry) {
-			 //        console.log(fileEntry.name);
-			 //    }
-
-			 //    function fail(evt) {
-			 //        console.log(evt.target.error.code);
-			 //    }
-	            document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
-	            //document.addEventListener("DOMContentLoaded",initialize, false);
+	            intel.xdk.device.hideSplashScreen();
+                initialize();
+	            };
+	            //document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
+	            document.addEventListener("DOMContentLoaded",initialize, false);
 	            
                 
 	        </script>
@@ -96,8 +78,7 @@
 
 			<h1>Official Feeds</h1>
 		</div><!-- /header -->
-        <div id="refresh" class="refresh"><div class="inner_refresh"><p>Refresh</p><img src="img/ajax-loader.gif" alt="" width="20px"/></div></div>
-        
+        <div class="refresh"><p>Refresh</p><img src="img/ajax-loader.gif" alt="" width="20px"/></div>
 		<div role="main" id="official" class="ui-content">
 			
 		</div><!-- /content -->
@@ -119,7 +100,7 @@
 
 			<h1>Twitter</h1>
 		</div><!-- /header -->
-        <div id="refresh" class="refresh"><div class="inner_refresh"><p>Refresh</p><img src="img/ajax-loader.gif" alt="" width="20px"/></div></div>
+        <div class="refresh"><p>Refresh</p><img src="img/ajax-loader.gif" alt="" width="20px"/></div>
          
 		<div role="main" id="twitter_main" class="ui-content">
             
@@ -146,7 +127,7 @@
 
 			<h1>Facebook</h1>
 		</div><!-- /header -->
-        <div id="refresh" class="refresh"><div class="inner_refresh"><p>Refresh</p><img src="img/ajax-loader.gif" alt="" width="20px"/></div></div>
+        <div class="refresh"><p>Refresh</p><img src="img/ajax-loader.gif" alt="" width="20px"/></div>
          
 		<div role="main" id="facebook_main" class="ui-content">
             
@@ -173,7 +154,7 @@
 
 			<h1>Instagram</h1>
 		</div><!-- /header -->
-        <div id="refresh" class="refresh"><div class="inner_refresh"><p>Refresh</p><img src="img/ajax-loader.gif" alt="" width="20px"/></div></div>
+        <div class="refresh"><p>Refresh</p><img src="img/ajax-loader.gif" alt="" width="20px"/></div>
          
 		<div role="main" id="instagram_main" class="ui-content">
             
@@ -200,7 +181,7 @@
 
 			<h1>Youtube</h1>
 		</div><!-- /header -->
-        <div id="refresh" class="refresh"><div class="inner_refresh"><p>Refresh</p><img src="img/ajax-loader.gif" alt="" width="20px"/></div></div>
+        <div class="refresh"><p>Refresh</p><img src="img/ajax-loader.gif" alt="" width="20px"/></div>
          
 		<div role="main" id="youtube_main" class="ui-content">
             
@@ -227,7 +208,7 @@
 
 			<h1>RRC News Blog</h1>
 		</div><!-- /header -->
-        <div id="refresh" class="refresh"><div class="inner_refresh"><p>Refresh</p><img src="img/ajax-loader.gif" alt="" width="20px"/></div></div>
+        <div class="refresh"><p>Refresh</p><img src="img/ajax-loader.gif" alt="" width="20px"/></div>
          
 		<div role="main" id="blog_main" class="ui-content">
             
@@ -341,14 +322,13 @@
 			<div id="event_form">
 				<ul>
 					<li>
-						<div>Content:</div>
+						<label for="event_form_content">Content:</label>
 					</li>
 					<li>
 						<input id="event_form_content" name="event_form_content" type="text" />
 					</li>
 					<li>
 						<input id="event_form_submit" type="submit" value="Enter"/>
-                        <input id="event_form_cancel" type="submit" value="Cancel"/>
 					</li>
 				</ul>
 			</div>
@@ -381,6 +361,8 @@
         <div data-role="panel" id="panels" data-position="right" data-display="overlay">
         	
         </div>
+        <div class="fixed"><h2 id="posting">Posting <span id="opened">Opened</span></h2></div>
+        <div id="space"></div>
         <div role="main" class="ui-content" id="job_central">
             <div id="job_list">
                 
@@ -415,15 +397,10 @@
                 		<input id="screen_name" name="screen_name" disabled="true"  data-role="none"/>
                 	</div>
                 	<div id="avatar">
-                		
-    					<div id="avatar_display"></div>
-    				</div>
-                	<div id="progress"></div>
-                	<div id="remove_profile">
-                		<button id="remove" name="remove" value="Remove Profile">Remove Profile</button>
-                	</div>
-                	<div id="testing"></div>
-
+                		<label for="avatar">Avatar</label>
+                		<input id="avatar" type="file" data-role="none" />
+                		<button id="submit" type="submit" data-role="none">Submit</button>
+                	</div> 
                 </div>
             </div>
             

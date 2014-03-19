@@ -1,0 +1,19 @@
+#avatar_input input
+{
+	width: 100%;
+
+}
+#avatar_thumbnail
+{
+	width: 30px;
+	height: 30px;
+	padding: 0;
+	margin:0;
+}
+#testing
+{
+	width: 300px !important;
+	overflow-y:scroll;
+	height: 12em;
+	word-wrap:break-word;
+}
