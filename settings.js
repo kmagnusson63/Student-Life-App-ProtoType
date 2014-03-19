@@ -1,5 +1,9 @@
 var file_host = "E:/SkyDrive/School/IndustryProject/www/GitHub/Student-Life-App-ProtoType/img/";
+<<<<<<< HEAD
 var img_upload_host = "http://www.gristlebone.com/School/User_2_Server/upload.php";
+=======
+var img_upload_host = "http://www.gristlebone.com/School/User_2_Server";
+>>>>>>> 9c2b785171035a6c4da74571951573fdf498a90d
 var user_id = "";
 var screen_name = "";
 var avatar = "";
@@ -49,7 +53,12 @@ function updateScreen()
 {
 	document.getElementById("user_id").textContent = intel.xdk.cache.getCookie("user_id");
 	document.getElementById("screen_name").value = intel.xdk.cache.getCookie("screen_name");
+<<<<<<< HEAD
 
+=======
+//	document.getElementById("avatar").value = file_host + window.avatar;
+//	document.getElementsByTagName("body")[0].style = "height:" + window.innerHeight + " !important";
+>>>>>>> 9c2b785171035a6c4da74571951573fdf498a90d
 }
 function updateUploadProgress(bytesSent,totalBytes)
 {
@@ -81,12 +90,20 @@ function uploadCancelled(evt)
         
         intel.xdk.file.uploadToServer(localURL, uploadURL, folderName, mimeType, uploadProgressCallback);
 */
+<<<<<<< HEAD
 function send_avatar_file(pictureURL,type)
 {
 
 	testing_display("sending: " + pictureURL + ":" + type);
  
 
+=======
+function upload_file(pictureURL)
+{
+
+    intel.xdk.file.uploadToServer(pictureURL, img_upload_host, "img", "image/jpeg", "updateUploadProgress");
+
+>>>>>>> 9c2b785171035a6c4da74571951573fdf498a90d
 }
 /*
 		intel.xdk.cache.setCookie(name,value,daysTillExpiry);
@@ -107,7 +124,16 @@ function getSettingsFromStorage()
 			{
             	// var data = profileHttp.responseText;
                 window.more_data = eval("("+profileHttp.responseText+")");
+<<<<<<< HEAD
 
+=======
+// console.log(profileHttp.responseText);
+// console.log(more_data);
+// console.log(more_data['LAST_INSERT_ID()']);
+                // window.new_data = data;
+                // console.log(more_data);
+                // console.log(new_data);
+>>>>>>> 9c2b785171035a6c4da74571951573fdf498a90d
                 user = more_data['LAST_INSERT_ID()'];
 alert("success got new id");
 alert("id:" + user);
@@ -116,7 +142,11 @@ alert("id:" + user);
                 intel.xdk.cache.setCookie("screen_name","Bob",-1);
 				intel.xdk.cache.setCookie("avatar","img/user-default.png",-1);
 	
+<<<<<<< HEAD
 
+=======
+//alert("user id:" +intel.xdk.cache.getCookie('user_id'));
+>>>>>>> 9c2b785171035a6c4da74571951573fdf498a90d
 				user_id = intel.xdk.cache.getCookie("user_id");
 				screen_name = intel.xdk.cache.getCookie("screen_name");
 
@@ -127,6 +157,7 @@ alert(screen_name + " : " + user_id + " uses <br>" + avatar);
         }
         profileHttp.open("GET", setup_string, true);
 		profileHttp.send();
+<<<<<<< HEAD
 	}
 	else
 	{
@@ -163,6 +194,29 @@ function getFile(evt)
 
 	document.getElementById("avatar_filename").value = files[0].name;
 
+=======
+	}
+	else
+	{
+		updateScreen();
+	}
+	avatarDisplay();
+	removeStorage();
+	addProfileListeners();
+}
+function getFile(event)
+{
+	var files = event.target.files;
+	//console.log(event);
+	//alert(event.target.value);
+	//var file = this.files[0];
+	testing_display("FileName: " + files[0].name);
+	testing_display("Path: " + files[0].path);
+	// console.log(files[0]);
+
+	document.getElementById("avatar_filename").value = files[0].name;
+	document.getElementById("avatar_thumbnail").setAttribute("src",files[0].path);
+>>>>>>> 9c2b785171035a6c4da74571951573fdf498a90d
 
 	intel.xdk.cache.setCookie("avatar",files[0].name);
 }
@@ -172,6 +226,20 @@ function testing_display(string)
 }
 function addProfileListeners()
 {
+<<<<<<< HEAD
 
 
 }
+=======
+	document.getElementById('avatar_thumbnail').addEventListener('click',function(e){
+					$('#avatar_browse').click();
+				},false);
+
+	document.getElementById('avatar').addEventListener('change',getFile,false);
+	
+	document.addEventListener("intel.xdk.file.upload.busy",uploadBusy);
+	document.addEventListener("intel.xdk.file.upload",uploadComplete);
+	document.addEventListener("intel.xdk.file.upload.cancel",uploadCancelled);
+
+}
+>>>>>>> 9c2b785171035a6c4da74571951573fdf498a90d

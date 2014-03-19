@@ -10,7 +10,10 @@
 
 function initialize()
 {
+<<<<<<< HEAD
 	//startLog();
+=======
+>>>>>>> 9c2b785171035a6c4da74571951573fdf498a90d
     initialize_refresh();
     
 	// load Social feeds

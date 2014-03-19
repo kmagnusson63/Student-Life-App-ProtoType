@@ -2,6 +2,7 @@
 {
 	width: 100%;
 
+<<<<<<< HEAD
 }
 #avatar_thumbnail
 {
@@ -16,4 +17,6 @@
 	overflow-y:scroll;
 	height: 12em;
 	word-wrap:break-word;
+=======
+>>>>>>> 9c2b785171035a6c4da74571951573fdf498a90d
 }
