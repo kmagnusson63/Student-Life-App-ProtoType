@@ -32,7 +32,6 @@
 		<link rel = "stylesheet" type ="text/css" href ="jobcentral.css" />
 		
 		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=true"></script>
-	    <script src='events.js'></script>
 
 		<!-- jQuery javascripts -->
 		<script src="js/jquery.js"></script>
@@ -40,44 +39,34 @@
 		<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 		<script src="js/jquery.mobile-1.4.0.min.js"></script>
 
-		<!-- Social javascript -->
-		<script src="social_proto.js"></script>
 		<!-- Events javascript -->
+	    <script src='events.js'></script>
 	    <!-- Job Central javascript -->
 	    <script src="jobscentral.js"></script>
-		<!-- Intel XDK javascripts -->
-        
-		<script src='intelxdk.js'></script>
-        <script src="cordova.js"></script>
-        <script src='xhr.js'></script>
-	    <!-- Initialize javascript -->
 	    <script src="settings.js"></script>
         <script src="refresh.js"></script>
+        <script src="dump.js"></script>
 	    <script src="initialize.js"></script>
+        
+        <!-- Intel XDK javascripts -->
+        
+		<script src='intelxdk.js'></script>
+        <script src='xhr.js'></script>
+	    <!-- Initialize javascript -->
+		<!-- Social javascript -->
+		<script src="social_proto.js"></script>
+
 		<script type="text/javascript">
 	            /* This code is used to run as soon as Intel activates */
 	            var onDeviceReady=function(){
 	            //hide splash screen
 		            intel.xdk.device.hideSplashScreen();
-		            intel.xdk.device.setAutoRotate(true);
+//		            intel.xdk.device.setAutoRotate(true);
+                   
 	                initialize();
-		            //window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSystemSuccess, fail);
-	   //      		window.resolveLocalFileSystemURI("file:///example.txt", onResolveSuccess, fail);
-	    			
 
 				};
-			 //    function onFileSystemSuccess(fileSystem) {
-			 //        console.log(fileSystem.name);
-			 //    }
-
-			 //    function onResolveSuccess(fileEntry) {
-			 //        console.log(fileEntry.name);
-			 //    }
-
-			 //    function fail(evt) {
-			 //        console.log(evt.target.error.code);
-			 //    }
-	            document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
+	           document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
 	            //document.addEventListener("DOMContentLoaded",initialize, false);
 	            
                 
@@ -95,7 +84,7 @@
 
 		<div class="header" data-role="header"  data-position="fixed" data-tap-toggle="false" data-theme="e">
 			<h1>Official Feeds</h1>
-			<a data-icon="grid" data-iconpos="notext" data-role"button" id="social_button" class="menubutton ui-btn-right"></a>
+			<a data-icon="grid" data-iconpos="notext" data-role="button" id="social_button" class="menubutton ui-btn-right"></a>
 		</div><!-- /header -->
 
 		<div class="menubar" style="display: none">
@@ -363,53 +352,6 @@
 			<h3>Alumni</h3>
 			<a href="fb://profile/rrcalumni" target="_system" data-ajax="false">Facebook.com/rrcalumni</a>
 			<p>Blogs.rrc.ca/goingplaces</p>
-			<h3>Applied Research</h3>
-			<p>@rrcresearch</p>
-			<p>blogs.rrc.ca/ar</p>
-			<h3>Campus Living</h3>
-			<p>Facebook.com/redrivercollegecampusliving</p>
-			<p>@rrccampusliving</p>
-			<h3>Continuing Education</h3>
-			<p>Facebook.com/rrc.cde</p>
-			<h3>eTV</h3>
-			<p>Facebook.com/etv.learning.technologies</p>
-			<p>Blogs.rrc.ca/etv</p>
-			<h3>International Education</h3>
-			<p>Facebook.com/rrcinternational</p>
-			<h3>LGBTT* Initiative</h3>
-			<p>Blogs.rrc.ca/lgbtt</p>
-			<h3>Library</h3>
-			<p>Facebook.com/redriverlibrary</p>
-			<p>@rrclibrary</p>
-			<p>Blogs.rrc.ca/library</p>
-			<h3>Health Sciences Department</h3>
-			<p>Blogs.rrc.ca/healthsciences</p>
-			<h3>Peguis-Fisher River Campus</h3>
-			<p>Facebook.com/rrcpeguis</p>
-			<h3>President Stephanie Forsyth</h3>
-			<p>@rrcprez</p>
-			<p>stephanieforsyth.ca</p>
-			<h3>Rebels</h3>
-			<p>Facebook.com/rrcrebels</p>
-			<p>@rrcrebels</p>
-			<h3>Research and Planning</h3>
-			<p>Blogs.rrc.ca/numbers</p>
-			<h3>School of Hospitality and Culinary Arts</h3>
-			<p>Blogs.rrc.ca/foodanddrink</p>
-			<h3>School of Indigenous Education</h3>
-			<p>Facebook.com/rrcaboriginal</p>
-			<p>Blogs.rrc.ca/aboriginal</p>
-			<h3>Student Recruitment</h3>
-			<p>Blogs.rrc.ca/student</p>
-			<h3>Student Success</h3>
-			<p>Blogs.rrc.ca/redcarpet</p>
-			<h3>Sustainability</h3>
-			<p>Facebook.com/rrcsustainability</p>
-			<p>Blogs.rrc.ca/redgreen</p>
-			<h3>Teacher Education</h3>
-			<p>Blogs.rrc.ca/teachered</p>
-			<h3>Wellness Initiative</h3>
-			<p>Blogs.rrc.ca/wellness</p>
 			
 		</div><!-- /content -->
 

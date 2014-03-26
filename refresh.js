@@ -11,7 +11,7 @@ function initialize_refresh()
                 if($("#"+e.delegateTarget.parentElement.id+">.refresh").is(":hidden"))
                 {
                     $("#"+e.delegateTarget.parentElement.id+">.refresh").slideDown("fast");
-                    getSocialFeeds();
+                    //getSocialFeeds();
                     $("#"+e.delegateTarget.parentElement.id+">.refresh").slideUp("fast");
                 }
             }

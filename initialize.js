@@ -10,6 +10,7 @@
 
 function initialize()
 {
+
     initialize_refresh();
     
 	// load Social feeds
@@ -22,7 +23,12 @@ function initialize()
 	jobcentral_load();
     
 	// load Device Settings
-	getSettingsFromStorage();
-	addProfileListeners();
+	//getSettingsFromStorage();
+	//addProfileListeners();
 
+}
+
+function testing_display(string)
+{
+	document.getElementById("testing").innerHTML = document.getElementById("testing").innerHTML + string + "\n";
 }

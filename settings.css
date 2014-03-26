@@ -3,3 +3,11 @@
 	width: 100%;
 
 }
+#testing
+{
+	font-size: 12px;
+	width: 280px !important;
+	overflow-y:scroll;
+	height: 15em;
+	word-wrap:break-word;
+}
