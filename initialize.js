@@ -10,7 +10,7 @@
 
 function initialize()
 {
-    initialize_refresh();
+//    initialize_refresh();
     
 	// load Social feeds
 	getSocialFeeds();
@@ -24,5 +24,5 @@ function initialize()
 	// load Device Settings
 	getSettingsFromStorage();
 	addProfileListeners();
-
+    initialize_refresh();
 }

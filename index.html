@@ -18,9 +18,10 @@
         </style>
 	   	
 	   	<!-- Default jQuery CSS -->
-		<link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.0.min.css">
+		<link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.0.min.css" />
+		<link rel="stylesheet" href="themes/rrc.min.css" />
 <!--		<link rel="stylesheet" href="_assets/css/jqm-demos.css"> -->
-		<link rel="shortcut icon" href="favicon.ico">
+		<link rel="shortcut icon" href="favicon.ico" /> 
 
 		<!-- Prototype CSS -->
 		<link rel="stylesheet" href="main.css" />
@@ -48,10 +49,12 @@
 		<!-- Intel XDK javascripts -->
         
 		<script src='intelxdk.js'></script>
+        <script src="cordova.js"></script>
         <script src='xhr.js'></script>
 	    <!-- Initialize javascript -->
 	    <script src="settings.js"></script>
         <script src="refresh.js"></script>
+        <script src="dump.js"></script>
 	    <script src="initialize.js"></script>
 		<script type="text/javascript">
 	            /* This code is used to run as soon as Intel activates */
@@ -60,22 +63,8 @@
 		            intel.xdk.device.hideSplashScreen();
 		            intel.xdk.device.setAutoRotate(true);
 	                initialize();
-		            //window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSystemSuccess, fail);
-	   //      		window.resolveLocalFileSystemURI("file:///example.txt", onResolveSuccess, fail);
-	    			
-
 				};
-			 //    function onFileSystemSuccess(fileSystem) {
-			 //        console.log(fileSystem.name);
-			 //    }
 
-			 //    function onResolveSuccess(fileEntry) {
-			 //        console.log(fileEntry.name);
-			 //    }
-
-			 //    function fail(evt) {
-			 //        console.log(evt.target.error.code);
-			 //    }
 	            document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
 	            //document.addEventListener("DOMContentLoaded",initialize, false);
 	            
@@ -85,19 +74,36 @@
 
 
 	</head>
-	<body>
+
+<body>
 
 	<!-- Start of first page -->
 	<!-- <div id="open"> -->
 	<div data-role="page" id="index" class="social">
 
 		<div class="header" data-role="header"  data-position="fixed" data-tap-toggle="false" data-theme="e">
-
-			<h1>Official Feeds</h1>
+			<h1 id="official_header">Official</h1>
+			<a data-icon="grid" data-iconpos="notext" data-role="button" id="social_button" class="menubutton ui-btn-right"></a>
 		</div><!-- /header -->
-        <div id="refresh" class="refresh"><div class="inner_refresh"><p>Refresh</p><img src="img/ajax-loader.gif" alt="" width="20px"/></div></div>
+
+		<div class="menubar" style="display: none">
+			<ul class="menulist">
+				<li class="all menuitem"><span id="menu_all" class="social_icons">A</span></li>
+				<li class="twitter menuitem"><img id="menu_Twitter" class="social_icons" src="img/Twitter_logo_blue_48_48.png" /></li>
+				<li class="facebook menuitem"><img id="menu_Facebook" class="social_icons" src="img/Facebook_logo_blue_48_48.png" /></li>
+				<li class="instagram menuitem"><img id="menu_Instagram" class="social_icons" src="img/instagramIcon.png" /></li>
+				<li class="youtube menuitem"><img id="menu_Youtube" class="social_icons" src="img/logo_youtube_48x48.png" /></li>
+				<li class="blog menuitem"><img id="menu_Blog" class="social_icons" src="img/blog_icon_48x48.png" /></li>
+				<li class="unofficial menuitem"><span id="menu_unofficial" class="social_icons">U</span></li>
+			</ul>
+		</div>
+
+        <div id="refresh" class="refresh">
+        	<div class="inner_refresh"><p>Refresh</p><img src="img/ajax-loader.gif" alt="" width="20px"/>
+        	</div>
+        </div>
         
-		<div role="main" id="official" class="ui-content">
+		<div role="main" id="official" class="social_main ui-content">
 			
 		</div><!-- /content -->
 
@@ -106,222 +112,14 @@
 	            <ul>
 	                <li><a data-role="button" href="#index" class="ui-btn-active ui-state-persist">Social</a></li>
 	                <li><a data-role="button" href="#events">Events</a></li>
-	                <li><a data-role="button" href="#jobcentral" style="white-space:normal">Job</a></li>
+	                <li><a data-role="button" href="#jobcentral">Job</a></li>
 	                <li><a data-role="button" href="#settings">Profile</a></a></li>
 	            </ul>
 	        </div><!-- /navbar -->
 		</div><!-- /footer -->
 	</div><!-- /page -->
 
-    <div data-role="page" id="twitter_page" class="social">
-        <div class="header" data-role="header"  data-position="fixed" data-tap-toggle="false" data-theme="e">
-
-			<h1>Twitter</h1>
-		</div><!-- /header -->
-        <div id="refresh" class="refresh"><div class="inner_refresh"><p>Refresh</p><img src="img/ajax-loader.gif" alt="" width="20px"/></div></div>
-         
-		<div role="main" id="twitter_main" class="ui-content">
-            
-			
-		</div><!-- /content -->
-
-        
-       
-
-		<div data-role="footer" class="footer" data-position="fixed" data-tap-toggle="false">
-			<div data-role="navbar">
-	            <ul>
-	                <li><a data-role="button" href="#index" class="ui-btn-active ui-state-persist">Social</a></li>
-	                <li><a data-role="button" href="#events">Events</a></li>
-	                <li><a data-role="button" href="#jobcentral" style="white-space:normal">Job</a></li>
-	                <li><a data-role="button" href="#settings">Profile</a></a></li>
-	            </ul>
-	        </div><!-- /navbar -->
-		</div><!-- /footer -->
-    </div>
-
- 	<div data-role="page" id="facebook_page" class="social">
-        <div class="header" data-role="header"  data-position="fixed" data-tap-toggle="false" data-theme="e">
-
-			<h1>Facebook</h1>
-		</div><!-- /header -->
-        <div id="refresh" class="refresh"><div class="inner_refresh"><p>Refresh</p><img src="img/ajax-loader.gif" alt="" width="20px"/></div></div>
-         
-		<div role="main" id="facebook_main" class="ui-content">
-            
-			
-		</div><!-- /content -->
-
-        
-       
-
-		<div data-role="footer" class="footer" data-position="fixed" data-tap-toggle="false">
-			<div data-role="navbar">
-	            <ul>
-	                <li><a data-role="button" href="#index" class="ui-btn-active ui-state-persist">Social</a></li>
-	                <li><a data-role="button" href="#events">Events</a></li>
-	                <li><a data-role="button" href="#jobcentral" style="white-space:normal">Job</a></li>
-	                <li><a data-role="button" href="#settings">Profile</a></a></li>
-	            </ul>
-	        </div><!-- /navbar -->
-		</div><!-- /footer -->
-    </div>
-
-     <div data-role="page" id="instagram_page" class="social">
-        <div class="header" data-role="header"  data-position="fixed" data-tap-toggle="false" data-theme="e">
-
-			<h1>Instagram</h1>
-		</div><!-- /header -->
-        <div id="refresh" class="refresh"><div class="inner_refresh"><p>Refresh</p><img src="img/ajax-loader.gif" alt="" width="20px"/></div></div>
-         
-		<div role="main" id="instagram_main" class="ui-content">
-            
-			
-		</div><!-- /content -->
-
-        
-       
-
-		<div data-role="footer" class="footer" data-position="fixed" data-tap-toggle="false">
-			<div data-role="navbar">
-	            <ul>
-	                <li><a data-role="button" href="#index" class="ui-btn-active ui-state-persist">Social</a></li>
-	                <li><a data-role="button" href="#events">Events</a></li>
-	                <li><a data-role="button" href="#jobcentral" style="white-space:normal">Job</a></li>
-	                <li><a data-role="button" href="#settings">Profile</a></a></li>
-	            </ul>
-	        </div><!-- /navbar -->
-		</div><!-- /footer -->
-    </div>
-
-    <div data-role="page" id="youtube_page" class="social">
-        <div class="header" data-role="header"  data-position="fixed" data-tap-toggle="false" data-theme="e">
-
-			<h1>Youtube</h1>
-		</div><!-- /header -->
-        <div id="refresh" class="refresh"><div class="inner_refresh"><p>Refresh</p><img src="img/ajax-loader.gif" alt="" width="20px"/></div></div>
-         
-		<div role="main" id="youtube_main" class="ui-content">
-            
-			
-		</div><!-- /content -->
-
-        
-       
-
-		<div data-role="footer" class="footer" data-position="fixed" data-tap-toggle="false">
-			<div data-role="navbar">
-	            <ul>
-	                <li><a data-role="button" href="#index" class="ui-btn-active ui-state-persist">Social</a></li>
-	                <li><a data-role="button" href="#events">Events</a></li>
-	                <li><a data-role="button" href="#jobcentral" style="white-space:normal">Job</a></li>
-	                <li><a data-role="button" href="#settings">Profile</a></a></li>
-	            </ul>
-	        </div><!-- /navbar -->
-		</div><!-- /footer -->
-    </div>
-
-    <div data-role="page" id="blog_page" class="social">
-        <div class="header" data-role="header"  data-position="fixed" data-tap-toggle="false" data-theme="e">
-
-			<h1>RRC News Blog</h1>
-		</div><!-- /header -->
-        <div id="refresh" class="refresh"><div class="inner_refresh"><p>Refresh</p><img src="img/ajax-loader.gif" alt="" width="20px"/></div></div>
-         
-		<div role="main" id="blog_main" class="ui-content">
-            
-			
-		</div><!-- /content -->
-
-        
-       
-
-		<div data-role="footer" class="footer" data-position="fixed" data-tap-toggle="false">
-			<div data-role="navbar">
-	            <ul>
-	                <li><a data-role="button" href="#index" class="ui-btn-active ui-state-persist">Social</a></li>
-	                <li><a data-role="button" href="#events">Events</a></li>
-	                <li><a data-role="button" href="#jobcentral" style="white-space:normal">Job</a></li>
-	                <li><a data-role="button" href="#settings">Profile</a></a></li>
-	            </ul>
-	        </div><!-- /navbar -->
-		</div><!-- /footer -->
-    </div>
-
-	
-	<div data-role="page" id="unofficial" class="social">
-
-		<div class="header" data-role="header" data-position="fixed" data-tap-toggle="false" data-theme="e">
-<!--			<p><a class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-corner-all left" data-rel="back" ></a></p>-->
-			<h1>Official-Ish Links</h1>
-		</div><!-- /header -->
-
-		<div role="main" class="ui-content">
-			<h3>Alumni</h3>
-			<a href="fb://profile/rrcalumni" target="_system" data-ajax="false">Facebook.com/rrcalumni</a>
-			<p>Blogs.rrc.ca/goingplaces</p>
-			<h3>Applied Research</h3>
-			<p>@rrcresearch</p>
-			<p>blogs.rrc.ca/ar</p>
-			<h3>Campus Living</h3>
-			<p>Facebook.com/redrivercollegecampusliving</p>
-			<p>@rrccampusliving</p>
-			<h3>Continuing Education</h3>
-			<p>Facebook.com/rrc.cde</p>
-			<h3>eTV</h3>
-			<p>Facebook.com/etv.learning.technologies</p>
-			<p>Blogs.rrc.ca/etv</p>
-			<h3>International Education</h3>
-			<p>Facebook.com/rrcinternational</p>
-			<h3>LGBTT* Initiative</h3>
-			<p>Blogs.rrc.ca/lgbtt</p>
-			<h3>Library</h3>
-			<p>Facebook.com/redriverlibrary</p>
-			<p>@rrclibrary</p>
-			<p>Blogs.rrc.ca/library</p>
-			<h3>Health Sciences Department</h3>
-			<p>Blogs.rrc.ca/healthsciences</p>
-			<h3>Peguis-Fisher River Campus</h3>
-			<p>Facebook.com/rrcpeguis</p>
-			<h3>President Stephanie Forsyth</h3>
-			<p>@rrcprez</p>
-			<p>stephanieforsyth.ca</p>
-			<h3>Rebels</h3>
-			<p>Facebook.com/rrcrebels</p>
-			<p>@rrcrebels</p>
-			<h3>Research and Planning</h3>
-			<p>Blogs.rrc.ca/numbers</p>
-			<h3>School of Hospitality and Culinary Arts</h3>
-			<p>Blogs.rrc.ca/foodanddrink</p>
-			<h3>School of Indigenous Education</h3>
-			<p>Facebook.com/rrcaboriginal</p>
-			<p>Blogs.rrc.ca/aboriginal</p>
-			<h3>Student Recruitment</h3>
-			<p>Blogs.rrc.ca/student</p>
-			<h3>Student Success</h3>
-			<p>Blogs.rrc.ca/redcarpet</p>
-			<h3>Sustainability</h3>
-			<p>Facebook.com/rrcsustainability</p>
-			<p>Blogs.rrc.ca/redgreen</p>
-			<h3>Teacher Education</h3>
-			<p>Blogs.rrc.ca/teachered</p>
-			<h3>Wellness Initiative</h3>
-			<p>Blogs.rrc.ca/wellness</p>
-			
-		</div><!-- /content -->
-
-		<div data-role="footer" class="footer" data-position="fixed" data-tap-toggle="false">
-	<!--		<p><a href="#foo" data-rel="back" >Back to foo</a></p>-->
-	        <div data-role="navbar">
-	            <ul>
-	                <li><a data-role="button" href="#index" class="ui-btn-active ui-state-persist">Social</a></li>
-	                <li><a data-role="button" href="#events">Events</a></li>
-	                <li><a data-role="button" href="#jobcentral" style="white-space:normal">Job</a></li>
-	                <li><a data-role="button" href="#settings">Profile</a></li>
-	            </ul>
-	        </div><!-- /navbar -->
-		</div><!-- /footer -->
-	</div><!-- /page -->
+    
 
 
 	<div data-role="page" id="events">
@@ -363,7 +161,7 @@
 	            <ul>
 	                <li><a data-role="button" href="#index">Social</a></li>
 	                <li><a data-role="button" href="#events" class="ui-btn-active ui-state-persist">Events</a></li>
-	                <li><a data-role="button" href="#jobcentral" style="white-space:normal">Job</a></li>
+	                <li><a data-role="button" href="#jobcentral">Job</a></li>
 	                <li><a data-role="button" href="#settings">Profile</a></li>
 	            </ul>
 	        </div><!-- /navbar -->
@@ -392,7 +190,7 @@
 	            <ul>
 	                <li><a data-role="button" href="#index">Social</a></li>
 	                <li><a data-role="button" href="#events">Events</a></li>
-	                <li><a data-role="button" href="#jobcentral" class="ui-btn-active ui-state-persist" style="white-space:normal">Job</a></li>
+	                <li><a data-role="button" href="#jobcentral" class="ui-btn-active ui-state-persist">Job</a></li>
 	                <li><a data-role="button" href="#settings">Profile</a></li>
 	            </ul>
 	        </div><!-- /navbar -->
@@ -418,7 +216,7 @@
 	            <ul>
 	                <li><a data-role="button" href="#index">Social</a></li>
 	                <li><a data-role="button" href="#events">Events</a></li>
-	                <li><a data-role="button" href="#jobcentral" class="ui-btn-active ui-state-persist" style="white-space:normal">Job</a></li>
+	                <li><a data-role="button" href="#jobcentral" class="ui-btn-active ui-state-persist">Job</a></li>
 	                <li><a data-role="button" href="#settings">Profile</a></li>
 	            </ul>
 	        </div><!-- /navbar -->
@@ -458,7 +256,7 @@
                     <ul>
                         <li><a data-role="button" href="#index">Social</a></li>
                         <li><a data-role="button" href="#events">Events</a></li>
-                        <li><a data-role="button" href="#jobcentral" style="white-space:normal">Job</a></li>
+                        <li><a data-role="button" href="#jobcentral">Job</a></li>
                         <li><a data-role="button" href="#settings" class="ui-btn-active ui-state-persist">Profile</a></li>
                     </ul>
                 </div><!-- /navbar -->

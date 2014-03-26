@@ -44,12 +44,49 @@ body {
 
 }
 
+.menubar {
+	height: 47px !important;
+	width: 105% !important;
+	position: fixed;
+	background: whitesmoke;
+	margin-left: -17.5px;
+    z-index: 999;
+}
+
+.no_margin {
+	margin-top: 0px;
+}
+
+.social_main_toggle {
+	margin-top: 70px;
+}
+
+.menulist {
+	background: whitesmoke;
+	width: 100%;
+}
+
+.menulist li {
+    background: whitesmoke;
+	display: inline;
+}
+
+.social_icons {
+    background: whitesmoke;
+	font-size: 35px;
+	padding: 2px;
+	height: 35px;
+	width: 35px;
+}
+
+
 .ui-block-a {
 	height: 50px !important;
 }
 #official, #twitter_main, #facebook_main, #instagram_main, #youtube_main, #blog_main
 {
 	padding: .2em .5em .5em .5em !important;
+    z-index: -1;
 }
 
 #open { 

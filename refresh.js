@@ -5,13 +5,16 @@ function initialize_refresh()
 //    alert($('.refresh').parent()[0].id);
     $('.refresh').each(function(index){
         $(this).next().on('swipedown',function(e){
-            //alert(e.target.parentElement.getAttribute("class"));
-            if(e.target.parentElement.getAttribute("id").indexOf( "post first"))
+// alert(e.target.parentElement.id);
+            if(e.target.parentElement.id == "official" && ($('.'+$('#official_header').html())[0] == e.target) || e.target.parentElement.firstChild == e.target)
             {
                 if($("#"+e.delegateTarget.parentElement.id+">.refresh").is(":hidden"))
                 {
                     $("#"+e.delegateTarget.parentElement.id+">.refresh").slideDown("fast");
+                    var previous_feed = $('#official_header').html();
+console.log(previous_feed);
                     getSocialFeeds();
+                    display_choosen_feeds(previous_feed);
                     $("#"+e.delegateTarget.parentElement.id+">.refresh").slideUp("fast");
                 }
             }
