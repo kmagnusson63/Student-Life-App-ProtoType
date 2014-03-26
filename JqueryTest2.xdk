@@ -27,13 +27,5 @@
       }
     ],
     "services": []
-  },
-  "emulator": {
-    "mediaCache": [
-      {
-        "remote": "http://www.gristlebone.com/School/User_2_Server/social.php",
-        "local": "_mediaCache/social.php"
-      }
-    ]
   }
 }

@@ -11,14 +11,10 @@ function initialize_refresh()
                 if($("#"+e.delegateTarget.parentElement.id+">.refresh").is(":hidden"))
                 {
                     $("#"+e.delegateTarget.parentElement.id+">.refresh").slideDown("fast");
-<<<<<<< HEAD
                     var previous_feed = $('#official_header').html();
 console.log(previous_feed);
                     getSocialFeeds();
                     display_choosen_feeds(previous_feed);
-=======
-                    //getSocialFeeds();
->>>>>>> 681308f876f0877f8e6a14ac92feae683c5ae66a
                     $("#"+e.delegateTarget.parentElement.id+">.refresh").slideUp("fast");
                 }
             }

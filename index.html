@@ -33,6 +33,7 @@
 		<link rel = "stylesheet" type ="text/css" href ="jobcentral.css" />
 		
 		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=true"></script>
+	    <script src='events.js'></script>
 
 		<!-- jQuery javascripts -->
 		<script src="js/jquery.js"></script>
@@ -40,48 +41,31 @@
 		<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 		<script src="js/jquery.mobile-1.4.0.min.js"></script>
 
+		<!-- Social javascript -->
+		<script src="social_proto.js"></script>
 		<!-- Events javascript -->
-	    <script src='events.js'></script>
 	    <!-- Job Central javascript -->
 	    <script src="jobscentral.js"></script>
-	    <script src="settings.js"></script>
-        <script src="refresh.js"></script>
-        <script src="dump.js"></script>
-	    <script src="initialize.js"></script>
-        
-        <!-- Intel XDK javascripts -->
+		<!-- Intel XDK javascripts -->
         
 		<script src='intelxdk.js'></script>
         <script src="cordova.js"></script>
         <script src='xhr.js'></script>
 	    <!-- Initialize javascript -->
-<<<<<<< HEAD
 	    <script src="settings.js"></script>
         <script src="refresh.js"></script>
         <script src="dump.js"></script>
 	    <script src="initialize.js"></script>
-=======
-		<!-- Social javascript -->
-		<script src="social_proto.js"></script>
-
->>>>>>> 681308f876f0877f8e6a14ac92feae683c5ae66a
 		<script type="text/javascript">
 	            /* This code is used to run as soon as Intel activates */
 	            var onDeviceReady=function(){
 	            //hide splash screen
 		            intel.xdk.device.hideSplashScreen();
-//		            intel.xdk.device.setAutoRotate(true);
-                   
+		            intel.xdk.device.setAutoRotate(true);
 	                initialize();
-<<<<<<< HEAD
 				};
 
 	            document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
-=======
-
-				};
-	           document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
->>>>>>> 681308f876f0877f8e6a14ac92feae683c5ae66a
 	            //document.addEventListener("DOMContentLoaded",initialize, false);
 	            
                 
@@ -98,199 +82,9 @@
 	<div data-role="page" id="index" class="social">
 
 		<div class="header" data-role="header"  data-position="fixed" data-tap-toggle="false" data-theme="e">
-<<<<<<< HEAD
 			<h1 id="official_header">Official</h1>
 			<a data-icon="grid" data-iconpos="notext" data-role="button" id="social_button" class="menubutton ui-btn-right"></a>
 		</div><!-- /header -->
-=======
-			<h1>Official Feeds</h1>
-			<a data-icon="grid" data-iconpos="notext" data-role="button" id="social_button" class="menubutton ui-btn-right"></a>
-		</div><!-- /header -->
-
-		<div class="menubar" style="display: none">
-			<ul class="menulist">
-				<li class="all menuitem"><span class="social_icons">A</span></li>
-				<li class="twitter menuitem"><img class="social_icons" src="img/Twitter_logo_blue_48_48.png" /></li>
-				<li class="facebook menuitem"><img class="social_icons" src="img/Facebook_logo_blue_48_48.png" /></li>
-				<li class="instagram menuitem"><img class="social_icons" src="img/instagramIcon.png" /></li>
-				<li class="youtube menuitem"><img class="social_icons" src="img/logo_youtube_48x48.png" /></li>
-				<li class="blog menuitem"><img class="social_icons" src="img/blog_icon_48x48.png" /></li>
-				<li class="unofficial menuitem"><span class="social_icons">U</span></li>
-			</ul>
-		</div>
-
-        <div id="refresh" class="refresh">
-        	<div class="inner_refresh"><p>Refresh</p><img src="img/ajax-loader.gif" alt="" width="20px"/>
-        	</div>
-        </div>
-        
-		<div role="main" id="official" class="ui-content">
-			
-		</div><!-- /content -->
-
-		<div data-role="footer" class="footer" data-position="fixed" data-tap-toggle="false">
-			<div data-role="navbar">
-	            <ul>
-	                <li><a data-role="button" href="#index" class="ui-btn-active ui-state-persist">Social</a></li>
-	                <li><a data-role="button" href="#events">Events</a></li>
-	                <li><a data-role="button" href="#jobcentral" style="white-space:normal">Job</a></li>
-	                <li><a data-role="button" href="#settings">Profile</a></a></li>
-	            </ul>
-	        </div><!-- /navbar -->
-		</div><!-- /footer -->
-	</div><!-- /page -->
-
-    <div data-role="page" id="twitter_page" class="social">
-        <div class="header" data-role="header"  data-position="fixed" data-tap-toggle="false" data-theme="e">
-
-			<h1>Twitter</h1>
-			<a data-icon="grid" data-iconpos="notext" data-role"button" id="social_button" class="menubutton ui-btn-right"></a>
-		</div><!-- /header -->
-
-		<div class="menubar" style="display: none">
-			<ul class="menulist">
-				<li class="all menuitem"><span class="social_icons">A</span></li>
-				<li  class="twitter menuitem"><img class="social_icons" src="img/Twitter_logo_blue_48_48.png" /></li>
-				<li  class="facebook menuitem"><img class="social_icons" src="img/Facebook_logo_blue_48_48.png" /></li>
-				<li class="instagram menuitem"><img class="social_icons" src="img/instagramIcon.png" /></li>
-				<li class="youtube menuitem"><img class="social_icons" src="img/logo_youtube_48x48.png" /></li>
-				<li class="blog menuitem"><img class="social_icons" src="img/blog_icon_48x48.png" /></li>
-				<li class="unofficial menuitem"><span class="social_icons">U</span></li>
-			</ul>
-		</div>
-
-        <div id="refresh" class="refresh"><div class="inner_refresh"><p>Refresh</p><img src="img/ajax-loader.gif" alt="" width="20px"/></div></div>
-         
-		<div role="main" id="twitter_main" class="ui-content">
-            
-			
-		</div><!-- /content -->
-
-        
-       
-
-		<div data-role="footer" class="footer" data-position="fixed" data-tap-toggle="false">
-			<div data-role="navbar">
-	            <ul>
-	                <li><a data-role="button" href="#index" class="ui-btn-active ui-state-persist">Social</a></li>
-	                <li><a data-role="button" href="#events">Events</a></li>
-	                <li><a data-role="button" href="#jobcentral" style="white-space:normal">Job</a></li>
-	                <li><a data-role="button" href="#settings">Profile</a></a></li>
-	            </ul>
-	        </div><!-- /navbar -->
-		</div><!-- /footer -->
-    </div>
-
- 	<div data-role="page" id="facebook_page" class="social">
-        <div class="header" data-role="header"  data-position="fixed" data-tap-toggle="false" data-theme="e">
-
-			<h1>Facebook</h1>
-			<a data-icon="grid" data-iconpos="notext" data-role"button" id="social_button" class="menubutton ui-btn-right"></a>
-		</div><!-- /header -->
-
-		<div class="menubar" style="display: none">
-			<ul class="menulist">
-				<li class="all menuitem"><span class="social_icons">A</span></li>
-				<li  class="twitter menuitem"><img class="social_icons" src="img/Twitter_logo_blue_48_48.png" /></li>
-				<li  class="facebook menuitem"><img class="social_icons" src="img/Facebook_logo_blue_48_48.png" /></li>
-				<li class="instagram menuitem"><img class="social_icons" src="img/instagramIcon.png" /></li>
-				<li class="youtube menuitem"><img class="social_icons" src="img/logo_youtube_48x48.png" /></li>
-				<li class="blog menuitem"><img class="social_icons" src="img/blog_icon_48x48.png" /></li>
-				<li class="unofficial menuitem"><span class="social_icons">U</span></li>
-			</ul>
-		</div>
-
-        <div id="refresh" class="refresh"><div class="inner_refresh"><p>Refresh</p><img src="img/ajax-loader.gif" alt="" width="20px"/></div></div>
-         
-		<div role="main" id="facebook_main" class="ui-content">
-            
-			
-		</div><!-- /content -->
-
-        
-       
-
-		<div data-role="footer" class="footer" data-position="fixed" data-tap-toggle="false">
-			<div data-role="navbar">
-	            <ul>
-	                <li><a data-role="button" href="#index" class="ui-btn-active ui-state-persist">Social</a></li>
-	                <li><a data-role="button" href="#events">Events</a></li>
-	                <li><a data-role="button" href="#jobcentral" style="white-space:normal">Job</a></li>
-	                <li><a data-role="button" href="#settings">Profile</a></a></li>
-	            </ul>
-	        </div><!-- /navbar -->
-		</div><!-- /footer -->
-    </div>
-
-     <div data-role="page" id="instagram_page" class="social">
-        <div class="header" data-role="header"  data-position="fixed" data-tap-toggle="false" data-theme="e">
-
-			<h1>Instagram</h1>
-			<a data-icon="grid" data-iconpos="notext" data-role"button" id="social_button" class="menubutton ui-btn-right"></a>
-
-		</div><!-- /header -->
-
-		<div class="menubar" style="display: none">
-			<ul class="menulist">
-				<li class="all menuitem"><span class="social_icons">A</span></li>
-				<li  class="twitter menuitem"><img class="social_icons" src="img/Twitter_logo_blue_48_48.png" /></li>
-				<li  class="facebook menuitem"><img class="social_icons" src="img/Facebook_logo_blue_48_48.png" /></li>
-				<li class="instagram menuitem"><img class="social_icons" src="img/instagramIcon.png" /></li>
-				<li class="youtube menuitem"><img class="social_icons" src="img/logo_youtube_48x48.png" /></li>
-				<li class="blog menuitem"><img class="social_icons" src="img/blog_icon_48x48.png" /></li>
-				<li class="unofficial menuitem"><span class="social_icons">U</span></li>
-			</ul>
-		</div>
-
-        <div id="refresh" class="refresh"><div class="inner_refresh"><p>Refresh</p><img src="img/ajax-loader.gif" alt="" width="20px"/></div></div>
-         
-		<div role="main" id="instagram_main" class="ui-content">
-            
-			
-		</div><!-- /content -->
-
-        
-       
-
-		<div data-role="footer" class="footer" data-position="fixed" data-tap-toggle="false">
-			<div data-role="navbar">
-	            <ul>
-	                <li><a data-role="button" href="#index" class="ui-btn-active ui-state-persist">Social</a></li>
-	                <li><a data-role="button" href="#events">Events</a></li>
-	                <li><a data-role="button" href="#jobcentral" style="white-space:normal">Job</a></li>
-	                <li><a data-role="button" href="#settings">Profile</a></a></li>
-	            </ul>
-	        </div><!-- /navbar -->
-		</div><!-- /footer -->
-    </div>
-
-    <div data-role="page" id="youtube_page" class="social">
-        <div class="header" data-role="header"  data-position="fixed" data-tap-toggle="false" data-theme="e">
-
-			<h1>Youtube</h1>
-			<a data-icon="grid" data-iconpos="notext" data-role"button" id="social_button" class="menubutton ui-btn-right"></a>
-
-		</div><!-- /header -->
-
-		<div class="menubar" style="display: none">
-			<ul class="menulist">
-				<li class="all menuitem"><span class="social_icons">A</span></li>
-				<li  class="twitter menuitem"><img class="social_icons" src="img/Twitter_logo_blue_48_48.png" /></li>
-				<li  class="facebook menuitem"><img class="social_icons" src="img/Facebook_logo_blue_48_48.png" /></li>
-				<li class="instagram menuitem"><img class="social_icons" src="img/instagramIcon.png" /></li>
-				<li class="youtube menuitem"><img class="social_icons" src="img/logo_youtube_48x48.png" /></li>
-				<li class="blog menuitem"><img class="social_icons" src="img/blog_icon_48x48.png" /></li>
-				<li class="unofficial menuitem"><span class="social_icons">U</span></li>
-			</ul>
-		</div>
-
-        <div id="refresh" class="refresh"><div class="inner_refresh"><p>Refresh</p><img src="img/ajax-loader.gif" alt="" width="20px"/></div></div>
-         
-		<div role="main" id="youtube_main" class="ui-content">
-            
-			
-		</div><!-- /content -->
->>>>>>> 681308f876f0877f8e6a14ac92feae683c5ae66a
 
 		<div class="menubar" style="display: none">
 			<ul class="menulist">
@@ -309,48 +103,7 @@
         	</div>
         </div>
         
-<<<<<<< HEAD
 		<div role="main" id="official" class="social_main ui-content">
-=======
-       
-
-		<div data-role="footer" class="footer" data-position="fixed" data-tap-toggle="false">
-			<div data-role="navbar">
-	            <ul>
-	                <li><a data-role="button" href="#index" class="ui-btn-active ui-state-persist">Social</a></li>
-	                <li><a data-role="button" href="#events">Events</a></li>
-	                <li><a data-role="button" href="#jobcentral" style="white-space:normal">Job</a></li>
-	                <li><a data-role="button" href="#settings">Profile</a></a></li>
-	            </ul>
-	        </div><!-- /navbar -->
-		</div><!-- /footer -->
-    </div>
-
-    <div data-role="page" id="blog_page" class="social">
-        <div class="header" data-role="header"  data-position="fixed" data-tap-toggle="false" data-theme="e">
-
-			<h1>RRC News Blog</h1>
-			<a data-icon="grid" data-iconpos="notext" data-role"button" id="social_button" class="menubutton ui-btn-right"></a>
-
-		</div><!-- /header -->
-
-		<div class="menubar" style="display: none">
-			<ul class="menulist">
-				<li class="all menuitem"><span class="social_icons">A</span></li>
-				<li  class="twitter menuitem"><img class="social_icons" src="img/Twitter_logo_blue_48_48.png" /></li>
-				<li  class="facebook menuitem"><img class="social_icons" src="img/Facebook_logo_blue_48_48.png" /></li>
-				<li class="instagram menuitem"><img class="social_icons" src="img/instagramIcon.png" /></li>
-				<li class="youtube menuitem"><img class="social_icons" src="img/logo_youtube_48x48.png" /></li>
-				<li class="blog menuitem"><img class="social_icons" src="img/blog_icon_48x48.png" /></li>
-				<li class="unofficial menuitem"><span class="social_icons">U</span></li>
-			</ul>
-		</div>
-
-        <div id="refresh" class="refresh"><div class="inner_refresh"><p>Refresh</p><img src="img/ajax-loader.gif" alt="" width="20px"/></div></div>
-         
-		<div role="main" id="blog_main" class="ui-content">
-            
->>>>>>> 681308f876f0877f8e6a14ac92feae683c5ae66a
 			
 		</div><!-- /content -->
 
@@ -364,49 +117,6 @@
 	            </ul>
 	        </div><!-- /navbar -->
 		</div><!-- /footer -->
-<<<<<<< HEAD
-=======
-    </div>
-
-	
-	<div data-role="page" id="unofficial_page" class="social">
-
-		<div class="header" data-role="header" data-position="fixed" data-tap-toggle="false" data-theme="e">
-			<h1>Official-Ish Links</h1>
-			<a data-icon="grid" data-iconpos="notext" data-role"button" id="social_button" class="menubutton ui-btn-right"></a>
-		</div><!-- /header -->
-
-		<div class="menubar" style="display: none">
-			<ul class="menulist">
-				<li class="all menuitem"><span class="social_icons">A</span></li>
-				<li  class="twitter menuitem"><img class="social_icons" src="img/Twitter_logo_blue_48_48.png" /></li>
-				<li  class="facebook menuitem"><img class="social_icons" src="img/Facebook_logo_blue_48_48.png" /></li>
-				<li class="instagram menuitem"><img class="social_icons" src="img/instagramIcon.png" /></li>
-				<li class="youtube menuitem"><img class="social_icons" src="img/logo_youtube_48x48.png" /></li>
-				<li class="blog menuitem"><img class="social_icons" src="img/blog_icon_48x48.png" /></li>
-				<li class="unofficial menuitem"><span class="social_icons">U</span></li>
-			</ul>
-		</div>
-
-		<div role="main" class="ui-content">
-			<h3>Alumni</h3>
-			<a href="fb://profile/rrcalumni" target="_system" data-ajax="false">Facebook.com/rrcalumni</a>
-			<p>Blogs.rrc.ca/goingplaces</p>
-			
-		</div><!-- /content -->
-
-		<div data-role="footer" class="footer" data-position="fixed" data-tap-toggle="false">
-	<!--		<p><a href="#foo" data-rel="back" >Back to foo</a></p>-->
-	        <div data-role="navbar">
-	            <ul>
-	                <li><a data-role="button" href="#index" class="ui-btn-active ui-state-persist">Social</a></li>
-	                <li><a data-role="button" href="#events">Events</a></li>
-	                <li><a data-role="button" href="#jobcentral" style="white-space:normal">Job</a></li>
-	                <li><a data-role="button" href="#settings">Profile</a></li>
-	            </ul>
-	        </div><!-- /navbar -->
-		</div><!-- /footer -->
->>>>>>> 681308f876f0877f8e6a14ac92feae683c5ae66a
 	</div><!-- /page -->
 
     

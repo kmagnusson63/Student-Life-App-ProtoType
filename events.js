@@ -4,7 +4,7 @@ const LNG = -97.141117;
 var startMarkerListener = null;
 var form_submit_listener = null;
 var markerArray = new Array();
-const LIST_TABLE_CONTENT_LENGTH = 40;
+const LIST_TABLE_CONTENT_LENGTH = 20;
 const EVENT_ADDRESS = "http://www.gristlebone.com/School/User_2_Server/";
 var marker_image //= "rrc_logo_1.png";
 var submit_handler;
@@ -129,7 +129,6 @@ function postEventFeeds(post_string)
 		
 		if(eventsHttp.readyState == 4 && eventsHttp.status == 200)
 		{
-
 			markerArray = eval(eventsHttp.responseText);
 			document.getElementById("event_list").innerHTML = "";
 

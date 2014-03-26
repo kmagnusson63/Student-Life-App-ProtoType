@@ -156,7 +156,10 @@ function getFile(event)
 
 	intel.xdk.cache.setCookie("avatar",files[0].name);
 }
-
+function testing_display(string)
+{
+	document.getElementById("testing").innerHTML = document.getElementById("testing").innerHTML + string + "<br>";
+}
 function addProfileListeners()
 {
 	document.getElementById('avatar_thumbnail').addEventListener('click',function(e){
