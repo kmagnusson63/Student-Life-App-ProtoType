@@ -4,7 +4,10 @@
 		<title>RRC Student Life App</title>
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
-        
+<!--
+        <meta name="apple-mobile-web-app-capable">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+-->
         <style>
             #events_wrapper {
                 height: 50%;
@@ -55,6 +58,7 @@
 	    <script src="settings.js"></script>
         <script src="refresh.js"></script>
         <script src="dump.js"></script>
+        <script src="upload.js"></script>
 	    <script src="initialize.js"></script>
 		<script type="text/javascript">
 	            /* This code is used to run as soon as Intel activates */
@@ -89,17 +93,17 @@
 		<div class="menubar" style="display: none">
 			<ul class="menulist">
 				<li class="all menuitem"><span id="menu_all" class="social_icons">A</span></li>
-				<li class="twitter menuitem"><img id="menu_Twitter" class="social_icons" src="img/Twitter_logo_blue_48_48.png" /></li>
-				<li class="facebook menuitem"><img id="menu_Facebook" class="social_icons" src="img/Facebook_logo_blue_48_48.png" /></li>
-				<li class="instagram menuitem"><img id="menu_Instagram" class="social_icons" src="img/instagramIcon.png" /></li>
-				<li class="youtube menuitem"><img id="menu_Youtube" class="social_icons" src="img/logo_youtube_48x48.png" /></li>
-				<li class="blog menuitem"><img id="menu_Blog" class="social_icons" src="img/blog_icon_48x48.png" /></li>
+				<li class="twitter menuitem"><img id="menu_Twitter" class="social_icons" src="img/Twitter_logo_blue_48_48.png" alt="Twitter"/></li>
+				<li class="facebook menuitem"><img id="menu_Facebook" class="social_icons" src="img/Facebook_logo_blue_48_48.png" alt="Facebook"/></li>
+				<li class="instagram menuitem"><img id="menu_Instagram" class="social_icons" src="img/instagramIcon.png" alt="Instagram"/></li>
+				<li class="youtube menuitem"><img id="menu_Youtube" class="social_icons" src="img/logo_youtube_48x48.png" alt="YouTube"/></li>
+				<li class="blog menuitem"><img id="menu_Blog" class="social_icons" src="img/blog_icon_48x48.png" alt="Blog"/></li>
 				<li class="unofficial menuitem"><span id="menu_unofficial" class="social_icons">U</span></li>
 			</ul>
 		</div>
 
         <div id="refresh" class="refresh">
-        	<div class="inner_refresh"><p>Refresh</p><img src="img/ajax-loader.gif" alt="" width="20px"/>
+        	<div class="inner_refresh"><p>Refresh</p><img src="img/ajax-loader.gif" alt="" width="20"/>
         	</div>
         </div>
         
@@ -113,7 +117,7 @@
 	                <li><a data-role="button" href="#index" class="ui-btn-active ui-state-persist">Social</a></li>
 	                <li><a data-role="button" href="#events">Events</a></li>
 	                <li><a data-role="button" href="#jobcentral">Job</a></li>
-	                <li><a data-role="button" href="#settings">Profile</a></a></li>
+	                <li><a data-role="button" href="#settings">Profile</a></li>
 	            </ul>
 	        </div><!-- /navbar -->
 		</div><!-- /footer -->
@@ -130,8 +134,21 @@
 	   </script>
         <div class="header" data-role="header" data-position="fixed" data-tap-toggle="false" data-theme=e>
             <h1>Events</h1>
+            <a data-icon="grid" data-iconpos="notext" data-role="button" id="events_button" class="menubutton ui-btn-right"></a>
+            
          </div>
-                
+         <div class="menubar" style="display: none">
+                <ul class="menulist">
+                    <li id = "eventsMenuUser">User</li>
+                    <li id = "notreDame">ND</li>
+                    <li id = "languageTraining">LTC</li>
+                    <li id = "exchangeDistrict">ED</li>
+                    <li id = "steinbach">S</li>
+                    <li id = "interlake">I</li>
+                    <li id = "winkler">W</li>
+                    <li id = "portage">P</li>
+                </ul>
+		    </div>       
         <div id="events_wrapper" data-role="content">
 			<div id="event_map" style="height: 100%"></div>
         </div>
@@ -150,9 +167,13 @@
 				</ul>
 			</div>
         
-			<div id="event_list">
-				
+			<div id="event_list" class="list">
+				<div id="events_refresh" class="refresh"><div class="inner_refresh"><p>Refresh</p><img src="img/ajax-loader.gif" alt="" width="20"/></div></div>
 			</div>
+            <div id="event_list_rrc" class="list">
+            
+            </div>
+            <div id="events_error" class="errors"></div>
 
                
         <div data-role="footer" class="footer" data-position="fixed" data-tap-toggle="false" id="form_footer">
@@ -161,7 +182,7 @@
 	            <ul>
 	                <li><a data-role="button" href="#index">Social</a></li>
 	                <li><a data-role="button" href="#events" class="ui-btn-active ui-state-persist">Events</a></li>
-	                <li><a data-role="button" href="#jobcentral">Job</a></li>
+	                <li><a data-role="button" href="#jobcentral" style="white-space:normal">Job</a></li>
 	                <li><a data-role="button" href="#settings">Profile</a></li>
 	            </ul>
 	        </div><!-- /navbar -->
@@ -176,11 +197,21 @@
         </div>
         
       
-        
-        <div role="main" class="ui-content" id="job_central">
-            <div id="job_list">
+         <div role="main" class="ui-content" id="job_central">
+        	<div id="job_wrapper">
+        		<div id="job_list">
                 
-            </div>
+            	</div>
+
+	            <div id="job_details">
+	            	<div id="job_details_title"></div>
+	            	<div id="job_details_open_date"></div>
+	            	<div id="job_details_desc"></div>
+	            </div>
+        	</div>
+        	
+            
+
         </div>
 
                
@@ -226,30 +257,25 @@
 
     <div data-role="page" id="settings">
             <div class="header" data-role="header" data-position="fixed" data-tap-toggle="false" data-theme=e>
+                <div id="profile_save">
+                	<a data-role="none" href="#">Save</a>
+                </div>
                 <h1>Profile</h1>
             </div>
             
             
-            <div role="main" class="ui-content">
-                <div id="profile">
-                	<div id="user_id"></div>
-                	<div id="screen_name_div">
-                		<label for="screen_name">Screen Name</label>
-                		<input id="screen_name" name="screen_name" disabled="true"  data-role="none"/>
+<!--             <div role="main" class="ui-content">
+ -->                <div id="profile">
+                	<div id="profile_user_info">
+                		<img id="profile_avatar" src="img/user-default.png" alt="Avatar" />
+                		<input id="avatar_browse" type="file" name="files[]" data-role="none" hidden/>
+                		<div id="profile_screen_name">Anonymous</div>
                 	</div>
-                	<div id="avatar">
-                		<div id="avatar_input">
-	                		<input id="avatar_browse" type="file" name="files[]" data-role="none" />
-    					</div>
-    					<div id="avatar_display"></div>
-    				</div>
-                	<div id="remove_profile">
-                		<button id="remove" name="remove" value="Remove Profile">Remove Profile</button>
-                	</div>
+
                 	<div id="testing"></div>
-                	<div id="progress"></div>
-                </div>
-            </div>
+<!--                 	<div id="progress"></div>
+ --><!--                 </div>
+ -->            </div>
             
              <div data-role="footer" class="footer" data-position="fixed" data-tap-toggle="false">
                 <div data-role="navbar">

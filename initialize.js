@@ -11,10 +11,11 @@
 function initialize()
 {
 //    initialize_refresh();
+ //   upload_load();
     
 	// load Social feeds
 	getSocialFeeds();
-
+    
 	// Events script load event
 	events_load();
 
@@ -23,6 +24,6 @@ function initialize()
     
 	// load Device Settings
 	getSettingsFromStorage();
-	addProfileListeners();
+	//addProfileListeners();
     initialize_refresh();
 }

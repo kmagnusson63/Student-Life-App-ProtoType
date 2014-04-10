@@ -48,9 +48,11 @@ function getSocialFeeds()
                 }
                 div.setAttribute("class", div.getAttribute("class") + " " + social_feed[i].post_type);
                 
-                var info_div = document.createElement("div");
-                info_div.setAttribute("class","info_line");
+                var info_p = document.createElement("p");
+                info_p.setAttribute("class","info_line");
                 
+                var image_div = document.createElement("div");
+                image_div.setAttribute("class", "left");
                 var image = document.createElement("img");
 
                 
@@ -74,34 +76,27 @@ function getSocialFeeds()
                 }
 
 
-                info_div.appendChild(image);
-                
-                var screen_name_div = document.createElement("div");
-                screen_name_div.setAttribute("class","post_screen_name");
-                screen_name_div.textContent = "Red River College";
-                
-                info_div.appendChild(screen_name_div);
-                
-                if(social_feed[i].post_type == "Twitter")
-                {
-                    var user_name_div = document.createElement("div");
-                    user_name_div.setAttribute("class","post_user_name");
-                    
-                    // Get username from feed
-                    user_name_div.textContent = "@RRC";
-                    info_div.appendChild(user_name_div);
-                }
-                var time_div = document.createElement("div");
-                time_div.setAttribute("class","post_time");
-                
-                // format time from feed and add to div
-                time_div.textContent = social_feed[i].post_created_at;
-                info_div.appendChild(time_div);
-                
-                div.appendChild(info_div);
+                image_div.appendChild(image);
                 
                 var content_div = document.createElement("div");
-                content_div.setAttribute("class","post_content");
+
+                info_p.innerHTML = "Red River College";
+                content_div.appendChild(info_p);
+
+               
+                var time_p = document.createElement("p");
+                time_p.setAttribute("class","post_time");
+                
+                // format time from feed and add to div
+                time_p.textContent = social_feed[i].post_created_at;
+                content_div.appendChild(time_p);
+                
+                div.appendChild(image_div);
+                
+               
+                var content_p = document.createElement("p");
+                content_p.setAttribute("class","post_content");
+
 
                 if(social_feed[i].post_content.length > 139)
                 {
@@ -135,19 +130,20 @@ function getSocialFeeds()
                     temp_span.appendChild(temp_span_trigger_2);
                     temp_span.innerHTML = social_feed[i].post_content + temp_span.innerHTML;
 
-                    content_div.appendChild(temp_span_trunc);
-                    content_div.appendChild(temp_span);
-                    addMoreLessTriggers(content_div);
+                    
+                    content_p.appendChild(temp_span_trunc);
+                    content_p.appendChild(temp_span);
+                    addMoreLessTriggers(content_p);
                    
                 }
                 else
                 {
-                    content_div.textContent = social_feed[i].post_content;
+                    content_p.textContent = social_feed[i].post_content;
                 }
                 
-                div.appendChild(content_div);
-                var time_div = document.createElement("div");
-                time_div.setAttribute("class","post_time");
+                content_div.appendChild(content_p);
+                var info_bottom = document.createElement("p");
+                info_bottom.setAttribute("class","info_bottom");
                 
                 
                 temp_span = document.createElement("span");
@@ -170,8 +166,9 @@ function getSocialFeeds()
                 temp_link.setAttribute("onclick", "window.open('" + temp_host + social_feed[i].post_site_id + "', '_blank', 'location=yes')");
                 temp_link.innerHTML = "Link";
                 temp_span.appendChild(temp_link);
-                time_div.appendChild(temp_span);
-                div.appendChild(time_div);
+                info_bottom.appendChild(temp_span);
+                content_div.appendChild(info_bottom);
+                div.appendChild(content_div);
                 
 
                 
@@ -262,42 +259,3 @@ $('.menubar').live("tap", function(evt) {
     console.log("Tapped: " + show_type);
     display_choosen_feeds(show_type);
 });
-//
-//$('.twitter').live("tap", function() {
-//    $.mobile.changePage('#twitter_page');
-//    $('.menubar').hide();
-//    $('.social_main').css("margin-top", "0px");
-//});
-//
-//$('.facebook').live("tap", function() {
-//    $.mobile.changePage('#facebook_page');
-//    $('.menubar').hide();
-//    $('.social_main').css("margin-top", "0px");
-//});
-//
-//$('.instagram').live("tap", function() {
-//    $.mobile.changePage('#instagram_page');
-//    $('.menubar').hide();
-//    $('.social_main').css("margin-top", "0px");
-//});
-//
-//$('.youtube').live("tap", function() {
-//    $.mobile.changePage('#youtube_page');
-//    $('.menubar').hide();
-//    $('.social_main').css("margin-top", "0px");
-//});
-//
-//$('.blog').live("tap", function() {
-//    $.mobile.changePage('#blog_page');
-//    $('.menubar').hide();
-//    $('.social_main').css("margin-top", "0px");
-//});
-//
-//$('.unofficial').live("tap", function() {
-//    $.mobile.changePage('#unofficial_page');
-//    $('.menubar').hide();
-//    $('.social_main').css("margin-top", "0px");
-//});
-
-
-

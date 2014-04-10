@@ -1,6 +1,27 @@
 var map;
 const LAT = 49.900412;
 const LNG = -97.141117;
+const NOTRE_DAME_LAT = 49.919397;
+const NOTRE_DAME_LNG = -97.210831;
+const LTC_LAT = 49.888905;
+const LTC_LNG = -97.134612;
+const STEINBACH_LAT = 49.532227;
+const STEINBACH_LNG = -96.672994;
+const PORTAGE_LAT = 49.971712;
+const PORTAGE_LNG = -98.282310;
+const INTERLAKE_LAT = 50.150190;
+const INTERLAKE_LNG = -96.884432;
+const WINKLER_LAT = 49.186350;
+const WINKLER_LNG = -97.939159;
+const EVENTS_MENU_USER_LAT = 55.860870;
+const EVENTS_MENU_USER_LNG = -97.503113;
+var notreDameLatLng = new google.maps.LatLng(NOTRE_DAME_LAT,NOTRE_DAME_LNG);
+var languageCentreLatLng = new google.maps.LatLng(LTC_LAT,LTC_LNG);
+var steinbachLatLng = new google.maps.LatLng(STEINBACH_LAT,STEINBACH_LNG);
+var portageLatLng = new google.maps.LatLng(PORTAGE_LAT,PORTAGE_LNG);
+var interlakeLatLng = new google.maps.LatLng(INTERLAKE_LAT,INTERLAKE_LNG);
+var winklerLatLng = new google.maps.LatLng(WINKLER_LAT,WINKLER_LNG);
+var events_menu_userLatLng = new google.maps.LatLng(EVENTS_MENU_USER_LAT,EVENTS_MENU_USER_LNG);
 var startMarkerListener = null;
 var form_submit_listener = null;
 var markerArray = new Array();
@@ -14,6 +35,11 @@ var map_marker;
 var temp_marker;
 var event_marker;
 var event_array = new Array();
+var errorMessage;
+var previousInfo = null;
+var campusCircle = new google.maps.Circle();
+var campusesArray = new Array();
+
 function event_marker(latLng,content,screen_name)
 {
 	this.id = "marker" + (markerArray.length + 1);
@@ -55,19 +81,21 @@ function setDisplay()
 {
 	// Hide form
 	document.getElementById("event_form").style.display = "none";
+    document.getElementById("event_list_rrc").style.display = "none";
 }
 function createMarkerOnMap(marker)
 {
 	// create google map marker
     var latlng = new google.maps.LatLng(marker.event_lat, marker.event_long);
-   	var contentString = '<div id = "content">'+
-       marker.event_content+
+   	var contentString = '<div id = "info_content">'+
+      '<h3>'+ marker.event_content + '</h3>'+
+      '<p>Posted By: '+ marker.event_user_screen_name +'</p>' +
        '</div>';
 
-	map_marker = new google.maps.Marker({
+    map_marker = new google.maps.Marker({
 		position: latlng,
 		map: map,
-        icon: EVENT_ADDRESS + "img/" + marker.event_user_avatar
+        icon: EVENT_ADDRESS + "img/" + "pushpin.png"
 	});
     google.maps.event.addListener(map_marker, 'click', function(e)
                                   {
@@ -82,8 +110,9 @@ function createMarkerOnMap(marker)
 function addMarkerToList(index,marker)
 {
 	var list_div = document.getElementById("event_list");
+    var list_div_rrc = document.getElementById("event_list_rrc");
 	var temp_div = document.createElement("div");
-	temp_div.setAttribute("class","list_marker");
+	temp_div.setAttribute("class","list_marker" + " " + marker.event_user_screen_name);
 	temp_div.setAttribute("marker",index);
 	var temp_content = "";
 
@@ -103,7 +132,7 @@ function addMarkerToList(index,marker)
     temp_div.appendChild(temp_p_img);
     
 	var temp_p_content = document.createElement("div");
-    temp_p_content.setAttribute("id","content");
+    temp_p_content.setAttribute("id","list_content");
 	temp_p_content.textContent = temp_content;
 	temp_div.appendChild(temp_p_content);
 
@@ -112,11 +141,14 @@ function addMarkerToList(index,marker)
 	temp_p_time.textContent = marker.event_created_at;
 	temp_div.appendChild(temp_p_time);
 
-    var newContentString = '<div id="content">'+
-        '<h1>'+marker.event_content+'</h1>'+
-        '</div>';
-    
-	list_div.appendChild(temp_div);
+    if(marker.event_user_id == 1)
+    {
+        list_div_rrc.appendChild(temp_div)
+    }
+    else
+    {
+	   list_div.appendChild(temp_div);
+    }
 	return temp_div;
 
 }
@@ -131,6 +163,7 @@ function postEventFeeds(post_string)
 		{
 			markerArray = eval(eventsHttp.responseText);
 			document.getElementById("event_list").innerHTML = "";
+            document.getElementById("event_list_rrc").innerHTML = "";
 
 			// show saved markers on the map
 			for(var i=0;i<markerArray.length;i++)
@@ -151,12 +184,19 @@ function strip_special(data_string)
 {
     return escape(data_string);
 }
-function submitForm(latLng)
+function submitForm(e,marker_latLng)
 {
-	if((document.getElementById("event_form_content").value.length < 1) || (document.getElementById("event_form_content").value == null))
+    var latLng = marker_latLng;
+    alert(latLng);
+    var form_content = document.getElementById("event_form_content").value;
+    var eventParent = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.id;
+    var errors = validateForm(form_content,eventParent);
+	if(errors)
 	{
-		// Validation error
 
+		// Validation error
+        cancel_form();
+        displayError(errorMessage,eventParent);
 	}
 	else
 	{
@@ -166,7 +206,7 @@ function submitForm(latLng)
 
 		// post to server
 //alert(latLng.lat);
-		var post_string = "posts.php?lat="+latLng.k + "&long=" + latLng.A + "&content=" + temp_marker.content + "&user_id=" + user_id;
+		var post_string = "posts.php?lat="+latLng.k + "&long=" + latLng.A + "&content=" + temp_marker.content + "&user_id=" + intel.xdk.cache.getCookie('user_id');
 //console.log(post_string);
 		postEventFeeds(post_string);
 
@@ -175,6 +215,7 @@ function submitForm(latLng)
 		//localStorage.setItem("markerArray", JSON.stringify(markerArray));
 
 		document.getElementById("event_form").style.display = "none";
+        document.getElementById("event_list_rrc").style.display = "none";
 		document.getElementById("event_list").style.display = "block";
         document.getElementById("form_footer").style.display = "block";
 		addMarkerListener();
@@ -184,15 +225,16 @@ function submitForm(latLng)
 
 function setMarker(event)
 {
-//alert(event.latLng);
+    var marker_latLng = event.latLng
 	removeMarkerListener();
 	// show form
 	document.getElementById("event_list").style.display = "none";
+    document.getElementById("event_list_rrc").style.display = "none";
 	document.getElementById("event_form").style.display = "block";
     document.getElementById("form_footer").style.display = "none";
 	document.getElementById("event_form_content").value = "";
 	document.getElementById("event_form_content").focus();
-	submit_handler = function(){submitForm(event.latLng);}
+	submit_handler = function(e){submitForm(e,marker_latLng);}
 	document.getElementById("event_form_submit").addEventListener("click",submit_handler,false);
     document.getElementById("event_form_cancel").addEventListener("click",cancel_form,false);
 	
@@ -219,7 +261,17 @@ function list_listener(e)
 	{
 		var marker = event_array[e.target.parentNode.getAttribute("marker")];
 		map.setCenter(marker.position);
-		marker.infoWindow.open(marker.map,marker);
+        if(previousInfo == null)
+        {
+            
+        }
+        else
+        {
+            previousInfo.infoWindow.close();
+        }
+    
+        marker.infoWindow.open(marker.map,marker);
+        previousInfo = marker;
 	}
 }
 function events_load()
@@ -231,12 +283,151 @@ function events_load()
     startMarkerListener = null;
     document.getElementById("event_list").addEventListener("click",list_listener, false);
 	addMarkerListener();
+    addMenuBarListeners();
+
 }
 function cancel_form()
 {
     document.getElementById("event_form").style.display = "none";
     document.getElementById("event_list").style.display = "block";
+    document.getElementById("event_list_rrc").style.display = "none";
     document.getElementById("form_footer").style.display = "block";
     addMarkerListener();
+    
+}
+
+function displayError(errorMessage,page)
+{
+    var errorDiv = document.getElementById(page + "_error");
+        errorDiv.innerHTML = "<p>" + errorMessage + "</p>";
+        $(errorDiv).show().fadeOut(3000);      
+}
+
+function validateForm(validateMessage,page)
+{
+    var error = false;
+    
+    if((validateMessage.length < 1) || (validateMessage == null))
+        {
+            // Validation error
+            errorMessage = "Error: You must enter some content.";
+            error = true;
+            return error;
+        }
+    if(page == "events")
+    {
+//        else
+//        {
+            var regex = new RegExp( /^[a-zA-Z0-9_ !@#\$%\^\&*\)\(+=._-]+$/g)
+            if (!regex.test(validateMessage))
+            {
+                errorMessage = "Error: Content can't include special characters.";
+                error = true;
+                return error;
+            }
+//        }
+    }
+    if(page == "settings")
+    {
+        var regex = new RegExp( /^[a-zA-Z0-9_!@#\$%\^\&*\)\(+=._-]+$/g)
+            if (!regex.test(validateMessage))
+            {
+                errorMessage = "Error: Content can't include special characters.";
+                error = true;
+            }
+        if(validateMessage.charAt(0) == "_")
+        {
+            errorMessage = "Error: Content can't include special characters.";
+            error = true;
+        }
+    }
+    return error;
+}
+
+/* Function Name: addMenuBarListeners
+*  Purpose: The purpose of this function is to add the event listeners.
+*  Parameters: None
+*  Returns: None
+*/
+function addMenuBarListeners()
+{
+    
+    var notreDameEle = document.getElementById("notreDame");
+    var languageTrainingEle = document.getElementById("languageTraining");
+    var steinbachEle = document.getElementById("steinbach");
+    var portageEle = document.getElementById("portage");
+    var interlakeEle = document.getElementById("interlake");
+    var winklerEle = document.getElementById("winkler");
+    var eventsMenuUserEle = document.getElementById("eventsMenuUser");
+    
+    eventsMenuUserEle.setAttribute("class","selectedCampus");
+    campusesArray.push(eventsMenuUser.getAttribute("id"));
+    
+    var clickCampusHandler = function(e){focusOnCampus(e);}
+    
+    notreDameEle.addEventListener("click",clickCampusHandler,false);
+    languageTrainingEle.addEventListener("click",clickCampusHandler,false);
+    steinbachEle.addEventListener("click",clickCampusHandler,false);
+    portageEle.addEventListener("click",clickCampusHandler,false);
+    interlakeEle.addEventListener("click",clickCampusHandler,false);
+    winklerEle.addEventListener("click",clickCampusHandler,false);
+    eventsMenuUserEle.addEventListener("click",clickCampusHandler,false);
+    
+}
+
+/* Function Name: focusOnCampus
+*  Purpose: The purpose of this is to center the map on to certain spots depending on what the select
+*  Parameters: This function takes in an event.
+*  Returns: None.
+*/
+function focusOnCampus(e)
+{
+//    campusCircle.setMap(null);
+var_dump(e.target.id);
+    var campusSelected = e.target.id;
+//    var campusCoord = campusSelected + 'LatLng';
+//    alert(campusCoord);
+//    map.setCenter(campusCoord);
+//    map.setZoom(18);
+//    var circleOptions = {
+//      strokeColor: '#C81F45',
+//      strokeOpacity: 0.8,
+//      strokeWeight: 2,
+//      fillColor: '#C81F45',
+//      fillOpacity: 0.35,
+//      map: map,
+//      center: notreDameLatLng,
+//      radius: 40
+//    };
+//    campusCircle = new google.maps.Circle(circleOptions);
+//    alert(campusCircle.getBounds());
+    var campusEle = document.getElementById(campusSelected);
+    
+ //   alert(campusEle.getAttribute("class"));
+    if(campusEle.getAttribute("class") == "selectedCampus")
+    {
+        var removeAttribute = campusEle.setAttribute("class",null);
+        var elementToRemove = campusesArray.indexOf(e.target.id);
+        var removedElement = campusesArray.splice(elementToRemove,1);
+        if (campusesArray.length == 0)
+        {
+            
+            document.getElementById("eventsMenuUser").setAttribute("class","selectedCampus");
+            campusesArray.push(document.getElementById("eventsMenuUser").getAttribute("id"));
+        }
+    }
+    else
+    {
+        var selectedAttribute = campusEle.setAttribute("class","selectedCampus");
+        campusesArray.push(campusSelected);
+//        alert(campusesArray);
+    }
+    
+    if(campusesArray.length == 1)
+    {
+            map.setCenter(notreDameLatLng);
+            map.setZoom(18);
+    }
+    
     
 }
