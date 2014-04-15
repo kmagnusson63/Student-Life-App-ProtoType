@@ -24,9 +24,11 @@ body {
 	background-color: #C81F45;
 	color: #FFF;
 	width: 100%;
+    top: -1;
 	/*height: 10%;*/
 	text-align: center;
 }
+
 
 .right { 
 	float:right !important;
@@ -42,15 +44,86 @@ body {
 
 }
 
+.menubar {
+	height: 47px !important;
+	width: 105% !important;
+	position: fixed;
+	background: whitesmoke;
+	margin-left: -17.5px;
+    z-index: 999;
+}
+
+.no_margin {
+	margin-top: 0px;
+}
+
+.social_main_toggle {
+	margin-top: 70px;
+}
+
+.menulist {
+	background: whitesmoke;
+	width: 100%;
+}
+
+.menulist li {
+    background: whitesmoke;
+	display: inline;
+}
+
+.social_icons {
+    background: whitesmoke;
+	font-size: 35px;
+	padding: 2px;
+	height: 35px;
+	width: 35px;
+}
+
+
 .ui-block-a {
 	height: 50px !important;
 }
-#official
+#official, #twitter_main, #facebook_main, #instagram_main, #youtube_main, #blog_main
 {
 	padding: .2em .5em .5em .5em !important;
+    z-index: -1;
 }
 
 #open { 
 	width: 100% !important; 
 	height: 80% !important;
+}
+
+#profile input
+{
+	width: 90%;
+}
+.refresh
+{
+    width: 100%;
+}
+.inner_refresh
+{
+    text-align: center;
+}
+.refresh p, .refresh img
+{
+    margin: 0 !important;
+    padding:0 !important;
+}
+.refresh p
+{
+    line-height:.8em;
+    font-size: .8em;
+
+}
+.refresh img
+{
+
+}
+.swiper
+{
+    width: 100%;
+    height: 5em;
+    background-color: #000;
 }

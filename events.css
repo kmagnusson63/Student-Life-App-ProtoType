@@ -1,65 +1,99 @@
-#events_wrapper
-{
-	width: 100% !important;
-	height:100% !important;
-	position: fixed;
+#events {
+    overflow: hidden;
 }
 
-/*#events_wrapper img
+#events_wrapper
 {
-	border: 1px green solid !important;
-	width: 100% !important;
-	height: 100% !important;
-}*/
-#event_map, #event_form, #event_list
-{
-/*	position:fixed !important;
-*/    width: 100%;
-	height: 50%;
+    height:75%;
 }
+/*
 #event_map
 {
-	position:fixed;
+    height: 30% !important;
+}
+#event_map:focus
+{
+    height: 70% !important;   
+}
+*/
+#event_form, #event_list
+{
+	position:fixed !important;
+    width: 100%;
+	height: 23.5%;
+}
+
+#event_form, #event_list {
+    top: 70%;
 }
 
 #event_form
 {
 	background-color: #000;
 	color: #fff;
+    height:30%;
 }
-#event_form, #event_list
-{
-    top: 300px;
-}
+
 #event_list
 {
     font-size: .9em;
 	background-color: #C81F45;
 	padding: 0;
+    overflow-y: scroll;
+    width: 105.5%;
 }
-.list_marker
+#event_list_rrc
 {
- 	width: 100%;
-	margin: 5px 0 0 0;
-	padding: 0;
-}
-.list_marker p
-{
-	display: inline-block;
-	margin: 0 5px 0 5px;
-	padding: 5px 5px 5px 5px;
-	background-color: #fff;
-}
-.list_marker p:first-of-type
-{
-	width: 50% !important;
-}
-.list_marker p:last-of-type
-{
-	width: 35% !important;
-	text-align: right;
+    font-size: .9em;
+    background-color: #C81F45;
+    padding: 0;
+    overflow-y: scroll;
+    width: 105.5%;
 }
 
+.list_marker
+{
+ 	width: 97%;
+/*    height: 23.5%;*/
+	margin: 0px 0 0 0;
+	padding: 0px;
+    background-color:#FFF;
+    position:relative;
+    border:3px solid #C81F45;
+    padding-bottom: 0px;
+}
+
+#list_content
+{
+/*    padding-top:10px;*/
+    font-size: 1em;
+    padding-bottom:0px;
+}
+#time
+{
+    font-size: .75em;   
+}
+.list-marker
+{
+    position: relative;
+    
+}
+
+.list_marker div
+{
+
+    width:93%;
+    background-color: #fff;
+    padding: 0;
+}
+.list_marker img
+{
+    float:left;
+    padding:0;
+    margin: 0px;
+    width: 32px;
+    height: 32px;
+}
 #event_form ul
 {
 	list-style: none;
@@ -68,10 +102,19 @@
 }
 #event_form ul li
 {
-
 	margin:0;
 	padding: 0;
 }
+#event_form ul li:last-of-type
+{
+    display:inline;
+}
+
+#event_form div
+{
+    text-shadow:none;
+}
+
 .error
 {
 	border: 2px solid red;
@@ -79,4 +122,27 @@
 .glow
 {
 	box-shadow: 0px 0px 15px 5px #FF0000;
+}
+div.ui-btn
+{
+    width:38.5%;
+    float:left;
+}
+
+div.ui-btn:last-of-type
+{
+    float:right;
+}
+#list_content p
+{
+    font-size:0.75em;
+}
+#events_error
+{
+    
+}
+.selectedCampus
+{
+    background:#000000;
+    color:#FFFFFF;
 }
