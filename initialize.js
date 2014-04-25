@@ -16,6 +16,9 @@ function initialize()
 	// load Social feeds
 	getSocialFeeds();
     
+    // Load the unofficial links
+    unofficial_load();
+    
 	// Events script load event
 	events_load();
 

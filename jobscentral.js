@@ -34,10 +34,6 @@ function displayJobs(data)
             $("#job_details").show();
             });
 
-            
-
-
-      
 
     $("#job_details").live("swiperight", function(){
                   $(this).toggle();
