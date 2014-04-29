@@ -29,7 +29,7 @@ function displayJobs(data)
             
       });
 
-    $(".job").live("swipeleft", function(){
+    $(".job").on("swipeleft", function(){
             jobDetails(window.jobs[$(this).attr("job")]);
             $("#job_details").show();
             });
@@ -39,7 +39,7 @@ function displayJobs(data)
 
       
 
-    $("#job_details").live("swiperight", function(){
+    $("#job_details").on("swiperight", function(){
                   $(this).toggle();
             });
 }

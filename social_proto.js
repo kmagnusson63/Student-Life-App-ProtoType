@@ -28,6 +28,7 @@ function getSocialFeeds()
             var main = document.getElementById("official");
             main.innerHTML="";
  //          }
+            getLinks();
             for(var i=0;i<social_feed.length;i++)
             {
                 var div = document.createElement("div");
@@ -69,6 +70,8 @@ function getSocialFeeds()
                         image.setAttribute("src", "img/blog_icon_48x48.png");
                         break;
                     case "Instagram":
+                        image.setAttribute("src","img/instagramIcon.png");
+                        break;
                     case "YouTube":
                     default:
                         image.setAttribute("src", "img/user-default.png");
@@ -79,7 +82,8 @@ function getSocialFeeds()
                 image_div.appendChild(image);
                 
                 var content_div = document.createElement("div");
-
+                
+                
                 info_p.innerHTML = "Red River College";
                 content_div.appendChild(info_p);
 
@@ -93,7 +97,15 @@ function getSocialFeeds()
                 
                 div.appendChild(image_div);
                 
-               
+                if(social_feed[i].post_type == "Instagram")
+                {
+                    instagram_image = document.createElement("img");
+                    instagram_image.setAttribute("class", "instagram_image");
+                    instagram_image.setAttribute("src",social_feed[i].post_image_link);
+                    instagram_image.setAttribute("alt",social_feed[i].post__image_link);
+                    content_div.appendChild(instagram_image);
+                }
+                               
                 var content_p = document.createElement("p");
                 content_p.setAttribute("class","post_content");
 
@@ -136,12 +148,19 @@ function getSocialFeeds()
                     addMoreLessTriggers(content_p);
                    
                 }
+                else if(social_feed[i].post_content == "NULL")
+                {
+                    
+                }
                 else
                 {
                     content_p.textContent = social_feed[i].post_content;
                 }
                 
+                
+                
                 content_div.appendChild(content_p);
+                
                 var info_bottom = document.createElement("p");
                 info_bottom.setAttribute("class","info_bottom");
                 
@@ -161,6 +180,9 @@ function getSocialFeeds()
                     case "Blog":
                         temp_host = "http://news.rrc.ca?p=";
                         break;
+                    case "Instagram":
+                        temp_host = "http://instagram.com/";
+                        break;
                 }
                 
                 temp_link.setAttribute("onclick", "window.open('" + temp_host + social_feed[i].post_site_id + "', '_blank', 'location=yes')");
@@ -177,7 +199,7 @@ function getSocialFeeds()
             }
             
         }
-    }
+    };
     postsHttp.open("GET", "https://www.gristlebone.com/School/User_2_Server/social.php", true);
     postsHttp.send();
 
@@ -200,36 +222,10 @@ function addMoreLessTriggers(div)
 
 
 
-$('.social_main').live("swipe", function() {
-    $('.menubar').hide();
-   
-        if($('.menubar').is(":hidden"))
-        {
-            $(this).css("margin-top", "0px");
-        }
-        if($('.menubar').is(":visible"))
-        {
-            $('.social_main').css("margin-top", "70px");
-        }
-        
-});
 
 
-$('.menubutton').live("tap", function() {
-
-    $('.menubar').toggle();
-    if($('.menubar').is(":hidden"))
-        {
-            $('.social_main').css("margin-top", "0px");
-        }
-       
-            if ($('.menubar').is(":visible"))
-        {
-            $('.social_main').css("margin-top", "70px");
-        }
 
 
-});
 function display_choosen_feeds(feed_type)
 {
     $('.post').hide();
@@ -237,15 +233,19 @@ function display_choosen_feeds(feed_type)
     {
         console.log("In Official");
         $('.post').show();
-        $('.unofficial').hide();
+        $('#unofficial').hide();
         $('#official_header').html( "Official");
+    }
+    else if(feed_type == ".unofficial")
+    {
+        $('#unofficial').show();   
     }
     else
     {
         if(feed_type.substr(0,1) != ".") { feed_type = "."+feed_type; }
         
-        console.log("In Feed Type: "+feed_type);
-        console.log($(feed_type));
+//        console.log("In Feed Type: "+feed_type);
+//        console.log($(feed_type));
         $(feed_type).show();
         
         $('#official_header').html(feed_type.substr(1));
@@ -253,9 +253,58 @@ function display_choosen_feeds(feed_type)
     $('.menubar').hide();
     $('.social_main').css("margin-top", "0px");
 }
+function menuTriggers()
+{
+    $('.menubutton').on("click", function(){
 
-$('.menubar').live("tap", function(evt) {
-    var show_type = "." + evt.target.id.substr(5);
-    console.log("Tapped: " + show_type);
-    display_choosen_feeds(show_type);
-});
+        $('.menubar').toggle();
+        if($('.menubar').is(":hidden"))
+            {
+                $('.social_main').css("margin-top", "0px");
+            }
+
+                if ($('.menubar').is(":visible"))
+            {
+                $('.social_main').css("margin-top", "70px");
+            }
+
+
+    });
+    $('.menubar').on("click", function(evt) {
+
+        if($(this.parentElement).attr("id") == "index")
+        {
+            var show_type = "." + evt.target.id.substr(5);
+        //console.log("Tapped: " + show_type);
+            display_choosen_feeds(show_type);
+        }
+    });
+    $('.social_main').on("swipe", function() {
+        $('.menubar').hide();
+
+            if($('.menubar').is(":hidden"))
+            {
+                $(this).css("margin-top", "0px");
+            }
+            if($('.menubar').is(":visible"))
+            {
+                $('.social_main').css("margin-top", "70px");
+            }
+
+    });
+    $('div.list').on("swipeleft", function(){
+        var nextpage = $(this).next('.list');
+        if (nextpage.length > 0) {
+            $('#event_list').animate({right:'105.5%'});
+            $('#event_list_rrc').animate({left:'0%'});
+        }
+    });
+
+    $('div.list').on("swiperight", function(){
+        var prevpage = $(this).prev('.list');
+        if (prevpage.length > 0) {
+            $('#event_list_rrc').animate({left:'105.5%'});
+            $('#event_list').animate({right:'-5.5%'});
+        }
+    });
+}

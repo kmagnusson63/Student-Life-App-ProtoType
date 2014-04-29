@@ -10,20 +10,24 @@
 
 function initialize()
 {
+    // load Device Settings
+    app_startup();
+    run_once();
 //    initialize_refresh();
- //   upload_load();
+    //upload_load();
     
 	// load Social feeds
 	getSocialFeeds();
-    
+    menuTriggers();
+
 	// Events script load event
 	events_load();
 
 	// Job Central script load
 	jobcentral_load();
     
-	// load Device Settings
-	getSettingsFromStorage();
-	//addProfileListeners();
+
+//	getSettingsFromStorage();
+//	addProfileListeners();
     initialize_refresh();
 }

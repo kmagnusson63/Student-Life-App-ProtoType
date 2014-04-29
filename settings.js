@@ -1,6 +1,9 @@
 var file_host = "E:/SkyDrive/School/IndustryProject/www/GitHub/Student-Life-App-ProtoType/img/";
+//var img_upload_host = "http://www.gristlebone.com/School/User_2_Server";
 var img_upload_host = "http://www.gristlebone.com/School/User_2_Server";
+
 var user_id = "";
+
 var screen_name = "";
 var avatar = "";
 // function removeStorage()
@@ -43,9 +46,11 @@ function updateScreen()
 	//document.getElementById("user_id").textContent = intel.xdk.cache.getCookie("user_id");
 	$("#profile_screen_name").text(intel.xdk.cache.getCookie("screen_name"));
 	//document.getElementById("avatar_name").textContent = intel.xdk.cache.getCookie("avatar");
-testing_display(img_upload_host + "/img/" + intel.xdk.cache.getCookie("avatar"));
-	var av_string = img_upload_host + "/img/" + intel.xdk.cache.getCookie("avatar");
-	$("#profile_avatar").attr("src", av_string);
+//testing_display(img_upload_host + "/img/" + intel.xdk.cache.getCookie("avatar"));
+//	var av_string = img_upload_host + "/img/" + intel.xdk.cache.getCookie("avatar");
+    var av_string = intel.xdk.cache.getCookie('avatar_image');
+testing_display("av string:::::::<br>\n" + intel.xdk.cache.getCookie('avatar_image'));
+	$("#profile_avatar").attr("src", intel.xdk.cache.getCookie('avatar_image'));
 	// var avatar = new Image();
 	// avatar.onload = function(){
 	// }
@@ -131,26 +136,34 @@ function getSettingsFromStorage()
 				user_id: intel.xdk.cache.getCookie('user_id')
 			},
 			success: function(data){
+                try{                    
 				data = JSON.parse(data);
 				updateUserCache(data);
+                }
+                catch(err)
+                {
+                    alert(err);   
+                }
 			},
 			fail: function(){
 				alert("Error connecting to server.\nPlease restart app.");
 			}
 		});
 
-		updateScreen();
+//		updateScreen();
 	}
 	// avatarDisplay();
 	// removeStorage();
-	addProfileListeners();
+//	addProfileListeners();
 }
 function updateUserCache(data)
 {
 //var_dump(data);
-	intel.xdk.cache.setCookie('user_id', data['user_id'], -1);
+var_dump(data);
+	intel.xdk.cache.setCookie('user_id', 4, -1);
 	intel.xdk.cache.setCookie('screen_name', data['user_screen_name'], -1);
 	intel.xdk.cache.setCookie('avatar',data['user_avatar'], -1);
+    intel.xdk.cache.setCookie('avatar_image',data['user_image'],-1);
 	updateScreen();
 }
 function getFile(event)
@@ -164,16 +177,24 @@ function getFile(event)
 	//alert(event.target.value);
 	var file = files[0];
     var fileReader = new FileReader();
-    
+    alert("HERE");
+testing_display('URL: ' + URL.createObjectURL(file) + "<br>");
     fileReader.onload = function(e){
      
         var test = fileReader.result;
         $('#profile_avatar').attr('src',test);
         // document.getElementById("img_thumbnail").setAttribute("src",test);
         
-        
+
 testing_display("Size: " + test.length + "<br>");
 //var_dump(test);
+        
+        upload_string = '{ "user_id": "' + intel.xdk.cache.getCookie('user_id') + 
+            	', "screen_name": "' + intel.xdk.cache.getCookie('screen_name') +
+                ', "img_name": "' + file.name +
+                ', "base64data": "' + test + '"}';
+        console.log(upload_string);
+        
         upload_url = img_upload_host + "/upload.php";
         $.ajax({ 
             type: "POST", 
@@ -207,16 +228,17 @@ var_dump(data);
 
 	intel.xdk.cache.setCookie("avatar",files[0].name);
 }
-function testing_display(string)
-{
-	document.getElementById("testing").innerHTML = document.getElementById("testing").innerHTML + string + "<br>";
-}
+// function testing_display(string)
+// {
+// 	document.getElementById("testing").innerHTML = document.getElementById("testing").innerHTML + string + "<br>";
+// }
 function addProfileListeners()
 {
 	document.getElementById('profile_avatar').addEventListener('click',function(e){
+testing_display("tapped file select");
 					$('#avatar_browse').click();
 				},false);
-
+//
 	document.getElementById('avatar_browse').addEventListener('change',getFile,false);
 	
 	// document.addEventListener("intel.xdk.file.upload.busy",uploadBusy);

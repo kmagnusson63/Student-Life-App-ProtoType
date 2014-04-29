@@ -9,7 +9,7 @@
 function upload_load()
 {
 	// window.requestFileSystem(type,size,successCallback, errorCallback);
-	window.requestFileSystem(window.TEMPORARY, 1024, initFS, fileSystemErrorHandler);
+	window.requestFileSystem(window.TEMPORARY, 10*1024*1024, initFS, fileSystemErrorHandler);
 }
 
 /*
@@ -21,10 +21,19 @@ function initFS(fs)
 
 	// create a subdirectory in root filesytem
 	fs.root.getDirectory('Temporary', {create: true}, function(dirEntry){
-		testing_display('Created ' + dirEntry.name + " dir");
+		testing_display('Created "' + dirEntry.name + '" directory');
 	}, fileSystemErrorHandler);
 }
 
+/*
+		Save received image file string to temporary file
+*/
+function saveTempImageFile(file_image_string, file)
+{
+	testing_display(JSON.stringify(file));
+	var_dump(file);
+//	var_dump(file_image_string);
+}
 
 
 
