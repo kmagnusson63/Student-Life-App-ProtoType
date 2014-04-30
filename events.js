@@ -305,7 +305,9 @@ function events_load()
 	addMarkerListener();
     addMenuBarListeners();
     focusMapEvents();
-    
+    $("#events").on('pageshow',function() {
+        google.maps.event.trigger(map, 'resize');                      
+    });
 }
 function cancel_form()
 {

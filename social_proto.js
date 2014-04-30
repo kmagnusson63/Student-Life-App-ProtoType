@@ -73,15 +73,19 @@ function getSocialFeeds()
                         image.setAttribute("src","img/instagramIcon.png");
                         break;
                     case "YouTube":
+                        image.setAttribute("src","img/logo_youtube_48x48.png");
+                        break;
                     default:
                         image.setAttribute("src", "img/user-default.png");
                         break;
                 }
+                image.setAttribute("alt",social_feed[i].post_type);
 
 
                 image_div.appendChild(image);
                 
                 var content_div = document.createElement("div");
+                content_div.setAttribute("class","post_entry");
                 
                 
                 info_p.innerHTML = "Red River College";
@@ -97,12 +101,12 @@ function getSocialFeeds()
                 
                 div.appendChild(image_div);
                 
-                if(social_feed[i].post_type == "Instagram")
+                if(social_feed[i].post_type == "Instagram" || social_feed[i].post_type == "YouTube")
                 {
                     instagram_image = document.createElement("img");
                     instagram_image.setAttribute("class", "instagram_image");
                     instagram_image.setAttribute("src",social_feed[i].post_image_link);
-                    instagram_image.setAttribute("alt",social_feed[i].post__image_link);
+                    instagram_image.setAttribute("alt",social_feed[i].post_image_link);
                     content_div.appendChild(instagram_image);
                 }
                                
@@ -180,17 +184,21 @@ function getSocialFeeds()
                     case "Blog":
                         temp_host = "http://news.rrc.ca?p=";
                         break;
-                    case "Instagram":
-                        temp_host = "http://instagram.com/";
-                        break;
                 }
-                
-                temp_link.setAttribute("onclick", "window.open('" + temp_host + social_feed[i].post_site_id + "', '_blank', 'location=yes')");
+                if(social_feed[i].post_type == "Instagram" || social_feed[i].post_type == "YouTube")
+                {
+                    temp_link.setAttribute("onclick", "window.open('" + social_feed[i].post_web_link + "', '_blank', 'location=yes')");
+                }
+                else
+                {
+                    temp_link.setAttribute("onclick", "window.open('" + temp_host + social_feed[i].post_site_id + "', '_blank', 'location=yes')");
+                }
                 temp_link.innerHTML = "Link";
                 temp_span.appendChild(temp_link);
                 info_bottom.appendChild(temp_span);
-                content_div.appendChild(info_bottom);
                 div.appendChild(content_div);
+                div.appendChild(info_bottom);
+               
                 
 
                 
@@ -244,7 +252,7 @@ function display_choosen_feeds(feed_type)
     {
         if(feed_type.substr(0,1) != ".") { feed_type = "."+feed_type; }
         
-//        console.log("In Feed Type: "+feed_type);
+        console.log("In Feed Type: "+feed_type);
 //        console.log($(feed_type));
         $(feed_type).show();
         
