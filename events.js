@@ -201,7 +201,7 @@ function strip_special(data_string)
 function submitForm(e,marker_latLng)
 {
     var latLng = marker_latLng;
-    alert(latLng);
+    //alert(latLng);
     var form_content = document.getElementById("event_form_content").value;
     var eventParent = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.id;
     var errors = validateForm(form_content,eventParent);
