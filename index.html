@@ -37,7 +37,7 @@
 		<script src='intelxdk.js'></script>
         <script src="cordova.js"></script>
         <script src='xhr.js'></script>
-	    <!-- Initialize javascript -->'
+	    <!-- Initialize javascript -->
 	    <script src="settings.js"></script>
         <script src="refresh.js"></script>
         <script src="dump.js"></script>
@@ -54,7 +54,7 @@
 		<div data-role="page" id="index" class="social">
 
 			<div class="header" data-role="header"  data-position="fixed" data-tap-toggle="false" data-theme="e">
-				<img  id="social_button" class="menubutton" src="img/buttons/menu_button.png" alt="" width="25px">
+				<img id="social_button" class="menubutton" src="img/buttons/menu_button.png" alt="" width="25">
                 <h1 id="official_header">Official</h1>
 			</div><!-- /header -->
 
@@ -94,7 +94,7 @@
 		<div data-role="page" id="events">
 	        
 	        <div class="header" data-role="header" data-tap-toggle="false" data-theme="e">
-                <img  id="social_button" class="menubutton" src="img/buttons/menu_button.png" alt="" width="25px">
+                <img id="events_button" class="menubutton" src="img/buttons/menu_button.png" alt="" width="25">
                 <h1>Events</h1>
             </div>
 	         <div class="menubar" id="events_menubar" style="display: none">
@@ -128,7 +128,7 @@
 				</div>
 	        
 				<div id="event_list" class="list">
-					<div id="refresh" class="refresh"><div class="inner_refresh"><p>Refresh</p><img src="img/ajax-loader.gif" alt="" width="20px"/></div></div>
+					<div class="refresh"><div class="inner_refresh"><p>Refresh</p><img src="img/ajax-loader.gif" alt="" width="20"/></div></div>
 				</div>
 	            <div id="event_list_rrc" class="list">
 	            
@@ -189,31 +189,7 @@
 	           
 	    </div><!-- /page -->
 
-	    <div data-role="page" class="jobcentralpage" id="jobdetailspage">
-	        <div class="header" data-role="header" data-position="fixed" data-tap-toggle="false" data-theme=e>
-	            <h1>Job Central</h1>
-	        </div>
-	        
-	        
-	        <div role="main" class="ui-content" id="job_details">
-	           
-
-	        </div>
-
-	               
-	        <div data-role="footer" class="footer" data-position="fixed" data-tap-toggle="false">
-			<!--<p><a href="#foo" data-rel="back" >Back to foo</a></p>-->
-		        <div data-role="navbar">
-		            <ul>
-		                <li><a href="#index"><img src="img/buttons/social_button_no_focus.png" alt="Social"></a></li>
-		                <li><a href="#events"><img src="img/buttons/events_button_no_focus.png" alt="Events"></a></li>
-		                <li><a class="ui-btn-active ui-state-persist" href="#jobcentral"><img src="img/buttons/job_central_button_focus.png" alt="Job Central"></a></li>
-		                <li><a href="#settings"><img src="img/buttons/profile_button_no_focus.png" alt="Profile"></a></li>
-		            </ul>
-		        </div><!-- /navbar -->
-			</div><!-- /footer -->
-	           
-	    </div><!-- /page -->
+	    
 
 	    <div data-role="page" id="settings">
 
@@ -231,7 +207,7 @@
             		<input id="avatar_browse" type="file" name="files" data-role="none" />
             	</div>
             	<div id="profile_user_name_info">
-            		<input type="text" name="screen_name" id="profile_screen_name" value="Anonymous" data-role="none" readonly="true" />
+            		<input type="text" name="screen_name" id="profile_screen_name" value="Anonymous" data-role="none" readonly />
 
                     <div id="progress" class="progress">
                         <div class="progress-bar progress-bar-success"></div>

@@ -27,6 +27,7 @@
 {
     margin-left: 60px;
     width: 70%;
+    margin-bottom: 35px;
 }
 .post .left img
 {
@@ -61,8 +62,9 @@
     font-size: .75em;
     font-style: italic;
     color: gray;
+    right: 5px;
+    bottom: 15px;
     margin-top: -10px;
-    margin-bottom: 10px;
 }
 
 b

@@ -2,6 +2,11 @@
     overflow: hidden;
 }
 
+#events .header
+{
+    margin-top: -1px;
+}
+
 #events_wrapper {
     height: 50%;
     padding: 0;

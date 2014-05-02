@@ -10,6 +10,7 @@ input, textarea {
 
 h1 {
 	white-space: normal !important;
+    padding-left: 20px !important;
 }
 
 body {
@@ -53,6 +54,9 @@ body {
 .menubutton
 {
     float: right;
+    position: relative;
+    right: 5px;
+    top: 2px;
 }
 
 .menubar {
