@@ -27,7 +27,6 @@ function getSocialFeeds()
             /*      parse json to Social        */
             var main = document.getElementById("official");
             main.innerHTML="";
- //          }
             getLinks();
             for(var i=0;i<social_feed.length;i++)
             {
@@ -210,9 +209,6 @@ function getSocialFeeds()
     };
     postsHttp.open("GET", "https://www.gristlebone.com/School/User_2_Server/social.php", true);
     postsHttp.send();
-
-   
-
 }
 
 function addMoreLessTriggers(div)
@@ -226,13 +222,6 @@ function addMoreLessTriggers(div)
         e.target.parentNode.previousSibling.style.display = "block";
     });
 }
-
-
-
-
-
-
-
 
 function display_choosen_feeds(feed_type)
 {
@@ -253,7 +242,6 @@ function display_choosen_feeds(feed_type)
         if(feed_type.substr(0,1) != ".") { feed_type = "."+feed_type; }
         
         console.log("In Feed Type: "+feed_type);
-//        console.log($(feed_type));
         $(feed_type).show();
         
         $('#official_header').html(feed_type.substr(1));
@@ -283,7 +271,9 @@ function menuTriggers()
         if($(this.parentElement).attr("id") == "index")
         {
             var show_type = "." + evt.target.id.substr(5);
-        //console.log("Tapped: " + show_type);
+
+console.log("Tapped: " + show_type);
+
             display_choosen_feeds(show_type);
         }
     });

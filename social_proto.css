@@ -1,17 +1,12 @@
 .post
 {
-    /*border-left: 1px solid #e0e0e0;*/
-    /*border-top: 1px solid #e0e0e0;*/
-    /*box-shadow: 5px 5px 5px #888888;*/
     border-bottom: solid 1px #e0e0e0;
-/*    padding: 10px 10px 25px 10px;*/
     margin-top: 10px;
     background-color: white;
 }
 .post_user_name
 {
     display:inline;
-/*    margin-left: 50px;*/
 }
 
 .post_user_name
@@ -27,7 +22,6 @@
     font-style: italic;
     color: gray;
     margin-top: 5px;
-/*    margin-left: 60px;*/
 }
 .post_entry
 {
@@ -44,18 +38,15 @@
 .instagram_image
 {
     width: 100%;
-/*    margin: 0 0 10px 10px;*/
 }
 .post_content
 {
     display: block;
-/*    margin-left: 60px;*/
     margin-top: -5px;
 }
 
 .info_line
 {
-/*    margin-left: 60px;*/
     font-weight: bold;
     float: center;
     margin-top: -2px;
@@ -81,16 +72,13 @@ b
 
 .first
 {
-/*  margin-top:15px;
-*/}
+}
 .last
 {
-    /*margin-bottom: 5px;*/
    
 }
 .post_content span:nth-of-type(2)
 {
-    /*display:inline;*/
     display:none;
 }
 .more_trigger, .less_trigger

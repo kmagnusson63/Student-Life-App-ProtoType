@@ -71,8 +71,6 @@ function updateDB(update_data)
 		},
 		success: function(data){
 testing_display("Worked");
-//var_dump(data);
-			//updateUserCache(data);
 		},
 		fail: function(){
 			// send error message
@@ -87,7 +85,7 @@ testing_display("Worked");
 */
 function updateUserCache(data)
 {
-//var_dump(data);
+
 	try
 	{
 		intel.xdk.cache.setCookie('user_id', data['user_id'], -1);
@@ -132,7 +130,6 @@ var_dump(files);
 		// Store read file into variable
 		var file_image_string = fileRead.result;
 		$('#profile_avatar').attr('src',file_image_string);
-//var_dump(file_image_string);
 		
 		// Save image to temporary folder
 		saveTempImageFile(file_image_string, file);
@@ -149,7 +146,6 @@ var_dump(files);
                 base64data : file_image_string
             },
             success: function(data){
-//var_dump(data);
             	data = JSON.parse(data);
             	updateUserCache(data);
             },

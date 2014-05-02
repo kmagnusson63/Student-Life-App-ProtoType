@@ -13,9 +13,7 @@ function initialize()
     // load Device Settings
     app_startup();
     run_once();
-//    initialize_refresh();
-    //upload_load();
-    
+   
 	// load Social feeds
 	getSocialFeeds();
     menuTriggers();
@@ -26,8 +24,13 @@ function initialize()
 	// Job Central script load
 	jobcentral_load();
     
-
-//	getSettingsFromStorage();
-//	addProfileListeners();
     initialize_refresh();
 }
+var onDeviceReady=function(){
+//hide splash screen
+	intel.xdk.device.hideSplashScreen();
+	intel.xdk.device.setAutoRotate(true);
+	initialize();
+};
+
+document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);

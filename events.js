@@ -32,7 +32,7 @@ var form_submit_listener = null;
 var markerArray = new Array();
 const LIST_TABLE_CONTENT_LENGTH = 20;
 const EVENT_ADDRESS = "http://www.gristlebone.com/School/User_2_Server/";
-var marker_image //= "rrc_logo_1.png";
+var marker_image; //= "rrc_logo_1.png";
 var submit_handler;
 var contentString = '<h1>hi</h1>';
 var infoWindow;
@@ -218,15 +218,10 @@ function submitForm(e,marker_latLng)
 		var temp_marker = new event_marker(latLng,strip_special(document.getElementById("event_form_content").value),"Me")
 
 		// post to server
-//alert(latLng.lat);
 		var post_string = "posts.php?lat="+latLng.k + "&long=" + latLng.A + "&content=" + temp_marker.content + "&user_id=" + intel.xdk.cache.getCookie('user_id');
-//console.log(post_string);
 		postEventFeeds(post_string);
 
-//		markerArray.push(temp_marker);
 		// dump array to storage
-		//localStorage.setItem("markerArray", JSON.stringify(markerArray));
-
 		document.getElementById("event_form").style.display = "none";
         document.getElementById("event_list_rrc").style.display = "block";
 		document.getElementById("event_list").style.display = "block";
@@ -250,20 +245,12 @@ function setMarker(event)
 	submit_handler = function(e){submitForm(e,marker_latLng);}
 	document.getElementById("event_form_submit").addEventListener("click",submit_handler,false);
     document.getElementById("event_form_cancel").addEventListener("click",cancel_form,false);
-//    document.getElementById("event_list").style.top = "70%";
-//    document.getElementById("event_form").style.top = "70%";
-//    document.getElementById("event_list_rrc").style.top = "70%";
-//    document.getElementById("events_wrapper").style.height = "70%";
-//    document.getElementById("event_list").style.height = "30%";
-//    document.getElementById("event_form").style.height = "30%";
 }
 function addMarkerListener()
 {
-    //alert(startMarkerListener);
 	if(startMarkerListener == null)
 	{
 		startMarkerListener = google.maps.event.addListener(map, 'click', function(e){setMarker(e);});
-        
 	}
 	
 }
@@ -279,7 +266,6 @@ function list_listener(e)
 		var marker = event_array[e.target.parentNode.getAttribute("marker")];
 		map.setCenter(marker.position);
         map.setZoom(20);
-//        map.setZoom(15);
         if(previousInfo == null)
         {
             
@@ -339,8 +325,7 @@ function validateForm(validateMessage,page)
         }
     if(page == "events")
     {
-//        else
-//        {
+
             var regex = new RegExp( /^[a-zA-Z0-9_ !@#\$%\^\&*\)\(+=._-]+$/g)
             if (!regex.test(validateMessage))
             {
@@ -348,7 +333,6 @@ function validateForm(validateMessage,page)
                 error = true;
                 return error;
             }
-//        }
     }
     if(page == "settings")
     {
@@ -407,28 +391,12 @@ function addMenuBarListeners()
 */
 function focusOnCampus(e)
 {
-//    campusCircle.setMap(null);
-//var_dump(e.target.id);
+
     var campusSelected = e.target.id;
-//    var campusCoord = campusSelected + 'LatLng';
-//    alert(campusCoord);
-//    map.setCenter(campusCoord);
-//    map.setZoom(18);
-//    var circleOptions = {
-//      strokeColor: '#C81F45',
-//      strokeOpacity: 0.8,
-//      strokeWeight: 2,
-//      fillColor: '#C81F45',
-//      fillOpacity: 0.35,
-//      map: map,
-//      center: notreDameLatLng,
-//      radius: 40
-//    };
-//    campusCircle = new google.maps.Circle(circleOptions);
-//    alert(campusCircle.getBounds());
+
     var campusEle = document.getElementById(campusSelected);
     
- //   alert(campusEle.getAttribute("class"));
+
     if(campusEle.getAttribute("class") == "selectedCampus")
     {
         var removeAttribute = campusEle.setAttribute("class",null);
@@ -445,11 +413,10 @@ function focusOnCampus(e)
     {
         var selectedAttribute = campusEle.setAttribute("class","selectedCampus");
         campusesArray.push(campusSelected);
-//        alert(campusesArray);
+
     }
     
-//    if(campusesArray.length == 1)
-//    {
+
     for(var i = 0;i<campusesArray.length;i++)
     {
         campusArea = 500;
@@ -494,11 +461,9 @@ function focusOnCampus(e)
                 map.setCenter(defaultLatLng);
                 map.setZoom(5);
                 postEventFeeds("posts.php?start");
-//                campusArea = 90000;
-//                filterEventList(defaultLatLng);
         }
     }
-//    }
+
     if(campusesArray.length > 1)
     {
         map.setCenter(multipleCampusLatLng);

@@ -1,12 +1,8 @@
-
-
 function displayJobs(data)
 {
       window.jobs = data;
-//    var_dump(data[2]);
     $.each(data, function(index, job){
 
-      // var job_post_div = "<div></div>";
       $("<div/>", {
             class : "job",
             job : index
@@ -26,18 +22,12 @@ function displayJobs(data)
       )
             .appendTo("#job_list");
 
-            
-      });
+    });
 
     $(".job").on("swipeleft", function(){
             jobDetails(window.jobs[$(this).attr("job")]);
             $("#job_details").show();
             });
-
-            
-
-
-      
 
     $("#job_details").on("swiperight", function(){
                   $(this).toggle();
@@ -50,8 +40,6 @@ function jobDetails(job)
       $("#job_details_open_date").text(job.job_open_date);
       $("#job_details_desc").text(job.job_description);
 }
- 
-
 
 function jobcentral_load()
 {
@@ -76,4 +64,3 @@ function jobcentral_load()
         }
     });
 }
-

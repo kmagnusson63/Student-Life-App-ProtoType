@@ -7,48 +7,48 @@
   */
 
   var markerArray = new Array();
-        function initialize() {
-            var mapOptions = {
-                zoom: 40,
-                minZoom: 12,
-                center: new google.maps.LatLng(49.900412,-97.141117)
-            };
-            var contentText = "<div class='info'><label for='info_title'>Title:</label><input id='info_title' name='info_title' type='text'/><br /><label for='content'>Content:</label><input id='content' name='content' type='text'/><br /><button id='event_submit'>Submit</button></div>";
-            var map = new google.maps.Map(document.getElementById('john'),
-                mapOptions);
+function initialize() {
+    var mapOptions = {
+        zoom: 40,
+        minZoom: 12,
+        center: new google.maps.LatLng(49.900412,-97.141117)
+    };
+    var contentText = "<div class='info'><label for='info_title'>Title:</label><input id='info_title' name='info_title' type='text'/><br /><label for='content'>Content:</label><input id='content' name='content' type='text'/><br /><button id='event_submit'>Submit</button></div>";
+    var map = new google.maps.Map(document.getElementById('john'),
+        mapOptions);
 
-            google.maps.event.addListener(map, 'click', function(e){
-
-
-                markerArray.push(new ourMarker(map, e.latLng,contentText));
-
-                var marker2 = new google.maps.Marker({
-                    position: e.latLng,
-                    map: map
-                });
-                var infoWindow = new google.maps.InfoWindow({
-                    content: contentText,
-                    "maxWidth": "900"
-                });
-                infoWindow.open(map, marker2);
-                google.maps.event.addListener(infoWindow,"domready", function(e){
-                    document.getElementById("event_submit").addEventListener("click",function(){
-                   		infoWindow.setContent("<div class='info'><h1>"+document.getElementById("info_title").value+"</h1><br /><p>"+document.getElementById("content").value+"</p></div>")
-                    },false);
-                });
+    google.maps.event.addListener(map, 'click', function(e){
 
 
-                google.maps.event.addListener(marker2, 'click', function() {
-                    infoWindow.open(map,marker2);
-                });
+        markerArray.push(new ourMarker(map, e.latLng,contentText));
 
-            });
-        }
+        var marker2 = new google.maps.Marker({
+            position: e.latLng,
+            map: map
+        });
+        var infoWindow = new google.maps.InfoWindow({
+            content: contentText,
+            "maxWidth": "900"
+        });
+        infoWindow.open(map, marker2);
+        google.maps.event.addListener(infoWindow,"domready", function(e){
+            document.getElementById("event_submit").addEventListener("click",function(){
+           		infoWindow.setContent("<div class='info'><h1>"+document.getElementById("info_title").value+"</h1><br /><p>"+document.getElementById("content").value+"</p></div>")
+            },false);
+        });
 
-        function ourMarker(map, latLng, content)
-        {
-            this.map = map;
-            this.latLng = latLng;
-            this.content = content;
-        }
-        google.maps.event.addDomListener(window, 'load', initialize);
+
+        google.maps.event.addListener(marker2, 'click', function() {
+            infoWindow.open(map,marker2);
+        });
+
+    });
+}
+
+function ourMarker(map, latLng, content)
+{
+    this.map = map;
+    this.latLng = latLng;
+    this.content = content;
+}
+google.maps.event.addDomListener(window, 'load', initialize);

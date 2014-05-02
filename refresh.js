@@ -2,10 +2,8 @@ function initialize_refresh()
 {
     // Hide all refresh class div's
     $(".refresh").hide('fast');
-//    alert($('.refresh').parent()[0].id);
     $('.refresh').each(function(index){
         $(this).next().on('swipedown',function(e){
-// alert(e.target.parentElement.id);
             if(e.target.parentElement.id == "official" && ($('.'+$('#official_header').html())[0] == e.target) || e.target.parentElement.firstChild == e.target)
             {
                 if($("#"+e.delegateTarget.parentElement.id+">.refresh").is(":hidden"))
@@ -20,7 +18,6 @@ console.log(previous_feed);
             }
         }); 
     });
-//    $('#index').on('swipeup',function(e){alert("swipeup.." + e.target.id);} );
 }
 
 var supportTouch = $.support.touch,

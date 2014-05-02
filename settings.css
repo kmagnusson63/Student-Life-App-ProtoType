@@ -43,8 +43,7 @@
 }
 #profile_save a
 {
-/*	font-weight: bold !important;
-*/	text-decoration: none !important;
+	text-decoration: none !important;
 	color:white !important;
 	display: block;
 	margin-top: 1em;

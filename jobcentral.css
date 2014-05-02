@@ -19,10 +19,6 @@
 }
 
 .blue {
-/*
-    color: blue;
-    font-weight: normal;
-*/
     display: none;
 }
 
@@ -74,10 +70,7 @@
 
 .job
 {
-/*
-    border-left: 1px solid #e0e0e0;
-    border-top: 1px solid #e0e0e0;
-*/  border-bottom: solid 1px #e0e0e0;
+    border-bottom: solid 1px #e0e0e0;
     padding: 10px 10px;
     margin-top: 5px;
     background-color: white;
@@ -95,8 +88,6 @@
     margin-right: 5px;
     margin-bottom: 2px;
     font-weight: bold;
-
-    
 }
 
 .job_open_date {
@@ -116,14 +107,6 @@
     font-weight: normal !important;
 }
 
-/*.right
-{
-    float: right;
-    top: 10;
-    margin-right: 5px;
-    margin-top: 20px;
-}*/
-
 .ui-panel.ui-panel-open 
 {
     position:fixed;
@@ -132,15 +115,6 @@
     width: 100%;
 }
 
-
-/*#job_page
-{
-    position:fixed;
-    z-index: 1;
-    top: 45px;
-    width: 100%;
-}
-*/
 .ui-panel-inner 
 {
     position: absolute;
